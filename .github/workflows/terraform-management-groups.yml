@@ -1,20 +1,34 @@
-name: Run Azure Login with OpenID Connect and PowerShell
-on: [push]
+name: terraform - Deploy Management Group Structure
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/terraform-management-groups.yml
 
 permissions:
       id-token: write
       contents: read
+
+env:
+  MODULE_NAME: terraform-management-groups
+  LOCATION: westeurope
       
-jobs: 
-  Windows-latest:
-      runs-on: windows-latest
-      steps:
+jobs:
+  validate_canary:
+    name: Validate Canary
+    environment: 
+      name: Canary
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT_SHORT_NAME: canary
+    steps:
         - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
           uses: azure/login@v1
           with:
             client-id: ${{ secrets.AZURE_CLIENT_ID }}
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} 
+            subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} 
             enable-AzPSSession: true
 
         - name: 'Get resource group with PowerShell action'
