@@ -1,7 +1,7 @@
 ---
 name: terraform - Deploy Management Group Structure
 
-on: # yamllint disable-line rule:truthy
+on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - main
@@ -15,33 +15,34 @@ on: # yamllint disable-line rule:truthy
   workflow_dispatch:
 
 permissions:
-      id-token: write
-      contents: read
+  id-token: write
+  contents: read
 
 env:
   MODULE_NAME: terraform-management-groups
   LOCATION: westeurope
-      
+
 jobs:
   validate_canary:
     name: Validate Canary
-    environment: 
+    environment:
       name: Canary
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT_SHORT_NAME: canary
     steps:
-        - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
-          uses: azure/login@v1
-          with:
-            client-id: ${{ secrets.AZURE_CLIENT_ID }}
-            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} 
-            enable-AzPSSession: true
+      - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} 
+          enable-AzPSSession: true
 
-        - name: 'Get resource group with PowerShell action'
-          uses: azure/powershell@v1
-          with:
-             inlineScript: |
-               Get-AzResourceGroup
-             azPSVersion: "latest"
+      - name: Get resource group with PowerShell action
+        uses: azure/powershell@v1
+        with:
+          inlineScript: |
+            Get-AzResourceGroup
+            azPSVersion: latest
+            
