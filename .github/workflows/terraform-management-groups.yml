@@ -21,7 +21,7 @@ permissions:
 env:
   MODULE_NAME: terraform-management-groups
   LOCATION: westeurope
-  tf_actions_working_dir: terraform
+  tf_actions_working_dir: ./terraform/modules/management_groups/canary
 
 jobs:
   plan:
