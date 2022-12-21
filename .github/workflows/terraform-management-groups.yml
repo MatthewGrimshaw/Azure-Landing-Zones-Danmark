@@ -94,9 +94,9 @@ jobs:
 
         
   plan_prod:
-    name: Terraform plan Prod
+    name: Terraform plan Production
     environment:
-      name: Prod      
+      name: Production     
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT_SHORT_NAME: prod
