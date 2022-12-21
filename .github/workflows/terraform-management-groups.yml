@@ -79,7 +79,7 @@ jobs:
       
       - name: Terraform Plan
         id: plan
-        run: terraform plan --out=out.tfplan
+        run: terraform plan --out=out_canary.tfplan
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
@@ -149,7 +149,7 @@ jobs:
       
       - name: Terraform Plan
         id: plan
-        run: terraform plan --out=out.tfplan
+        run: terraform plan --out=out_prod.tfplan
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
@@ -203,7 +203,7 @@ jobs:
       - name: Download terraform plan
         uses: actions/download-artifact@v3
         with:
-          name: tf-plan-canary
+          name: tf-apply-canary
           path: ${{ env.tf_actions_working_dir }}
       
       - name: Apply terraform plan
@@ -256,7 +256,7 @@ jobs:
       - name: Download terraform plan
         uses: actions/download-artifact@v3
         with:
-          name: tf-plan-prod
+          name: tf-apply-prod
           path: ${{ env.tf_actions_working_dir }}
       
       - name: Apply terraform plan
