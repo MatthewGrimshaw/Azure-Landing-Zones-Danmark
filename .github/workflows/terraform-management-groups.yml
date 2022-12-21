@@ -21,27 +21,39 @@ permissions:
 env:
   MODULE_NAME: terraform-management-groups
   LOCATION: westeurope
+  tf_actions_working_dir: terraform
 
 jobs:
-  validate_canary:
-    name: Validate Canary
+  plan:
+    name: Terraform plan
     environment:
       name: Canary
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT_SHORT_NAME: canary
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
     steps:
-      - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Login
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
-          enable-AzPSSession: true
+      
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
 
-      - name: Get resource group with PowerShell action.
-        uses: azure/powershell@v1
-        with:
-          inlineScript: |
-            Get-AzResourceGroup
-          azPSVersion: latest
+      - name: Terraform Init 
+        id: init 
+        run: terraform init -backend-config=storage_account_name=${{ secrets.STORAGE_ACCOUNT_NAME }} -backend-config=container_name=${{ secrets.CONTAINER_NAME }} -backend-config=key=${{ secrets.KEY }} -backend-config=resource_group_name=${{ secrets.RESOURCE_GROUP_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+  

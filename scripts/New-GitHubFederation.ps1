@@ -17,8 +17,8 @@
 
 param (
     [String]
-    $appName = "Matthew-Danmark-ALZ"
-
+    $appName = "Matthew-Danmark-ALZ",
+    $repo = "MatthewGrimshaw/Azure-Landing-Zones-Danmark"
 )
 
 Connect-AzAccount -Tenant '4f8875af-ac0b-46ee-8a73-3634138f5818'
@@ -36,10 +36,10 @@ New-AzADServicePrincipal -ApplicationId $clientId
 
 # create a federated identity credential on an app
 $objectId = (Get-AzADApplication -DisplayName $appName).Id
-New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com/' -Name 'Matthew-Azure-Landing-Zones-Danmark-Production' -Subject 'repo:MatthewGrimshaw/Azure-Landing-Zones-Danmark:environment:Production'
-New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com/' -Name 'Matthew-Azure-Landing-Zones-Danmark-Canary' -Subject 'repo:MatthewGrimshaw/Azure-Landing-Zones-Danmark:environment:Canary'
-New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com/' -Name 'Matthew-Azure-Landing-Zones-Danmark-PR' -Subject 'repo:MatthewGrimshaw/Azure-Landing-Zones-Danmark:pull_request'
-New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com/' -Name 'Matthew-Azure-Landing-Zones-Danmark-Main' -Subject 'repo:MatthewGrimshaw/Azure-Landing-Zones-Danmark:ref:refs/heads/main'
+New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com' -Name "$appName-Production" -Subject "repo:$($repo):environment:Production"
+New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com' -Name "$appName-Canary" -Subject "repo:$($repo):environment:Canary"
+New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com' -Name "$appName-PR" -Subject "repo:$($repo):pull_request"
+New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com' -Name "$appName-Main" -Subject "repo:$($repo):ref:refs/heads/main"
 
 
 # create a new role assignmnet - the service principal needs root contributor in order to be able to create the Management Group structure
@@ -56,3 +56,33 @@ write-output "For GitHib secrets use:"
 write-output "clientID: "           $clientId
 write-output "subscriptionId: "     $subscriptionId
 write-output "tenantId: "           $tenantId
+
+##TERRAFORM## - needs an if statement
+
+$RESOURCE_GROUP_NAME='Management'
+$STORAGE_ACCOUNT_NAME="mgmtstorageqwerty"
+$CONTAINER_NAME='tfstate'
+$location = 'westeurope'
+
+# Create resource group
+New-AzResourceGroup -Name $RESOURCE_GROUP_NAME -Location $location
+
+# Create storage account
+$storageAccount = New-AzStorageAccount -ResourceGroupName $RESOURCE_GROUP_NAME -Name $STORAGE_ACCOUNT_NAME -SkuName Standard_LRS -Location $location -AllowBlobPublicAccess $true -EnableHttpsTrafficOnly $true
+
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $RESOURCE_GROUP_NAME -Name $STORAGE_ACCOUNT_NAME
+
+# Create blob container
+New-AzStorageContainer -Name $CONTAINER_NAME -Context $storageAccount.context -Permission blob
+
+$ACCOUNT_KEY=(Get-AzStorageAccountKey -ResourceGroupName $RESOURCE_GROUP_NAME -Name $STORAGE_ACCOUNT_NAME)[0].value
+
+
+write-output "For Terraform GitHib secrets use:"
+write-output "resource_group_name: "            $resource_group_name
+write-output "storage_account_name: "           $STORAGE_ACCOUNT_NAME
+write-output "container_name: "                 $CONTAINER_NAME
+write-output "key: "                            $ACCOUNT_KEY
+
+
+###TODO: Create GitHub Environments and Secrets
