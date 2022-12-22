@@ -1,7 +1,7 @@
 # Canary Root Management Group
 variable "matthew_lz_display_name" {
   type = string
-  default = "Matthew - Azure Landing Zones - Canary"
+  default = "Matthew - Azure Landing Zones"
 }
 
 variable "matthew_lz_name" {
