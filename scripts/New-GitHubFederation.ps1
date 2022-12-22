@@ -61,7 +61,8 @@ write-output "tenantId: "           $tenantId
 
 $RESOURCE_GROUP_NAME='Management'
 $STORAGE_ACCOUNT_NAME="mgmtstorageqwerty"
-$CONTAINER_NAME='tfstate'
+$CONTAINER_NAME_CANARY='tfstate-canary'
+$CONTAINER_NAME_PROD='tfstate-prod'
 $location = 'westeurope'
 
 # Create resource group
@@ -73,7 +74,8 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName $RESOURCE_GROUP_NAME -
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $RESOURCE_GROUP_NAME -Name $STORAGE_ACCOUNT_NAME
 
 # Create blob container
-New-AzStorageContainer -Name $CONTAINER_NAME -Context $storageAccount.context -Permission blob
+New-AzStorageContainer -Name $CONTAINER_NAME_CANARY -Context $storageAccount.context -Permission blob
+New-AzStorageContainer -Name $CONTAINER_NAME_PROD -Context $storageAccount.context -Permission blob
 
 $ACCOUNT_KEY=(Get-AzStorageAccountKey -ResourceGroupName $RESOURCE_GROUP_NAME -Name $STORAGE_ACCOUNT_NAME)[0].value
 
@@ -81,7 +83,8 @@ $ACCOUNT_KEY=(Get-AzStorageAccountKey -ResourceGroupName $RESOURCE_GROUP_NAME -N
 write-output "For Terraform GitHib secrets use:"
 write-output "resource_group_name: "            $resource_group_name
 write-output "storage_account_name: "           $STORAGE_ACCOUNT_NAME
-write-output "container_name: "                 $CONTAINER_NAME
+write-output "container_name: "                 $CONTAINER_NAME_CANARY
+write-output "container_name: "                 $CONTAINER_NAME_PROD
 write-output "key: "                            $ACCOUNT_KEY
 
 
