@@ -5,7 +5,7 @@ Push-Location
 Set-Location .\terraform\modules\management_groups
 
 # terrafrom init
-terraform init 
+terraform init
 
 # terraform plan
 terraform plan -out assignmnet.tfplan
