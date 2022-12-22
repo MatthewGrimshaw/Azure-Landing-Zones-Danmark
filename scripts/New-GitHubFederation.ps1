@@ -57,7 +57,7 @@ write-output "clientID: "           $clientId
 write-output "subscriptionId: "     $subscriptionId
 write-output "tenantId: "           $tenantId
 
-##TERRAFORM## - needs an if statement
+##TERRAFORM## - needs an if statement.
 
 $RESOURCE_GROUP_NAME='Management'
 $STORAGE_ACCOUNT_NAME="mgmtstorageqwerty"
