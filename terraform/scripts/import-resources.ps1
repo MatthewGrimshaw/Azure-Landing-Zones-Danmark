@@ -18,6 +18,7 @@ param (
     $resourceType #= "azurerm_management_group"
 )
 
+write-output $importFile
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json 
 
 
