@@ -25,7 +25,7 @@ env:
 
 jobs:
   import_canary:
-    name: Terraform plan Canary
+    name: Terraform import Canary
     environment:
       name: Canary
     runs-on: ubuntu-latest
@@ -83,7 +83,7 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            ${{ github.workspace }}/terraform/scripts/import-resources.ps1  -importFile "{{ github.workspace }}/terraform/modules/management_groups/canary/import_resources.json"  -resourceType "azurerm_management_group"
+            ${{ github.workspace }}/terraform/scripts/import-resources.ps1  -importFile "import_resources.json"  -resourceType "azurerm_management_group"
           azPSVersion: latest
 
       - name: Terraform Plan
