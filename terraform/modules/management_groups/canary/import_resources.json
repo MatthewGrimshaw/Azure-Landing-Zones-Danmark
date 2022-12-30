@@ -1,0 +1,46 @@
+{
+    "properties": {
+        "managementGroups": [
+
+            {
+                "name": "matthew-lz-canary"
+            },
+            {
+                "name": "matthew-lz-canary-decommmisioned"
+            },
+            {
+                "name": "matthew-lz-canary-sandbox"
+            },
+            {
+                "name": "matthew-lz-canary-platform"
+            },
+            {
+                "name": "matthew-lz-canary-landing-zones"
+            },
+            {
+                "name": "matthew-lz-canary-connectivity"
+            },
+            {
+                "name": "matthew-lz-canary-identity"
+            },
+            {
+                "name": "matthew-lz-canary-management"
+            },
+            {
+                "name": "matthew-lz-canary-security"
+            },
+            {
+                "name": "matthew-lz-canary-corp"
+            },
+            {
+                "name": "matthew-lz-canary-corp-confidential"
+            },
+            {
+                "name": "matthew-lz-canary-online"
+            },
+            {
+                "name": "matthew-lz-canary-online-confidential"
+            }
+        ]
+    }
+}
