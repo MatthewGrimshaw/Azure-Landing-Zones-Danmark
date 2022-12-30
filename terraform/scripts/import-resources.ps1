@@ -26,7 +26,7 @@ foreach($resource in $resourcesToImport.properties.managementGroups){
     $resourceId = (Get-AzManagementGroup -GroupId $resource.name).Id
     write-output "Resources to be imported are:"
     write-output "$($resourceType).$($resource.name) $resourceId"
-    terraform import "$($resourceType).$($resource.name) $resourceId"
+    terraform import "$($resourceType).$($resource.name)" $resourceId
 }
 
 
