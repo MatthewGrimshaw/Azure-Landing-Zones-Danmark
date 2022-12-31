@@ -42,12 +42,13 @@ write-output $FullUri
 
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json 
 
+terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
 foreach($resource in $resourcesToImport.properties.managementGroups){
     $resourceId = (Get-AzManagementGroup -GroupId $resource.name).Id
     write-output "Resources to be imported are:"
     write-output "$($resourceType).$($resource.name) $resourceId"
-    terraform import -config=$FullUri "$($resourceType).$($resource.name)" $resourceId 
+    terraform import "$($resourceType).$($resource.name)" $resourceId 
 }
 
 
