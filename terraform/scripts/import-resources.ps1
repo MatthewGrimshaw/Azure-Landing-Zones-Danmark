@@ -35,6 +35,14 @@ write-output $ResourceGroupName
 write-output $containerName
 write-output $tfStateFile
 
+$env:ARM_CLIENT_ID=$ARM_CLIENT_ID
+$env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
+$env:ARM_TENANT_ID= $ARM_TENANT_ID
+#$env:ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET
+$env:ARM_USE_OIDC=$true
+
+write-output "$(gci env:ARM_*)"
+
 Set-Location $importDir
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json 
 
