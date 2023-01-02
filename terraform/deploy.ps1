@@ -20,7 +20,7 @@ Pop-Location
 
 # get the terraform
 
-$resourcesToImport = Get-Content .\modules\management_groups\canary\import_resources.json | ConvertFrom-Json 
+$resourcesToImport = Get-Content .\modules\management_groups\canary\import_resources.json | ConvertFrom-Json
 
 foreach($resource in $resourcesToImport.properties.managementGroups){
     write-output $resource.name
