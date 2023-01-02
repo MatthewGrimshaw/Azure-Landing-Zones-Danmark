@@ -23,8 +23,8 @@ param (
     $tfStateFile, # = "terraform.tfstate"
     $ARM_CLIENT_ID,
     $ARM_SUBSCRIPTION_ID,
-    $ARM_TENANT_ID,
-    $ARM_CLIENT_SECRET
+    $ARM_TENANT_ID
+    #$ARM_CLIENT_SECRET
 )
 
 write-output $importDir
@@ -34,12 +34,12 @@ write-output $storageAccountName
 write-output $ResourceGroupName
 write-output $containerName
 write-output $tfStateFile
-
+$ARM_USE_OIDC = $true
 $env:ARM_CLIENT_ID=$ARM_CLIENT_ID
 $env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
 $env:ARM_TENANT_ID= $ARM_TENANT_ID
 #$env:ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET
-$env:ARM_USE_OIDC=$true
+$env:ARM_USE_OIDC=$ARM_USE_OIDC
 
 write-output "$(gci env:ARM_*)"
 
