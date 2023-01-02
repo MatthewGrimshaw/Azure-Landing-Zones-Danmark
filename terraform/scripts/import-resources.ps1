@@ -20,7 +20,11 @@ param (
     $storageAccountName, # = "mgmtstorageqwerty"
     $ResourceGroupName, # = "Management"
     $containerName, # = "tfstate-canary"
-    $tfStateFile # = "terraform.tfstate"
+    $tfStateFile, # = "terraform.tfstate"
+    $ARM_CLIENT_ID,
+    $ARM_SUBSCRIPTION_ID,
+    $ARM_TENANT_ID,
+    $ARM_CLIENT_SECRET
 )
 
 write-output $importDir
