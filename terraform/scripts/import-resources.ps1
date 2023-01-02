@@ -32,7 +32,7 @@ write-output $containerName
 write-output $tfStateFile
 
 Set-Location $importDir
-$resourcesToImport = Get-Content "$importDir\$importFile"  | ConvertFrom-Json 
+$resourcesToImport = Get-Content $importFile  | ConvertFrom-Json 
 
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
