@@ -84,7 +84,7 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            ${{ github.workspace }}/terraform/scripts/import-resources.ps1  -importFile "terraform/modules/management_groups/canary/import_resources.json"  -resourceType "azurerm_management_group" -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} 
+            ${{ github.workspace }}/terraform/scripts/import-resources.ps1  -importDir "terraform/modules/management_groups/canary" -importFile "import_resources.json"  -resourceType "azurerm_management_group" -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} 
           azPSVersion: latest
 
       - name: Terraform Plan

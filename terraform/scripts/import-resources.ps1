@@ -14,6 +14,7 @@
 
 param (
     [String]
+    $importDir,
     $importFile, # = ".\modules\management_groups\canary\import_resources.json"'
     $resourceType, # = "azurerm_management_group"
     $storageAccountName, # = "mgmtstorageqwerty"
@@ -22,6 +23,7 @@ param (
     $tfStateFile # = "terraform.tfstate"
 )
 
+write-output $importDir
 write-output $importFile
 write-output $resourceType
 write-output $storageAccountName
@@ -29,7 +31,8 @@ write-output $ResourceGroupName
 write-output $containerName
 write-output $tfStateFile
 
-$resourcesToImport = Get-Content $importFile  | ConvertFrom-Json 
+Set-Location $importDir
+$resourcesToImport = Get-Content "$importDir\$importFile"  | ConvertFrom-Json 
 
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
