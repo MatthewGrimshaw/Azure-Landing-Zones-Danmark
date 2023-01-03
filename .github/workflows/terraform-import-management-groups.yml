@@ -106,9 +106,9 @@ jobs:
           path: ${{ env.tf_actions_working_dir }}/out_canary.tfplan
 
   import_prod:
-    name: Terraform import Prod
+    name: Terraform import Production
     environment:
-      name: Prod
+      name: Production
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT_SHORT_NAME: prod
