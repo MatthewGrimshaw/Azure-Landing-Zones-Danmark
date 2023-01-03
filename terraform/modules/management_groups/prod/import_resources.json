@@ -1,0 +1,59 @@
+{
+    "properties": {
+        "managementGroups": [
+
+            {
+                "name": "matthew-lz",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-decommmisioned",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-sandbox",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-platform",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-landing-zones",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-connectivity",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-identity",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-management",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-security",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-corp",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-corp-confidential",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-online",
+                "tf_resource_name": ""
+            },
+            {
+                "name": "matthew-lz-online-confidential",
+                "tf_resource_name": ""
+            }
+        ]
+    }
+}
