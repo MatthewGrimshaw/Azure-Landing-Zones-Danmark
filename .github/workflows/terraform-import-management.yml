@@ -16,10 +16,6 @@ on:  # yamllint disable-line rule:truthy
       - terraform/modules/resource_group/**
   workflow_dispatch:
 
-# Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow.
-concurrency:
-  group: ${{ github.head_ref || github.ref_name }}
-
 permissions:
   id-token: write
   contents: read
