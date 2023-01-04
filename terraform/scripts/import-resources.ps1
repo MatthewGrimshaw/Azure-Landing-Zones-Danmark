@@ -45,7 +45,6 @@ $env:ARM_USE_OIDC="true"
 # get json file with resources to be imported
 Set-Location $importDir
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json
-$resourcesToImport = Get-Content "import_resources.json"  | ConvertFrom-Json
 
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
