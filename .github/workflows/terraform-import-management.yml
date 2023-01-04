@@ -6,8 +6,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - main
     paths:
-      - .github/workflows/terraform-import-management.yml
-      - terraform/modules/resource_group/**
+      - .github/workflows/terraform-import-management.yml      
   workflow_dispatch:
 
 permissions:
