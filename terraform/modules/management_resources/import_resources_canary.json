@@ -3,7 +3,8 @@
         "resource": [
 
             {
-                "name": "Management"
+                "name": "Management",
+                "type": "azurerm_resource_group"
             }  
         ]          
     }

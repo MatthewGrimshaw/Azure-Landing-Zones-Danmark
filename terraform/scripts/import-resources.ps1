@@ -62,15 +62,17 @@ If($resourceType -eq "azurerm_management_group"){
         terraform import "$($resourceType).$(($resource.name).Replace("-", "_"))" $resourceId
     }
 }
-
-If($resourceType -eq "azurerm_resource_group"){
+else{
     foreach($resource in $resourcesToImport.properties.resource){
-        $resourceId = (Get-AzResourceGroup -Name $resource.name).ResourceId
+        if($resource.type -eq "azurerm_management_group"){
+            $resourceId = (Get-AzResourceGroup -Name $resource.name).ResourceId
+        }
         write-output "Resources to be imported are:"
-        write-output "$($resourceType).$($resource.name) $resourceId"
-        terraform import "$($resourceType).$($resource.name)" $resourceId
+        write-output "$($resource.type).$($resource.name) $resourceId"
+        terraform import "$($resource.type).$($resource.name)" $resourceId
         # Check return code status
         lastExitCode
+    
     }
 }
 
