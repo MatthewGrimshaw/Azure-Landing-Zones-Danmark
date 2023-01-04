@@ -49,6 +49,9 @@ $resourcesToImport = Get-Content "import_resources.json"  | ConvertFrom-Json
 
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
+# Check return code status
+lastExitCode
+
 If($resourceType -eq "azurerm_management_group"){
     foreach($resource in $resourcesToImport.properties.managementGroups){
         $resourceId = (Get-AzManagementGroup -GroupId $resource.name).Id
