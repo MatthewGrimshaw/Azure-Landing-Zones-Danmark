@@ -23,6 +23,19 @@ param (
     $ARM_TENANT_ID
 )
 
+function lastExitCode {
+    if($LASTEXITCODE -eq 0)
+        {
+            Write-Output "The last PS command executed successfully"
+        } 
+        else 
+        {
+            Write-Output "The last PS command failed"
+            Write-Output $LASTEXITCODE
+        }    
+}
+
+
 # Set Env Variables for terraform init to authenticate to Azure Storage
 $env:ARM_CLIENT_ID=$ARM_CLIENT_ID
 $env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
@@ -32,6 +45,7 @@ $env:ARM_USE_OIDC="true"
 # get json file with resources to be imported
 Set-Location $importDir
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json
+$resourcesToImport = Get-Content "import_resources.json"  | ConvertFrom-Json
 
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
@@ -41,6 +55,15 @@ If($resourceType -eq "azurerm_management_group"){
         write-output "Resources to be imported are:"
         write-output "$($resourceType).$(($resource.name).Replace("-", "_")) $resourceId"
         terraform import "$($resourceType).$(($resource.name).Replace("-", "_"))" $resourceId
+    }
+}
+
+If($resourceType -eq "azurerm_resource_group"){
+    foreach($resource in $resourcesToImport.properties.resource){
+        $resourceId = (Get-AzResourceGroup -Name $resource.name).ResourceId
+        write-output "Resources to be imported are:"
+        write-output "$($resourceType).$($resource.name) $resourceId"
+        terraform import "$($resourceType).$($resource.name)" $resourceId
     }
 }
 

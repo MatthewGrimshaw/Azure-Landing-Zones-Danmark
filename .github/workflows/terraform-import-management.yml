@@ -1,0 +1,108 @@
+---
+name: terraform - Import Platform Management Resources
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/terraform-import-management.yml
+      - terraform/modules/resource_group/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/terraform-import-management.yml
+      - terraform/modules/resource_group/**
+  workflow_dispatch:
+
+  # Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }} 
+  cancel-in-progress: true
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  LOCATION: westeurope
+
+jobs:
+ import_canary:
+    name: Terraform import Canary Management
+    environment:
+      name: Canary
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT_SHORT_NAME: canary
+      tf_actions_working_dir: ./terraform/modules
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          enable-AzPSSession: true
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v2
+        with:
+          tflint_version: v0.38.1
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend-config=storage_account_name=${{ secrets.STORAGE_ACCOUNT_NAME }} -backend-config=container_name=${{ secrets.CONTAINER_NAME }} -backend-config=key=${{ secrets.KEY }} -backend-config=resource_group_name=${{ secrets.RESOURCE_GROUP_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Init TFLint
+        run: tflint --init
+
+      - name: Run TFLint
+        run: tflint -f compact
+
+      - name: Terraform Import Resource Group
+        id: import-terraform-resource-group
+        uses: azure/powershell@v1
+        with:
+          inlineScript: |
+            ${{ github.workspace }}/terraform/scripts/import-resources.ps1  -importDir "terraform/modules/resource_group" -importFile "import_resources_canary.json"  -resourceType "azurerm_resource_group" -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
+          azPSVersion: latest
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan --out=out_canary.tfplan
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      - name: Upload the plan
+        uses: actions/upload-artifact@v3
+        with:
+          name: tf-plan-canary
+          path: ${{ env.tf_actions_working_dir }}/out_canary.tfplan

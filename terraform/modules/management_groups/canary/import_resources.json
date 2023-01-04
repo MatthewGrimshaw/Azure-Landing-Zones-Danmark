@@ -3,56 +3,43 @@
         "managementGroups": [
 
             {
-                "name": "matthew-lz-canary",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary"
             },
             {
-                "name": "matthew-lz-canary-decommmisioned",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-decommmisioned"
             },
             {
-                "name": "matthew-lz-canary-sandbox",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-sandbox"
             },
             {
-                "name": "matthew-lz-canary-platform",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-platform"
             },
             {
-                "name": "matthew-lz-canary-landing-zones",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-landing-zones"
             },
             {
-                "name": "matthew-lz-canary-connectivity",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-connectivity"
             },
             {
-                "name": "matthew-lz-canary-identity",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-identity"
             },
             {
-                "name": "matthew-lz-canary-management",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-management"
             },
             {
-                "name": "matthew-lz-canary-security",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-security"
             },
             {
-                "name": "matthew-lz-canary-corp",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-corp"
             },
             {
-                "name": "matthew-lz-canary-corp-confidential",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-corp-confidential"
             },
             {
-                "name": "matthew-lz-canary-online",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-online"
             },
             {
-                "name": "matthew-lz-canary-online-confidential",
-                "tf_resource_name": ""
+                "name": "matthew-lz-canary-online-confidential"
             }
         ]
     }
