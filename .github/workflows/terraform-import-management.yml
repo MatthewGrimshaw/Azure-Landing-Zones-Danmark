@@ -7,13 +7,13 @@ on:  # yamllint disable-line rule:truthy
       - main
     paths:
       - .github/workflows/terraform-import-management.yml
-      - terraform/modules/resource_group/**
+      - terraform/modules/resource_group/*
   pull_request:
     branches:
       - main
     paths:
       - .github/workflows/terraform-import-management.yml
-      - terraform/modules/resource_group/**
+      - terraform/modules/resource_group/*
   workflow_dispatch:
 
 # Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow
