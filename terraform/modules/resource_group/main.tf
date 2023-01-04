@@ -10,7 +10,7 @@ terraform {
      } 
  } 
 }
-resource "azurerm_resource_group" "main" {
+resource "azurerm_resource_group" "Management" {
   name     = var.name
   location = var.location
 }

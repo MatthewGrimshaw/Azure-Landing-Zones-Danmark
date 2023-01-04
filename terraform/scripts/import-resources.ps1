@@ -42,6 +42,8 @@ $env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
 $env:ARM_TENANT_ID= $ARM_TENANT_ID
 $env:ARM_USE_OIDC="true"
 
+Write-Output $importDir
+
 # get json file with resources to be imported
 Set-Location $importDir
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json
@@ -66,6 +68,8 @@ If($resourceType -eq "azurerm_resource_group"){
         write-output "Resources to be imported are:"
         write-output "$($resourceType).$($resource.name) $resourceId"
         terraform import "$($resourceType).$($resource.name)" $resourceId
+        # Check return code status
+        lastExitCode
     }
 }
 
