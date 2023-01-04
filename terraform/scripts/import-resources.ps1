@@ -27,12 +27,12 @@ function lastExitCode {
     if($LASTEXITCODE -eq 0)
         {
             Write-Output "The last PS command executed successfully"
-        } 
-        else 
+        }
+        else
         {
             Write-Output "The last PS command failed"
             Write-Output $LASTEXITCODE
-        }    
+        }
 }
 
 
