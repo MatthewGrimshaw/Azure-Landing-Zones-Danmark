@@ -64,15 +64,14 @@ If($resourceType -eq "azurerm_management_group"){
 }
 else{
     foreach($resource in $resourcesToImport.properties.resource){
-        if($resource.type -eq "azurerm_management_group"){
+        if($resource.type -eq "azurerm_resource_group"){
             $resourceId = (Get-AzResourceGroup -Name $resource.name).ResourceId
         }
         write-output "Resources to be imported are:"
         write-output "$($resource.type).$($resource.name) $resourceId"
         terraform import "$($resource.type).$($resource.name)" $resourceId
         # Check return code status
-        lastExitCode
-    
+        lastExitCode    
     }
 }
 
