@@ -30,8 +30,9 @@ function lastExitCode {
         }
         else
         {
-            Write-Output "The last PS command failed"
-            Write-Output $LASTEXITCODE
+            Write-Error "The last PS command failed"
+            Write-Error $LASTEXITCODE
+            exit(1)
         }
 }
 

@@ -1,14 +1,14 @@
 output "name" {
   description = ""
-  value       = azurerm_resource_group.main.name
+  value       = azurerm_resource_group.Management.name
 }
 
 output "location" {
   description = ""
-  value       = azurerm_resource_group.main.location
+  value       = azurerm_resource_group.Management.location
 }
 
 output "id" {
   description = ""
-  value       = azurerm_resource_group.main.id
+  value       = azurerm_resource_group.Management.id
 }
