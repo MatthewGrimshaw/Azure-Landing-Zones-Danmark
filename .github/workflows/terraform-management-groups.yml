@@ -9,7 +9,7 @@ on:  # yamllint disable-line rule:truthy
       - .github/workflows/terraform-management-groups.yml
       - terraform/modules/management_groups/canary/**
       - terraform/modules/management_groups/prod/**
-  pull_request:
+  pull_request_target:
     branches:
       - main
     paths:
