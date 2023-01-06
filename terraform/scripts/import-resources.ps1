@@ -48,13 +48,8 @@ $env:ARM_USE_OIDC="true"
 
 
 # Terraform process details
-$FileName = "terrafrom"
-$process = New-Object System.Diagnostics.Process
-$process.StartInfo.UseShellExecute = $false
-$process.StartInfo.RedirectStandardOutput = $true
-$process.StartInfo.RedirectStandardError = $true
-$process.StartInfo.FileName = $FileName
-$process.StartInfo.Arguments = $Arguments
+
+
 
 
 Write-Output $importDir
@@ -76,8 +71,14 @@ If($resourceType -eq "azurerm_management_group"){
         $arguments="import '$($resourceType).$(($resource.name).Replace("-", "_"))' $resourceId"
         
         # Check return code status
+        $FileName = "terraform"
+        $process = New-Object System.Diagnostics.Process
+        $process.StartInfo.UseShellExecute = $false
+        $process.StartInfo.RedirectStandardOutput = $true
+        $process.StartInfo.RedirectStandardError = $true
         $process.StartInfo.FileName = $FileName
         $process.StartInfo.Arguments = $arguments
+        $process.StartInfo.WorkingDirectory = $importDir
         $process.Start()    
         $StandardError = $process.StandardError.ReadToEnd()
         $StandardOutput = $process.StandardOutput.ReadToEnd()  
@@ -97,8 +98,14 @@ else{
         $arguments="import '$($resource.type).$($resource.name)' $resourceId"
         
         # Check return code status
+        $FileName = "terraform"
+        $process = New-Object System.Diagnostics.Process
+        $process.StartInfo.UseShellExecute = $false
+        $process.StartInfo.RedirectStandardOutput = $true
+        $process.StartInfo.RedirectStandardError = $true
         $process.StartInfo.FileName = $FileName
         $process.StartInfo.Arguments = $arguments
+        $process.StartInfo.WorkingDirectory = $importDir
         $process.Start()    
         $StandardError = $process.StandardError.ReadToEnd()
         $StandardOutput = $process.StandardOutput.ReadToEnd()  
