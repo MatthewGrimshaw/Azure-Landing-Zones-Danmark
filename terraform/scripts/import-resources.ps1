@@ -68,7 +68,8 @@ If($resourceType -eq "azurerm_management_group"){
         $resourceId = (Get-AzManagementGroup -GroupId $resource.name).Id
         write-output "Resources to be imported are:"
         write-output "$($resourceType).$(($resource.name).Replace("-", "_")) $resourceId"
-        $arguments="import '$($resourceType).$(($resource.name).Replace("-", "_"))' $resourceId"
+
+        $arguments= "import `"$($resourceType).$(($resource.name).Replace("-", "_"))`" $resourceId"
         
         # Check return code status
         $FileName = "terraform"
@@ -95,7 +96,7 @@ else{
         }
         write-output "Resources to be imported are:"
         write-output "$($resource.type).$($resource.name) $resourceId"
-        $arguments="import '$($resource.type).$($resource.name)' $resourceId"
+        $arguments="import `"$($resource.type).$($resource.name)`" $resourceId"
         
         # Check return code status
         $FileName = "terraform"
