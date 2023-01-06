@@ -25,55 +25,18 @@ param (
 
 function lastExitCode {
     Param(
-        $Arguments,
-        $importDir
+        $StandardError,    
+        $StandardOutput
     )
 
-    $FileName = "terraform"
-    $process = New-Object System.Diagnostics.Process
-    $process.StartInfo.UseShellExecute = $false
-    $process.StartInfo.RedirectStandardOutput = $true
-    $process.StartInfo.RedirectStandardError = $true
-    $process.StartInfo.FileName = $FileName
-    $process.StartInfo.Arguments = $Arguments
-
-    write-output "$FileName $Arguments"
-    $location = Get-Location
-    write-output $location
-    write-output $importDir
-    Set-Location $importDir
-    $llocation = Get-Location
-    write-output $llocation
-    
-
-    $process.Start()
-    
-    $StandardError = $process.StandardError.ReadToEnd()
-    $StandardOutput = $process.StandardOutput.ReadToEnd()  
-
-    Write-Output $LASTEXITCODE
-    Write-Output $StandardOutput
-    Write-Output $StandardError
-    write-output "we got here"  
-    if($LASTEXITCODE -eq 0)
-        {
-            Write-Output "The last PS command executed successfully"
+            Write-Output "Standard Output : "
             Write-Output $StandardOutput
+            Write-Output "Standard Error"
             Write-Output $StandardError 
-        }
-        else
-        {
-            Write-Output "The last PS command failed"
-            Write-Output $LASTEXITCODE
-            Write-Output $StandardOutput
-            Write-Output $StandardError 
+
             If($StandardError  -match "Resource already managed by Terraform"){
                 write-output "Script will continue"
             }
-            else{
-                exit(1)
-            }            
-        }
 }
 
 
@@ -83,13 +46,24 @@ $env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
 $env:ARM_TENANT_ID= $ARM_TENANT_ID
 $env:ARM_USE_OIDC="true"
 
+
+# Terraform process details
+$FileName = "terrafrom"
+$process = New-Object System.Diagnostics.Process
+$process.StartInfo.UseShellExecute = $false
+$process.StartInfo.RedirectStandardOutput = $true
+$process.StartInfo.RedirectStandardError = $true
+$process.StartInfo.FileName = $FileName
+$process.StartInfo.Arguments = $Arguments
+
+
 Write-Output $importDir
 
 # get json file with resources to be imported
 Set-Location $importDir
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json
 
-$arguments="init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile"
+terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
 # Check return code status
 lastExitCode $arguments $importDir
@@ -100,8 +74,14 @@ If($resourceType -eq "azurerm_management_group"){
         write-output "Resources to be imported are:"
         write-output "$($resourceType).$(($resource.name).Replace("-", "_")) $resourceId"
         $arguments="import '$($resourceType).$(($resource.name).Replace("-", "_"))' $resourceId"
+        
         # Check return code status
-        lastExitCode $arguments $importDir
+        $process.StartInfo.FileName = $FileName
+        $process.StartInfo.Arguments = $arguments
+        $process.Start()    
+        $StandardError = $process.StandardError.ReadToEnd()
+        $StandardOutput = $process.StandardOutput.ReadToEnd()  
+        lastExitCode $StandardError $StandardOutput 
     }
 }
 else{
@@ -115,8 +95,14 @@ else{
         write-output "Resources to be imported are:"
         write-output "$($resource.type).$($resource.name) $resourceId"
         $arguments="import '$($resource.type).$($resource.name)' $resourceId"
+        
         # Check return code status
-        lastExitCode $arguments $importDir
+        $process.StartInfo.FileName = $FileName
+        $process.StartInfo.Arguments = $arguments
+        $process.Start()    
+        $StandardError = $process.StandardError.ReadToEnd()
+        $StandardOutput = $process.StandardOutput.ReadToEnd()  
+        lastExitCode $StandardError $StandardOutput 
     }
 }
 
