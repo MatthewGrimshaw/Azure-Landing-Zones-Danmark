@@ -1,7 +1,6 @@
 {
     "properties": {
         "managementGroups": [
-
             {
                 "name": "matthew-lz-canary"
             },
