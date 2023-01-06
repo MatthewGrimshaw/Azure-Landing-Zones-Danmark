@@ -25,7 +25,8 @@ param (
 
 function lastExitCode {
     Param(
-        $Arguments
+        $Arguments,
+        $importDir
     )
 
     $FileName = "terraform"
@@ -37,6 +38,13 @@ function lastExitCode {
     $process.StartInfo.Arguments = $Arguments
 
     write-output "$FileName $Arguments"
+    $location = Get-Location
+    write-output $location
+    write-output $importDir
+    Set-Location $importDir
+    $llocation = Get-Location
+    write-output $llocation
+    
 
     $process.Start()
     
@@ -84,7 +92,7 @@ $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json
 $arguments="init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile"
 
 # Check return code status
-lastExitCode $arguments
+lastExitCode $arguments $importDir
 
 If($resourceType -eq "azurerm_management_group"){
     foreach($resource in $resourcesToImport.properties.managementGroups){
@@ -93,7 +101,7 @@ If($resourceType -eq "azurerm_management_group"){
         write-output "$($resourceType).$(($resource.name).Replace("-", "_")) $resourceId"
         $arguments="import '$($resourceType).$(($resource.name).Replace("-", "_"))' $resourceId"
         # Check return code status
-        lastExitCode $arguments
+        lastExitCode $arguments $importDir
     }
 }
 else{
@@ -108,7 +116,7 @@ else{
         write-output "$($resource.type).$($resource.name) $resourceId"
         $arguments="import '$($resource.type).$($resource.name)' $resourceId"
         # Check return code status
-        lastExitCode $arguments
+        lastExitCode $arguments $importDir
     }
 }
 
