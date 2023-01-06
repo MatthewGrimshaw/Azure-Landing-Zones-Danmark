@@ -43,7 +43,7 @@ function lastExitCode {
     $StandardError = $process.StandardError.ReadToEnd()
     $StandardOutput = $process.StandardOutput.ReadToEnd()  
 
-    Write-Error $LASTEXITCODE
+    Write-Output $LASTEXITCODE
     Write-Output $StandardOutput
     Write-Output $StandardError
     write-output "we got here"  
@@ -55,8 +55,8 @@ function lastExitCode {
         }
         else
         {
-            Write-Error "The last PS command failed"
-            Write-Error $LASTEXITCODE
+            Write-Output "The last PS command failed"
+            Write-Output $LASTEXITCODE
             Write-Output $StandardOutput
             Write-Output $StandardError 
             If($StandardError  -match "Resource already managed by Terraform"){
