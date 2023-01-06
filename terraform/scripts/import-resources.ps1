@@ -34,8 +34,11 @@ function lastExitCode {
             Write-Output "Standard Error"
             Write-Output $StandardError 
 
-            If($StandardError  -match "Resource already managed by Terraform"){
+            If($StandardOutput -match "Resource already managed by Terraform"){
                 write-output "Script will continue"
+            }
+            If($StandardOutput -match "Error"){
+                write-output "Errors detected"
             }
 }
 
@@ -46,30 +49,49 @@ $env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
 $env:ARM_TENANT_ID= $ARM_TENANT_ID
 $env:ARM_USE_OIDC="true"
 
-
-# Terraform process details
-
-
-
-
 Write-Output $importDir
 
 # get json file with resources to be imported
 Set-Location $importDir
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json
 
+# inititalise terraform
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
-# Check return code status
-lastExitCode $arguments $importDir
+#import resources
+foreach($resource in $resourcesToImport.properties.resource){
 
-If($resourceType -eq "azurerm_management_group"){
-    foreach($resource in $resourcesToImport.properties.managementGroups){
-        $resourceId = (Get-AzManagementGroup -GroupId $resource.name).Id
+        switch ($resource.type){
+            "azurerm_management_group"
+            {
+                $resourceId = (Get-AzManagementGroup -GroupId $resource.name).Id
+                $resourcename = ($resource.name).Replace("-", "_")
+            }
+            "azurerm_resource_group"
+            {
+                $resourceId = (Get-AzResourceGroup -Name $resource.name).ResourceId
+                $resourcename = $resource.name
+            }
+            "azurerm_automation_account" 
+            {
+                $resourceId = (Get-AzAutomationAccount -ResourceGroupName $resource.resource_group -Name $resource.name).ResourceId
+                $resourcename = $resource.name
+            }
+            "azurerm_network_ddos_protection_plan"
+            {
+                $resourceId = (Get-AzDdosProtectionPlan -ResourceGroupName $resource.resource_group -Name $resource.name).ResourceId
+                $resourcename = $resource.name
+            }
+            "azurerm_storage_account"
+            {
+                $resourceId = (Get-AzStorageAccount -ResourceGroupName $resource.resource_group -Name $resource.name).ResourceId
+                $resourcename = $resource.name
+            }
+        }
+
         write-output "Resources to be imported are:"
-        write-output "$($resourceType).$(($resource.name).Replace("-", "_")) $resourceId"
-
-        $arguments= "import `"$($resourceType).$(($resource.name).Replace("-", "_"))`" $resourceId"
+        write-output "$($resource.type).$($resourcename) $resourceId"
+        $arguments="import `"$($resource.type).$($resourcename)`" $resourceId"
         
         # Check return code status
         $FileName = "terraform"
@@ -85,33 +107,6 @@ If($resourceType -eq "azurerm_management_group"){
         $StandardOutput = $process.StandardOutput.ReadToEnd()  
         lastExitCode $StandardError $StandardOutput 
     }
-}
-else{
-    foreach($resource in $resourcesToImport.properties.resource){
-        if($resource.type -eq "azurerm_resource_group"){
-            $resourceId = (Get-AzResourceGroup -Name $resource.name).ResourceId
-        }
-        else{
-            $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group -Name $resource.name).ResourceId
-        }
-        write-output "Resources to be imported are:"
-        write-output "$($resource.type).$($resource.name) $resourceId"
-        $arguments="import `"$($resource.type).$($resource.name)`" $resourceId"
-        
-        # Check return code status
-        $FileName = "terraform"
-        $process = New-Object System.Diagnostics.Process
-        $process.StartInfo.UseShellExecute = $false
-        $process.StartInfo.RedirectStandardOutput = $true
-        $process.StartInfo.RedirectStandardError = $true
-        $process.StartInfo.FileName = $FileName
-        $process.StartInfo.Arguments = $arguments
-        $process.StartInfo.WorkingDirectory = $importDir
-        $process.Start()    
-        $StandardError = $process.StandardError.ReadToEnd()
-        $StandardOutput = $process.StandardOutput.ReadToEnd()  
-        lastExitCode $StandardError $StandardOutput 
-    }
-}
+
 
 
