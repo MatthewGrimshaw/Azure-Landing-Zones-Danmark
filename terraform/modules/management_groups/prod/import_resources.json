@@ -1,7 +1,6 @@
 {
     "properties": {
-        "managementGroups": [
-
+        "resource": [
             {
                 "name": "matthew-lz"
             },
