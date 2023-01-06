@@ -28,13 +28,16 @@ function lastExitCode {
         $Arguments
     )
 
-    $FileName = "terraform.exe"
+    $FileName = "terraform"
     $process = New-Object System.Diagnostics.Process
     $process.StartInfo.UseShellExecute = $false
     $process.StartInfo.RedirectStandardOutput = $true
     $process.StartInfo.RedirectStandardError = $true
     $process.StartInfo.FileName = $FileName
     $process.StartInfo.Arguments = $Arguments
+
+    write-output "$FileName $Arguments"
+
     $process.Start()
     
     $StandardError = $process.StandardError.ReadToEnd()
