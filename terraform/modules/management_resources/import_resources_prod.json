@@ -1,11 +1,26 @@
 {
     "properties": {
         "resource": [
-
             {
                 "name": "Management",
-                "type": "azurerm_resource_group"
-            }  
+                "type": "azurerm_resource_group", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "ufstlzcanary",
+                "type": "azurerm_automation_account", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "ufstlzcanary",
+                "type": "azurerm_network_ddos_protection_plan", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "ufstlzcanary",
+                "type": "azurerm_storage_account", 
+                "resource_group": "Management"
+            }       
         ]          
     }
 }
