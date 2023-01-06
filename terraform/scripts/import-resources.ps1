@@ -43,7 +43,10 @@ function lastExitCode {
     $StandardError = $process.StandardError.ReadToEnd()
     $StandardOutput = $process.StandardOutput.ReadToEnd()  
 
-
+    Write-Error $LASTEXITCODE
+    Write-Output $StandardOutput
+    Write-Output $StandardError
+    write-output "we got here"  
     if($LASTEXITCODE -eq 0)
         {
             Write-Output "The last PS command executed successfully"
