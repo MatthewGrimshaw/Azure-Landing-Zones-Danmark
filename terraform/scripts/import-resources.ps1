@@ -24,15 +24,41 @@ param (
 )
 
 function lastExitCode {
+    Param(
+        $Arguments
+    )
+
+    $FileName = "terraform.exe"
+    $process = New-Object System.Diagnostics.Process
+    $process.StartInfo.UseShellExecute = $false
+    $process.StartInfo.RedirectStandardOutput = $true
+    $process.StartInfo.RedirectStandardError = $true
+    $process.StartInfo.FileName = $FileName
+    $process.StartInfo.Arguments = $Arguments
+    $process.Start()
+    
+    $StandardError = $process.StandardError.ReadToEnd()
+    $StandardOutput = $process.StandardOutput.ReadToEnd()  
+
+
     if($LASTEXITCODE -eq 0)
         {
             Write-Output "The last PS command executed successfully"
+            Write-Output $StandardOutput
+            Write-Output $StandardError 
         }
         else
         {
             Write-Error "The last PS command failed"
             Write-Error $LASTEXITCODE
-            exit(1)
+            Write-Output $StandardOutput
+            Write-Output $StandardError 
+            If($StandardError  -match "Resource already managed by Terraform"){
+                write-output "Script will continue"
+            }
+            else{
+                exit(1)
+            }            
         }
 }
 
@@ -49,17 +75,19 @@ Write-Output $importDir
 Set-Location $importDir
 $resourcesToImport = Get-Content $importFile  | ConvertFrom-Json
 
-terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
+$arguments="init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile"
 
 # Check return code status
-lastExitCode
+lastExitCode $arguments
 
 If($resourceType -eq "azurerm_management_group"){
     foreach($resource in $resourcesToImport.properties.managementGroups){
         $resourceId = (Get-AzManagementGroup -GroupId $resource.name).Id
         write-output "Resources to be imported are:"
         write-output "$($resourceType).$(($resource.name).Replace("-", "_")) $resourceId"
-        terraform import "$($resourceType).$(($resource.name).Replace("-", "_"))" $resourceId
+        $arguments="import '$($resourceType).$(($resource.name).Replace("-", "_"))' $resourceId"
+        # Check return code status
+        lastExitCode $arguments
     }
 }
 else{
@@ -72,9 +100,9 @@ else{
         }
         write-output "Resources to be imported are:"
         write-output "$($resource.type).$($resource.name) $resourceId"
-        terraform import "$($resource.type).$($resource.name)" $resourceId
+        $arguments="import '$($resource.type).$($resource.name)' $resourceId"
         # Check return code status
-        lastExitCode    
+        lastExitCode $arguments
     }
 }
 
