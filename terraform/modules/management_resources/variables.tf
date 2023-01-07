@@ -33,11 +33,38 @@ variable "storageAccountName" {
 variable "userAssignedIdentityName" {
   description = ""
   type = string
-  default = "ufstlzcanary"
+  default = "uai"
+}
+
+variable "userAssignedIdentityRoleAssignmentName" {
+  description = ""
+  type = string
+  default = "uairoleassignment"
 }
 
 variable "workspaceName" {
   description = ""
   type = string
   default = "ufstlzcanary"
+}
+
+variable "log_analytics_solutions" {
+  description = ""
+  type = map(object({
+    name = string
+  }))
+  default = {
+    "AgentHealthAssessment" ={name="AgentHealthAssessment"},
+    "AzureActivity" ={name="AzureActivity"},
+    "ChangeTracking" ={name="ChangeTracking"},
+    "Security" ={name="Security"},
+    "SecurityInsights" ={name="SecurityInsights"},
+    "ServiceMap" ={name="ServiceMap"},
+    "SQLAdvancedThreatProtection" ={name="SQLAdvancedThreatProtection"},
+    "SQLAssessment" ={name="SQLAssessment"},
+    "SQLVulnerabilityAssessment" ={name="SQLVulnerabilityAssessment"},
+    "Updates" ={name="Updates"},
+    "VMInsights" ={name="VMInsights"},
+
+  }
 }
