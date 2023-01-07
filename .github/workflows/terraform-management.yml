@@ -174,7 +174,7 @@ jobs:
     needs:
       - plan_canary
       - plan_prod
-    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch')
+    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
     env:
       ENVIRONMENT_SHORT_NAME: canary
       tf_actions_working_dir: ./terraform/modules/management_resources/canary
@@ -227,7 +227,7 @@ jobs:
       - plan_canary
       - plan_prod
       - apply_canary
-    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch')
+    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
     env:
       ENVIRONMENT_SHORT_NAME: prod
       tf_actions_working_dir: ./terraform/modules/management_resources/prod
