@@ -69,7 +69,6 @@ terraform init -backend-config storage_account_name=$storageAccountName -backend
 
 #import resources
 foreach($resource in $resourcesToImport.properties.resource){
-
         switch ($resource.type){
             "azurerm_management_group"
             {
@@ -86,7 +85,6 @@ foreach($resource in $resourcesToImport.properties.resource){
             "azurerm_network_ddos_protection_plan"
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Network/ddosProtectionPlans").ResourceId
-
             }
             "azurerm_storage_account"
             {
