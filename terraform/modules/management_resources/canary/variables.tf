@@ -45,7 +45,7 @@ variable "userAssignedIdentityRoleAssignmentName" {
 variable "uai_role_assignment_scope" {
   description = ""
   type = string
-  default = "matthew-lz-canary"
+  default = "Matthew - Azure Landing Zones - Canary"
 }
 
 variable "workspaceName" {

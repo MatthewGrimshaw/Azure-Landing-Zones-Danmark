@@ -13,7 +13,7 @@ terraform {
 
 # root mgmt group canary
 data "azurerm_management_group" "root_management_group" {
-  id = var.uai_role_assignment_scope
+  display_name = var.uai_role_assignment_scope
 }
 
 resource "azurerm_resource_group" "Management" {
