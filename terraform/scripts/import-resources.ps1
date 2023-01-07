@@ -89,6 +89,11 @@ foreach($resource in $resourcesToImport.properties.resource){
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Storage/storageAccounts").ResourceId
             }
+            "zurerm_storage_container"
+            {
+                $ctx=(Get-AzStorageAccount -ResourceGroupName $resource.resource_group -Name $resource.storage_account_name).Context
+                $resourceId = $($ctx.blobEndpoint)+$((Get-AzStorageContainer -Name "tfstatecanary" -Context $ctx).Name)
+            }
             "azurerm_user_assigned_identity"
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.ManagedIdentity/userAssignedIdentities").ResourceId

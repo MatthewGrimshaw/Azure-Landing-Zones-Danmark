@@ -20,6 +20,13 @@
                 "resource_group": "Management"
             },
             {
+                "name": "tfstateprod",
+                "storage_account_name":"mgmtstorageqwerty",
+                "tfconfig_name": "container",
+                "type": "azurerm_storage_container", 
+                "resource_group": "Management"
+            },
+            {
                 "name": "ufstlzcanary",
                 "tfconfig_name": "log_analytics",
                 "type": "azurerm_log_analytics_workspace", 
