@@ -66,6 +66,7 @@ resource "azurerm_role_assignment" "uai_role_assignment" {
   name               = var.userAssignedIdentityRoleAssignmentName
   role_definition_id = "/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
   principal_id       = azurerm_user_assigned_identity.uai.principal_id
+  scope = "\\"
 }
 
 resource "azurerm_log_analytics_workspace" "log_analytics" {
@@ -100,7 +101,7 @@ resource "azurerm_log_analytics_solution" "update_solution" {
 
   solution_name       = each.value.name
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.Management.name
   #   workspace_id        = azurerm_log_analytics_workspace.ops.id
   workspace_resource_id = azurerm_log_analytics_workspace.log_analytics.id
   workspace_name        = azurerm_log_analytics_workspace.log_analytics.name
