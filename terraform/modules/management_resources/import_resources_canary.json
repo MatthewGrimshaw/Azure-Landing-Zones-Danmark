@@ -3,21 +3,25 @@
         "resource": [
             {
                 "name": "Management",
+                "tfconfig_name": "Management",
                 "type": "azurerm_resource_group", 
                 "resource_group": "Management"
             },
             {
                 "name": "ufstlzcanary",
+                "tfconfig": "automation_account",
                 "type": "azurerm_automation_account", 
                 "resource_group": "Management"
             },
             {
                 "name": "ufstlzcanary",
+                "tfconfig": "ddos",
                 "type": "azurerm_network_ddos_protection_plan", 
                 "resource_group": "Management"
             },
             {
-                "name": "ufstlzcanary",
+                "name": "mgmtstorageqwerty",
+                "tfconfig": "storage",
                 "type": "azurerm_storage_account", 
                 "resource_group": "Management"
             }       
