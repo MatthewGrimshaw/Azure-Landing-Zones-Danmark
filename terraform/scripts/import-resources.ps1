@@ -86,12 +86,19 @@ foreach($resource in $resourcesToImport.properties.resource){
             "azurerm_network_ddos_protection_plan"
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Network/ddosProtectionPlans").ResourceId
-                $resourceId = (Get-AzResource -ResourceGroupName "Management"  -Name "ddos" | Where-Object -Property ResourceType -eq -Value "Microsoft.Network/ddosProtectionPlans").ResourceId
 
             }
             "azurerm_storage_account"
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Storage/storageAccounts").ResourceId
+            }
+            "azurerm_user_assigned_identity"
+            {
+                $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.ManagedIdentity/userAssignedIdentities").ResourceId
+            }
+            "azurerm_log_analytics_workspace"
+            {
+                $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.OperationalInsights/workspaces").ResourceId
             }
         }
 

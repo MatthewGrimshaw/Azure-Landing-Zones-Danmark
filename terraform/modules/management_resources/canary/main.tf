@@ -98,7 +98,7 @@ resource "azurerm_log_analytics_linked_service" "autoacc_linked_log_workspace" {
   read_access_id      = azurerm_automation_account.automation_account.id
 }
 
-# Enable Update Management solution
+# Enable Log Analytics solutions
 resource "azurerm_log_analytics_solution" "update_solution" {
   depends_on = [
     azurerm_log_analytics_linked_service.autoacc_linked_log_workspace
