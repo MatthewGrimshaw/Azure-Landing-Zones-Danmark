@@ -3,55 +3,68 @@
         "resource": [
             {
                 "name": "matthew-lz-canary",
-                "tfconfig_name": "matthew_lz_canary"
+                "tfconfig_name": "matthew_lz_canary",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-decommmisioned",
-                "tfconfig_name": "matthew_lz_canary_decommmisioned"
+                "tfconfig_name": "matthew_lz_canary_decommmisioned",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-sandbox",
-                "tfconfig_name": "matthew_lz_canary_sandbox"
+                "tfconfig_name": "matthew_lz_canary_sandbox",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-platform",
-                "tfconfig_name": "matthew_lz_canary_platform"
+                "tfconfig_name": "matthew_lz_canary_platform",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-landing-zones",
-                "tfconfig_name": "matthew_lz_canary_landing-zones"
+                "tfconfig_name": "matthew_lz_canary_landing-zones",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-connectivity",
-                "tfconfig_name": "matthew_lz_canary_connectivity"
+                "tfconfig_name": "matthew_lz_canary_connectivity",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-identity",
-                "tfconfig_name": "matthew_lz_canary_identity"
+                "tfconfig_name": "matthew_lz_canary_identity",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-management",
-                "tfconfig_name": "matthew_lz_canary_management"
+                "tfconfig_name": "matthew_lz_canary_management",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-security",
-                "tfconfig_name": "matthew_lz_canary_security"
+                "tfconfig_name": "matthew_lz_canary_security",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-corp",
-                "tfconfig_name": "matthew_lz_canary_corp"
+                "tfconfig_name": "matthew_lz_canary_corp",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-corp-confidential",
-                "tfconfig_name": "matthew_lz_canary_confidential"
+                "tfconfig_name": "matthew_lz_canary_confidential",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-online",
-                "tfconfig_name": "matthew_lz_canary_online"
+                "tfconfig_name": "matthew_lz_canary_online",
+                "type": "azurerm_management_group"
             },
             {
                 "name": "matthew-lz-canary-online-confidential",
-                "tfconfig_name": "matthew_lz_canary_online-confidential"
+                "tfconfig_name": "matthew_lz_canary_online-confidential",
+                "type": "azurerm_management_group"
             }
         ]
     }
