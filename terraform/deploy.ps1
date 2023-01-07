@@ -8,7 +8,7 @@ az storage container create -n 'tfstatecanary' --account-name $storageAccountNam
 az storage container create -n 'tfstateprod' --account-name $storageAccountName
 
 Push-Location
-Set-Location .\terraform\modules\management_groups
+Set-Location .\terraform\modules\management_groups\canary
 
 # terrafrom init
 terraform init
