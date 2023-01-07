@@ -14,12 +14,6 @@
                 "resource_group": "Management"
             },
             {
-                "name": "ufstlzcanary",
-                "tfconfig_name": "ddos",
-                "type": "azurerm_network_ddos_protection_plan", 
-                "resource_group": "Management"
-            },
-            {
                 "name": "mgmtstorageqwerty",
                 "tfconfig_name": "storage",
                 "type": "azurerm_storage_account", 
