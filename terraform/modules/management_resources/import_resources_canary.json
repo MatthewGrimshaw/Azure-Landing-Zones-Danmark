@@ -9,19 +9,19 @@
             },
             {
                 "name": "ufstlzcanary",
-                "tfconfig": "automation_account",
+                "tfconfig_name": "automation_account",
                 "type": "azurerm_automation_account", 
                 "resource_group": "Management"
             },
             {
                 "name": "ufstlzcanary",
-                "tfconfig": "ddos",
+                "tfconfig_name": "ddos",
                 "type": "azurerm_network_ddos_protection_plan", 
                 "resource_group": "Management"
             },
             {
                 "name": "mgmtstorageqwerty",
-                "tfconfig": "storage",
+                "tfconfig_name": "storage",
                 "type": "azurerm_storage_account", 
                 "resource_group": "Management"
             }       
