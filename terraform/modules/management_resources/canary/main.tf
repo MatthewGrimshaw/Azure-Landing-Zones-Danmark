@@ -62,12 +62,6 @@ resource "azurerm_storage_container" "container" {
   container_access_type = "private"
 }
 
-resource "azurerm_storage_container" "" {
-  name                  = "vhds"
-  storage_account_name  = azurerm_storage_account.storage.name
-  container_access_type = "private"
-}
-
 resource "azurerm_user_assigned_identity" "uai" {
   depends_on = [
     azurerm_resource_group.Management

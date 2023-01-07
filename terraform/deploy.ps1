@@ -5,7 +5,7 @@ $storageAccountName = 'mgmtstorageqwerty'
 $resourceGroup = 'Management'
 az storage account create -n $storageAccountName -g $resourceGroup -l westeurope --sku Standard_RAGRS
 az storage container create -n 'tfstatecanary' --account-name $storageAccountName
-az storage container create -n 'tfstateprod' --account-name $storageAccountName 
+az storage container create -n 'tfstateprod' --account-name $storageAccountName
 
 Push-Location
 Set-Location .\terraform\modules\management_groups

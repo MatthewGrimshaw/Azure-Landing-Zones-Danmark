@@ -5,7 +5,7 @@ on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - main
-       - onboarding
+      - onboarding
     paths:
       - .github/workflows/terraform-import-management-groups.yml
       - terraform/modules/management_groups/canary/import_resources.json
