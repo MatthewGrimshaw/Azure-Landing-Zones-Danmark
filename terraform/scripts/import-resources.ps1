@@ -41,6 +41,8 @@ function lastExitCode {
     }
     ElseIf($StandardOutput -match "Error"){
       write-output "Errors detected"
+      Write-Output $StandardOutput
+      exit(1)
     }
     Else{
         Write-Output "Standard Output : "
@@ -91,7 +93,7 @@ foreach($resource in $resourcesToImport.properties.resource){
         }
 
         write-output "Resources to be imported are:"
-        write-output "$($resource.type).$($resourcename) $resourceId"
+        write-output "$($resource.type).$($resource.tfconfig_name) $resourceId"
         $arguments="import `"$($resource.type).$($resource.tfconfig_name)`" $resourceId"
         
         # Check return code status
