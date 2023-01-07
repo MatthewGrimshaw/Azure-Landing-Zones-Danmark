@@ -2,43 +2,57 @@
     "properties": {
         "resource": [
             {
-                "name": "matthew-lz"
+                "name": "matthew-lz",
+                "tfconfig_name": "matthew_lz"
             },
             {
-                "name": "matthew-lz-decommmisioned"
+                "name": "matthew-lz-decommmisioned",
+                "tfconfig_name": "matthew_lz_decommmisioned"
+                
             },
             {
-                "name": "matthew-lz-sandbox"
+                "name": "matthew-lz-sandbox",
+                "tfconfig_name": "matthew_lz_sandbox"
             },
             {
-                "name": "matthew-lz-platform"
+                "name": "matthew-lz-platform",
+                "tfconfig_name": "matthew_lz_platform"
             },
             {
-                "name": "matthew-lz-landing-zones"
+                "name": "matthew-lz-landing-zones",
+                "tfconfig_name": "matthew_lz_landing_zones"
             },
             {
-                "name": "matthew-lz-connectivity"
+                "name": "matthew-lz-connectivity",
+                "tfconfig_name": "matthew_lz_connectivity"
             },
             {
-                "name": "matthew-lz-identity"
+                "name": "matthew-lz-identity",
+                "tfconfig_name": "matthew_lz_identity"
             },
             {
-                "name": "matthew-lz-management"
+                "name": "matthew-lz-management",
+                "tfconfig_name": "matthew_lz_management"
             },
             {
-                "name": "matthew-lz-security"
+                "name": "matthew-lz-security",
+                "tfconfig_name": "matthew_lz_security"
             },
             {
-                "name": "matthew-lz-corp"
+                "name": "matthew-lz-corp",
+                "tfconfig_name": "matthew_lz_corp"
             },
             {
-                "name": "matthew-lz-corp-confidential"
+                "name": "matthew-lz-corp-confidential",
+                "tfconfig_name": "matthew_lz_confidential"
             },
             {
-                "name": "matthew-lz-online"
+                "name": "matthew-lz-online",
+                "tfconfig_name": "matthew_lz_online"
             },
             {
-                "name": "matthew-lz-online-confidential"
+                "name": "matthew-lz-online-confidential",
+                "tfconfig_name": "matthew_lz_online_confidential"
             }
         ]
     }

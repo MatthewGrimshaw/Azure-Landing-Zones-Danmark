@@ -31,14 +31,20 @@ function lastExitCode {
 
     Write-Output "Standard Output : "
     Write-Output $StandardOutput
-    Write-Output "Standard Error"
-    Write-Output $StandardError 
+    if($StandardError){
+        Write-Output "Standard Error"
+        Write-Output $StandardError
+    }
 
     If($StandardOutput -match "Resource already managed by Terraform"){
-      write-output "Script will continue"
+      write-output "Terraform already manages this resource. Import Script will continue"
     }
-    If($StandardOutput -match "Error"){
+    ElseIf($StandardOutput -match "Error"){
       write-output "Errors detected"
+    }
+    Else{
+        Write-Output "Standard Output : "
+        Write-Output $StandardOutput
     }
 }
 
@@ -65,33 +71,28 @@ foreach($resource in $resourcesToImport.properties.resource){
             "azurerm_management_group"
             {
                 $resourceId = (Get-AzManagementGroup -GroupId $resource.name).Id
-                $resourcename = ($resource.name).Replace("-", "_")
             }
             "azurerm_resource_group"
             {
                 $resourceId = (Get-AzResourceGroup -Name $resource.name).ResourceId
-                $resourcename = $resource.name
             }
             "azurerm_automation_account" 
             {              
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Automation/automationAccounts").ResourceId
-                $resourcename = $resource.name
             }
             "azurerm_network_ddos_protection_plan"
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Network/ddosProtectionPlans").ResourceId
-                $resourcename = $resource.name
             }
             "azurerm_storage_account"
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Storage/storageAccounts").ResourceId
-                $resourcename = $resource.name
             }
         }
 
         write-output "Resources to be imported are:"
         write-output "$($resource.type).$($resourcename) $resourceId"
-        $arguments="import `"$($resource.type).$($resourcename)`" $resourceId"
+        $arguments="import `"$($resource.type).$($resource.tfconfig_name)`" $resourceId"
         
         # Check return code status
         $FileName = "terraform"
