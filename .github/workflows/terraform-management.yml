@@ -1,10 +1,11 @@
 ---
-name: terraform - Deploy Management Group Structure
+name: terraform - Deploy Management Resources
 
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
       - main
+      - onboarding
     paths:
       - .github/workflows/terraform-management.yml
       - terraform/modules/management_resources/**
