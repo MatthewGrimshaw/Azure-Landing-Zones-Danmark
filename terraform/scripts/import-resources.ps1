@@ -29,7 +29,7 @@ function lastExitCode {
         $StandardOutput
     )
 
-    Write-Ouut "Standard Output : "
+    Write-Output "Standard Output : "
     Write-Output $StandardOutput
     Write-Output "Standard Error"
     Write-Output $StandardError 
