@@ -97,8 +97,8 @@ foreach($resource in $resourcesToImport.properties.resource){
 
         if(!$resourceId -or $null -eq $resourceId)
             {
-                write-error "Resource ID not found for $($resource.name). Script will exit"
-                exit(0)
+                write-error "Resource ID not found for $($resource.name). Please check it exists. Script will exit"
+                exit(1)
             }
 
         write-output "Resources to be imported are:"

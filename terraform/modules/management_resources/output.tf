@@ -27,3 +27,9 @@ output "azurerm_storage_account" {
   description = ""
   value       = azurerm_storage_account.storage.name
 }
+
+output "azurerm_user_assigned_identity" {
+  description = ""
+  value       = azurerm_user_assigned_identity.uai.principal_id
+}
+

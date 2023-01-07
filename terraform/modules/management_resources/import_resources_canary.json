@@ -18,7 +18,13 @@
                 "tfconfig_name": "storage",
                 "type": "azurerm_storage_account", 
                 "resource_group": "Management"
-            }       
+            },
+            {
+                "name": "ufstlzcanary",
+                "tfconfig_name": "log_analytics",
+                "type": "azurerm_log_analytics_workspace", 
+                "resource_group": "Management"
+            }         
         ]          
     }
 }
