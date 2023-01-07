@@ -9,7 +9,9 @@ on:  # yamllint disable-line rule:truthy
       - .github/workflows/terraform-import-management-groups.yml
       - terraform/modules/management_groups/canary/import_resources.json
       - terraform/modules/management_groups/prod/import_resources.json
-  pull_request_target:
+  pull_request:
+    types:
+      - opened
     branches:
       - main
     paths:
