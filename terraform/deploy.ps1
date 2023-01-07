@@ -1,5 +1,11 @@
 az login --tenant '4f8875af-ac0b-46ee-8a73-3634138f5818'
 
+# create storage account and containers for the state file
+$storageAccountName = 'mgmtstorageqwerty'
+$resourceGroup = 'Management'
+az storage account create -n $storageAccountName -g $resourceGroup -l westeurope --sku Standard_RAGRS
+az storage container create -n 'tfstatecanary' --account-name $storageAccountName
+az storage container create -n 'tfstateprod' --account-name $storageAccountName 
 
 Push-Location
 Set-Location .\terraform\modules\management_groups

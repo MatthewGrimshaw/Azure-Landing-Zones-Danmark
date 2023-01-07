@@ -23,11 +23,16 @@ variable "ddosPlanName" {
   default = "ufstlzcanary"
 }
 
-
 variable "storageAccountName" {
   description = ""
   type = string
-  default = "ufstlzcanary"
+  default = "mgmtstorageqwertyy"
+}
+
+variable "storageContainerName" {
+  description = ""
+  type = string
+  default = "tfstatecanary"
 }
 
 variable "userAssignedIdentityName" {

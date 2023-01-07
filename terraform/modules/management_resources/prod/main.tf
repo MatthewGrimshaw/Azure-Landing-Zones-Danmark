@@ -56,6 +56,12 @@ resource "azurerm_storage_account" "storage" {
   account_replication_type = "RAGRS"
 }
 
+resource "azurerm_storage_container" "container" {
+  name                  = var.storageContainerName
+  storage_account_name  = azurerm_storage_account.storage.name
+  container_access_type = "private"
+}
+
 resource "azurerm_user_assigned_identity" "uai" {
   depends_on = [
     azurerm_resource_group.Management
