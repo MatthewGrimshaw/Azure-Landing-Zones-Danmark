@@ -13,7 +13,7 @@ terraform {
 
 # root mgmt group canary
 data "azurerm_management_group" "root_management_group" {
-  group_id = var.uai_role_assignment_scope_
+  group_id = var.uai_role_assignment_scope
 }
 
 resource "azurerm_resource_group" "Management" {
@@ -72,7 +72,7 @@ resource "azurerm_role_assignment" "uai_role_assignment" {
   name               = var.userAssignedIdentityRoleAssignmentName
   role_definition_id = "/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
   principal_id       = azurerm_user_assigned_identity.uai.principal_id
-  scope = azurerm_management_group.root_management_group.group_id
+  scope = data.azurerm_management_group.root_management_group.id
 }
 
 resource "azurerm_log_analytics_workspace" "log_analytics" {
