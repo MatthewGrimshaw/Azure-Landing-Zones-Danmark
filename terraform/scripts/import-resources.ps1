@@ -29,17 +29,17 @@ function lastExitCode {
         $StandardOutput
     )
 
-            Write-Output "Standard Output : "
-            Write-Output $StandardOutput
-            Write-Output "Standard Error"
-            Write-Output $StandardError 
+    Write-Ouut "Standard Output : "
+    Write-Output $StandardOutput
+    Write-Output "Standard Error"
+    Write-Output $StandardError 
 
-            If($StandardOutput -match "Resource already managed by Terraform"){
-                write-output "Script will continue"
-            }
-            If($StandardOutput -match "Error"){
-                write-output "Errors detected"
-            }
+    If($StandardOutput -match "Resource already managed by Terraform"){
+      write-output "Script will continue"
+    }
+    If($StandardOutput -match "Error"){
+      write-output "Errors detected"
+    }
 }
 
 
@@ -73,18 +73,18 @@ foreach($resource in $resourcesToImport.properties.resource){
                 $resourcename = $resource.name
             }
             "azurerm_automation_account" 
-            {
-                $resourceId = (Get-AzAutomationAccount -ResourceGroupName $resource.resource_group -Name $resource.name).ResourceId
+            {              
+                $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Automation/automationAccounts").ResourceId
                 $resourcename = $resource.name
             }
             "azurerm_network_ddos_protection_plan"
             {
-                $resourceId = (Get-AzDdosProtectionPlan -ResourceGroupName $resource.resource_group -Name $resource.name).ResourceId
+                $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Network/ddosProtectionPlans").ResourceId
                 $resourcename = $resource.name
             }
             "azurerm_storage_account"
             {
-                $resourceId = (Get-AzStorageAccount -ResourceGroupName $resource.resource_group -Name $resource.name).ResourceId
+                $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Storage/storageAccounts").ResourceId
                 $resourcename = $resource.name
             }
         }
