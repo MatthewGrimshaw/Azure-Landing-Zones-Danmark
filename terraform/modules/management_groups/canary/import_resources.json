@@ -23,7 +23,7 @@
             },
             {
                 "name": "matthew-lz-canary-landing-zones",
-                "tfconfig_name": "matthew_lz_canary_landing-zones",
+                "tfconfig_name": "matthew_lz_canary_landing_zones",
                 "type": "azurerm_management_group"
             },
             {
