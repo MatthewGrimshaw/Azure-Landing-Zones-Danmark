@@ -32,16 +32,17 @@ function lastExitCode {
     Write-Output "Standard Output : "
     Write-Output $StandardOutput
     if($StandardError){
-        Write-Output "Standard Error"
-        Write-Output $StandardError
+        Write-Error "Standard Error"
+        Write-Error $StandardError
+        exit(1)
     }
 
     If($StandardOutput -match "Resource already managed by Terraform"){
       write-output "Terraform already manages this resource. Import Script will continue"
     }
     ElseIf($StandardOutput -match "Error"){
-      write-output "Errors detected"
-      Write-Output $StandardOutput
+      write-Error "Errors detected"
+      Write-Error $StandardOutput
       exit(1)
     }
     Else{

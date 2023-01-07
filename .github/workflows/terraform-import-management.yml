@@ -80,8 +80,8 @@ jobs:
       - name: Run TFLint
         run: tflint -f compact
 
-      - name: Terraform Import Resource Group
-        id: import-terraform-resource-group
+      - name: Terraform Import Resources
+        id: import-terraform-resources
         uses: azure/powershell@v1
         with:
           inlineScript: |
