@@ -6,18 +6,16 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - main
     paths:
-      - .github/workflows/terraform-management-groups.yml
-      - terraform/modules/management_groups/canary/**
-      - terraform/modules/management_groups/prod/**
+      - .github/workflows/terraform-management.yml
+      - terraform/modules/management_resources/**
   pull_request:
     types:
       - opened
     branches:
       - main
     paths:
-      - .github/workflows/terraform-management-groups.yml
-      - terraform/modules/management_groups/canary/**
-      - terraform/modules/management_groups/prod/**
+      - .github/workflows/terraform-management.yml
+      - terraform/modules/management_resources/**
   workflow_dispatch:
 
 # Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow
@@ -40,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT_SHORT_NAME: canary
-      tf_actions_working_dir: ./terraform/modules/management_groups/canary
+      tf_actions_working_dir: ./terraform/modules/management_resources/canary
     defaults:
       run:
         working-directory: ${{ env.tf_actions_working_dir }}
@@ -89,7 +87,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan --out=out_canary.tfplan
+        run: terraform plan --out=out_management_resources_canary.tfplan
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
@@ -100,7 +98,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: tf-plan-canary
-          path: ${{ env.tf_actions_working_dir }}/out_canary.tfplan
+          path: ${{ env.tf_actions_working_dir }}/out_management_resources_canary.tfplan
 
   plan_prod:
     name: Terraform plan Production
@@ -109,7 +107,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT_SHORT_NAME: prod
-      tf_actions_working_dir: ./terraform/modules/management_groups/prod
+      tf_actions_working_dir: ./terraform/modules/management_resources/prod
     defaults:
       run:
         working-directory: ${{ env.tf_actions_working_dir }}
@@ -158,7 +156,7 @@ jobs:
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan --out=out_prod.tfplan
+        run: terraform plan --out=out_management_resources_prod.tfplan
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
@@ -169,7 +167,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: tf-plan-prod
-          path: ${{ env.tf_actions_working_dir }}/out_prod.tfplan
+          path: ${{ env.tf_actions_working_dir }}/out_management_resources_prod.tfplan
 
   apply_canary:
     name: Terraform apply Canary
@@ -182,7 +180,7 @@ jobs:
     if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch')
     env:
       ENVIRONMENT_SHORT_NAME: canary
-      tf_actions_working_dir: ./terraform/modules/management_groups/canary
+      tf_actions_working_dir: ./terraform/modules/management_resources/canary
     defaults:
       run:
         working-directory: ${{ env.tf_actions_working_dir }}
@@ -217,7 +215,7 @@ jobs:
 
       - name: Apply terraform plan
         id: apply
-        run: terraform apply -no-color -auto-approve out_canary.tfplan
+        run: terraform apply -no-color -auto-approve out_management_resources_canary.tfplan
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
@@ -235,7 +233,7 @@ jobs:
     if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch')
     env:
       ENVIRONMENT_SHORT_NAME: prod
-      tf_actions_working_dir: ./terraform/modules/management_groups/prod
+      tf_actions_working_dir: ./terraform/modules/management_resources/prod
     defaults:
       run:
         working-directory: ${{ env.tf_actions_working_dir }}
@@ -270,7 +268,7 @@ jobs:
 
       - name: Apply terraform plan
         id: apply
-        run: terraform apply -no-color -auto-approve out_prod.tfplan
+        run: terraform apply -no-color -auto-approve out_management_resources_prod.tfplan
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
