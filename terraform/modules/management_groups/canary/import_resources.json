@@ -53,7 +53,7 @@
             },
             {
                 "name": "matthew-lz-canary-corp-confidential",
-                "tfconfig_name": "matthew_lz_canary_confidential",
+                "tfconfig_name": "matthew_lz_canary_corp_confidential",
                 "type": "azurerm_management_group"
             },
             {

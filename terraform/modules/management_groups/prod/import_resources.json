@@ -54,7 +54,7 @@
             },
             {
                 "name": "matthew-lz-corp-confidential",
-                "tfconfig_name": "matthew_lz_confidential",
+                "tfconfig_name": "matthew_lz_corp_confidential",
                 "type": "azurerm_management_group"
             },
             {
