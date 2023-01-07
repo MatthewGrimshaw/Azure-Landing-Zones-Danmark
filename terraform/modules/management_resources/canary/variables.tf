@@ -36,12 +36,6 @@ variable "userAssignedIdentityName" {
   default = "uai"
 }
 
-variable "userAssignedIdentityRoleAssignmentName" {
-  description = ""
-  type = string
-  default = "uairoleassignment"
-}
-
 variable "uai_role_assignment_scope" {
   description = ""
   type = string

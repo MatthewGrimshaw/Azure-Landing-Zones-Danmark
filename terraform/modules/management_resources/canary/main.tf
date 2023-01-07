@@ -69,7 +69,6 @@ resource "azurerm_role_assignment" "uai_role_assignment" {
   depends_on = [
     azurerm_user_assigned_identity.uai
   ]
-  name               = var.userAssignedIdentityRoleAssignmentName
   role_definition_id = "/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
   principal_id       = azurerm_user_assigned_identity.uai.principal_id
   scope = data.azurerm_management_group.root_management_group.id
