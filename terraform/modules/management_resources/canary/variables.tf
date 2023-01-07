@@ -42,6 +42,12 @@ variable "userAssignedIdentityRoleAssignmentName" {
   default = "uairoleassignment"
 }
 
+variable "uai_role_assignment_scope" {
+  description = ""
+  type = string
+  default = "matthew-lz-canary"
+}
+
 variable "workspaceName" {
   description = ""
   type = string

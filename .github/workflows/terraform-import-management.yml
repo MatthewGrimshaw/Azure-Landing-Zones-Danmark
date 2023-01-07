@@ -10,6 +10,8 @@ on:  # yamllint disable-line rule:truthy
       - .github/workflows/terraform-import-management.yml
       - terraform/modules/management_resources/**
   pull_request:
+    types:
+      - opened
     branches:
       - main
     paths:
@@ -32,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ENVIRONMENT_SHORT_NAME: canary
-      tf_actions_working_dir: ./terraform/modules/management_resources
+      tf_actions_working_dir: ./terraform/modules/management_resources/canary
     defaults:
       run:
         working-directory: ${{ env.tf_actions_working_dir }}
@@ -85,7 +87,7 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            ${{ github.workspace }}/terraform/scripts/import-resources.ps1  -importDir "terraform/modules/management_resources" -importFile "import_resources_canary.json"  -resourceType "management_resources" -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
+            ${{ github.workspace }}/terraform/scripts/import-resources.ps1  -importDir "terraform/modules/management_resources/canary" -importFile "import_resources_canary.json"  -resourceType "management_resources" -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
           azPSVersion: latest
 
       - name: Terraform Plan
