@@ -85,12 +85,20 @@ foreach($resource in $resourcesToImport.properties.resource){
             "azurerm_network_ddos_protection_plan"
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Network/ddosProtectionPlans").ResourceId
+                $resourceId = (Get-AzResource -ResourceGroupName "Management"  -Name "ddos" | Where-Object -Property ResourceType -eq -Value "Microsoft.Network/ddosProtectionPlans").ResourceId
+
             }
             "azurerm_storage_account"
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Storage/storageAccounts").ResourceId
             }
         }
+
+        if(!$resourceId -or $null -eq $resourceId)
+            {
+                write-error "Resource ID not found for $($resource.name). Script will exit"
+                exit(0)
+            }
 
         write-output "Resources to be imported are:"
         write-output "$($resource.type).$($resource.tfconfig_name) $resourceId"
