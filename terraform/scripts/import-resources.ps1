@@ -13,7 +13,6 @@ param (
     [String]
     $importDir,
     $importFile,
-    $resourceType,
     $storageAccountName,
     $ResourceGroupName,
     $containerName,
@@ -25,7 +24,7 @@ param (
 
 function lastExitCode {
     Param(
-        $StandardError,    
+        $StandardError,
         $StandardOutput
     )
 
@@ -78,8 +77,8 @@ foreach($resource in $resourcesToImport.properties.resource){
             {
                 $resourceId = (Get-AzResourceGroup -Name $resource.name).ResourceId
             }
-            "azurerm_automation_account" 
-            {              
+            "azurerm_automation_account"
+            {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.Automation/automationAccounts").ResourceId
             }
             "azurerm_network_ddos_protection_plan"
@@ -109,7 +108,7 @@ foreach($resource in $resourcesToImport.properties.resource){
         write-output "Resources to be imported are:"
         write-output "$($resource.type).$($resource.tfconfig_name) $resourceId"
         $arguments="import `"$($resource.type).$($resource.tfconfig_name)`" $resourceId"
-        
+
         # Check return code status
         $FileName = "terraform"
         $process = New-Object System.Diagnostics.Process
@@ -119,10 +118,10 @@ foreach($resource in $resourcesToImport.properties.resource){
         $process.StartInfo.FileName = $FileName
         $process.StartInfo.Arguments = $arguments
         $process.StartInfo.WorkingDirectory = $importDir
-        $process.Start()    
+        $process.Start()
         $StandardError = $process.StandardError.ReadToEnd()
-        $StandardOutput = $process.StandardOutput.ReadToEnd()  
-        lastExitCode $StandardError $StandardOutput 
+        $StandardOutput = $process.StandardOutput.ReadToEnd()
+        lastExitCode $StandardError $StandardOutput
     }
 
 
