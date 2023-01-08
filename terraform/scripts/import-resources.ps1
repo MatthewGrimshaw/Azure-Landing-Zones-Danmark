@@ -104,7 +104,7 @@ foreach($resource in $resourcesToImport.properties.resource){
             }
             "azurerm_log_analytics_solution"
             {
-                $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.OperationalInsights/workspaces").ResourceId
+                $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.OperationsManagement/solutions").ResourceId
             }
         }
 
