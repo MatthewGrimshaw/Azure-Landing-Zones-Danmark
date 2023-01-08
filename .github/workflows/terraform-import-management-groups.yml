@@ -83,6 +83,11 @@ jobs:
       - name: Terraform Workspace create
         id: tf_workspace_create
         run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
       
       # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
@@ -171,6 +176,11 @@ jobs:
       - name: Terraform Workspace create
         id: tf_workspace_create
         run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
 
       # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
