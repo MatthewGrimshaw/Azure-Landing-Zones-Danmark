@@ -102,6 +102,10 @@ foreach($resource in $resourcesToImport.properties.resource){
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.OperationalInsights/workspaces").ResourceId
             }
+            "azurerm_log_analytics_solution"
+            {
+                $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name  | Where-Object -Property ResourceType -eq -Value "Microsoft.OperationalInsights/workspaces").ResourceId
+            }
         }
 
         if(!$resourceId -or $null -eq $resourceId)
@@ -116,7 +120,7 @@ foreach($resource in $resourcesToImport.properties.resource){
 
         # Check return code status
         $FileName = "terraform"
-        $process = New-Object System.Diagnostics.Process
+        $process = New-Object System.Diagnostics.Process$resource.name
         $process.StartInfo.UseShellExecute = $false
         $process.StartInfo.RedirectStandardOutput = $true
         $process.StartInfo.RedirectStandardError = $true
