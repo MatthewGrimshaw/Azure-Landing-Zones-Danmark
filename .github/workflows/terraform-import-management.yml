@@ -19,11 +19,17 @@ on:  # yamllint disable-line rule:truthy
       - terraform/modules/management_resources/**
   workflow_dispatch:
 
+# Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+
+
 permissions:
   id-token: write
   contents: read
 
 env:
+  MODULE_NAME: management-resources
   LOCATION: westeurope
 
 jobs:
@@ -71,6 +77,21 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
+
+      # create a terraform workspace to manage state for this module if it does not exist. Workspaces separate state within the same state file for different modules
+      - name: Terraform Workspace create
+        id: tf_workspace_create
+        run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+      
+      # workspace variable needs to be set after the workspace is created
+      - name: Terraform Workspace export
+        id: tf_workspace_export
+        run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
 
       - name: Terraform Validate
         id: validate
@@ -149,6 +170,21 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
+
+      # create a terraform workspace to manage state for this module if it does not exist. Workspaces separate state within the same state file for different modules
+      - name: Terraform Workspace create
+        id: tf_workspace_create
+        run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+      
+      # workspace variable needs to be set after the workspace is created
+      - name: Terraform Workspace export
+        id: tf_workspace_export
+        run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
 
       - name: Terraform Validate
         id: validate
