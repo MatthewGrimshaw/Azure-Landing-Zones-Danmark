@@ -29,11 +29,18 @@ variable "storageAccountName" {
   default = "mgmtstorageqwerty"
 }
 
-variable "storageContainerName" {
+variable "storageContainerName_canary" {
+  description = ""
+  type = string
+  default = "tfstatecanary"
+}
+
+variable "storageContainerName_prod" {
   description = ""
   type = string
   default = "tfstateprod"
 }
+
 
 variable "userAssignedIdentityName" {
   description = ""

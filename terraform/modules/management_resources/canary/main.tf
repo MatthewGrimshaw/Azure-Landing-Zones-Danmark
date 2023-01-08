@@ -56,8 +56,14 @@ resource "azurerm_storage_account" "storage" {
   account_replication_type = "RAGRS"
 }
 
-resource "azurerm_storage_container" "container" {
-  name                  = var.storageContainerName
+resource "azurerm_storage_container" "container_canary" {
+  name                  = var.storageContainerName_canary
+  storage_account_name  = azurerm_storage_account.storage.name
+  container_access_type = "private"
+}
+
+resource "azurerm_storage_container" "container_prod" {
+  name                  = var.storageContainerName_prod
   storage_account_name  = azurerm_storage_account.storage.name
   container_access_type = "private"
 }

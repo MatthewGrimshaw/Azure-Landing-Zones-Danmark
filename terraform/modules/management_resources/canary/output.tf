@@ -28,9 +28,14 @@ output "azurerm_storage_account" {
   value       = azurerm_storage_account.storage.name
 }
 
-output "azurerm_storage_container" {
+output "azurerm_storage_container_canary" {
   description = ""
-  value       = azurerm_storage_container.container.name
+  value       = azurerm_storage_container.container_canary.name
+}
+
+output "azurerm_storage_container_prod" {
+  description = ""
+  value       = azurerm_storage_container.container_prod.name
 }
 
 output "azurerm_user_assigned_identity" {
