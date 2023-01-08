@@ -93,6 +93,16 @@ jobs:
       - name: Terraform Workspace export
         id: tf_workspace_export
         run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
+      
+      # select the terraform workspace
+      - name: Terraform Workspace select
+        id: tf_workspace_select
+        run: terraform workspace select ${{ env.MODULE_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
 
       - name: Terraform Validate
         id: validate
@@ -186,6 +196,16 @@ jobs:
       - name: Terraform Workspace export
         id: tf_workspace_export
         run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
+
+      # select the terraform workspace
+      - name: Terraform Workspace select
+        id: tf_workspace_select
+        run: terraform workspace select ${{ env.MODULE_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
 
       - name: Terraform Validate
         id: validate
