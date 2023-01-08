@@ -22,7 +22,14 @@
             {
                 "name": "tfstatecanary",
                 "storage_account_name":"mgmtstorageqwerty",
-                "tfconfig_name": "container",
+                "tfconfig_name": "container_canary",
+                "type": "azurerm_storage_container", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "tfstateprod",
+                "storage_account_name":"mgmtstorageqwerty",
+                "tfconfig_name": "container_prod",
                 "type": "azurerm_storage_container", 
                 "resource_group": "Management"
             },
