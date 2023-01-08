@@ -42,6 +42,7 @@ output "azurerm_role_assignment" {
   description = ""
   value = azurerm_role_assignment.uai_role_assignment.id
 }
+
 output "azurerm_log_analytics_workspace" {
   description = ""
   value = azurerm_log_analytics_workspace.log_analytics.id
