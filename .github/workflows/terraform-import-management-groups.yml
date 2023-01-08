@@ -30,7 +30,7 @@ permissions:
   contents: read
 
 env:
-  MODULE_NAME: terraform-management-groups
+  MODULE_NAME: management-groups
   LOCATION: westeurope
 
 jobs:
@@ -78,6 +78,14 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
+
+      - name: Terraform Workspace create
+        id: tf_workspace_create
+        run: terraform workspace create ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+
+      - name: Terraform Workspace export
+        id: tf_workspace_export
+        run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
 
       - name: Terraform Validate
         id: validate
