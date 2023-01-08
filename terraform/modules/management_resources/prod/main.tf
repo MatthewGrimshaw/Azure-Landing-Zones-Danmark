@@ -54,6 +54,14 @@ resource "azurerm_storage_account" "storage" {
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "RAGRS"
+  enable_https_traffic_only = true
+  min_tls_version = "TLS1_2"
+  public_network_access_enabled = true
+  access_tier = "Hot"
+  shared_access_key_enabled = true
+  is_hns_enabled = false  
+  nfsv3_enabled = false
+  large_file_share_enabled = false
 }
 
 resource "azurerm_storage_container" "container" {
