@@ -79,10 +79,12 @@ jobs:
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
 
+      # create a terraform workspace to manage state for this module if it does not exist. Workspaces separate state within the same state file for different modules
       - name: Terraform Workspace create
         id: tf_workspace_create
-        run: terraform workspace create ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
-
+        run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+      
+      # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
         id: tf_workspace_export
         run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
@@ -164,6 +166,16 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
+      
+      # create a terraform workspace to manage state for this module if it does not exist. Workspaces separate state within the same state file for different modules
+      - name: Terraform Workspace create
+        id: tf_workspace_create
+        run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+
+      # workspace variable needs to be set after the workspace is created
+      - name: Terraform Workspace export
+        id: tf_workspace_export
+        run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
 
       - name: Terraform Validate
         id: validate

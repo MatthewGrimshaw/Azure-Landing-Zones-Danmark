@@ -123,7 +123,7 @@ foreach($resource in $resourcesToImport.properties.resource){
         $process.StartInfo.FileName = $FileName
         $process.StartInfo.Arguments = $arguments
         $process.StartInfo.WorkingDirectory = $importDir
-        $process.Start()
+        $process.Start() | Out-Null
         $StandardError = $process.StandardError.ReadToEnd()
         $StandardOutput = $process.StandardOutput.ReadToEnd()
         lastExitCode $StandardError $StandardOutput
