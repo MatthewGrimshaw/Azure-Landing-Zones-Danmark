@@ -105,7 +105,7 @@ resource "azurerm_log_analytics_linked_service" "autoacc_linked_log_workspace" {
 }
 
 # Enable Log Analytics solutions
-resource "azurerm_log_analytics_solution" "update_solution" {
+resource "azurerm_log_analytics_solution" "log_analytics_solution" {
   depends_on = [
     azurerm_log_analytics_linked_service.autoacc_linked_log_workspace
   ]

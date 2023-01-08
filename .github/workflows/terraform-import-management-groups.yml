@@ -1,5 +1,5 @@
 ---
-name: terraform - Import Management Group Structure.
+name: terraform - Import Management Group Structure
 
 on:  # yamllint disable-line rule:truthy
   push:
