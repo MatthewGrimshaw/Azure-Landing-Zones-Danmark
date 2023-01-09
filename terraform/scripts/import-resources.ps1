@@ -123,8 +123,8 @@ foreach($resource in $resourcesToImport.properties.resource){
         write-output "Resources to be imported are:"
         if($resource.type -eq "azurerm_log_analytics_solution"){
             # log analytics solutions are an array and need an index
-            write-output "$($resource.type).$($resource.tfconfig_name)[\`"$($resource.solution_name)\`"] `"$resourceId`""
-            $arguments="--% import `"$($resource.type).$($resource.tfconfig_name)[\`"$($resource.solution_name)\`"]`" `"$resourceId`""
+            write-output "$($resource.type).$($resource.tfconfig_name)[\`"$($resource.solution_name)\`"] $resourceId"
+            $arguments="--% import $($resource.type).$($resource.tfconfig_name)[\`"$($resource.solution_name)\`"] $resourceId"
             write-output $arguments            
         }
         else{
