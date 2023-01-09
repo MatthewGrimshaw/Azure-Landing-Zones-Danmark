@@ -108,7 +108,7 @@ foreach($resource in $resourcesToImport.properties.resource){
             }
             "azurerm_log_analytics_linked_service"
             {
-                $resourceId = (Get-AzOperationalInsightsLinkedService -ResourceGroupName $resource.resource_group -WorkspaceName $resource.name).ResourceId
+                $resourceId = (Get-AzOperationalInsightsLinkedService -ResourceGroupName $resource.resource_group -WorkspaceName $resource.name).Id
             }
         }
 
