@@ -41,66 +41,77 @@
             },
             {
                 "name": "AgentHealthAssessment(mgmtworkspace)",
+                "solution_name" : "AgentHealthAssessment",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "AzureActivity(mgmtworkspace)",
+                "solution_name" : "AzureActivity",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "ChangeTracking(mgmtworkspace)",
+                "solution_name" : "ChangeTracking",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "Security(mgmtworkspace)",
+                "solution_name" : "Security",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "SecurityInsights(mgmtworkspace)",
+                "solution_name" : "SecurityInsights",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "ServiceMap(mgmtworkspace)",
+                "solution_name" : "ServiceMap",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "SQLAdvancedThreatProtection(mgmtworkspace)",
+                "solution_name" : "SQLAdvancedThreatProtection",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "SQLAssessment(mgmtworkspace)",
+                "solution_name" : "SQLAssessment",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "SQLVulnerabilityAssessment(mgmtworkspace)",
+                "solution_name" : "SQLVulnerabilityAssessment",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "Updates(mgmtworkspace)",
+                "solution_name" : "Updates",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
             },
             {
                 "name": "VMInsights(mgmtworkspace)",
+                "solution_name" : "VMInsights",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
