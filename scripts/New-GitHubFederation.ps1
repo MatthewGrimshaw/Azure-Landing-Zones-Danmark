@@ -42,9 +42,10 @@ New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://Az
 New-AzADAppFederatedCredential -ApplicationObjectId $objectId -Audience api://AzureADTokenExchange -Issuer 'https://token.actions.githubusercontent.com' -Name "$appName-Main" -Subject "repo:$($repo):ref:refs/heads/main"
 
 
-# create a new role assignmnet - the service principal needs root contributor in order to be able to create the Management Group structure
+# create a new role assignmnet - the service principal needs root contributor and ownwer in order to be able to create the Management Group structure
 $objectId = (Get-AzADServicePrincipal -DisplayName $appName).Id
 New-AzRoleAssignment -ObjectId $objectId -RoleDefinitionName Contributor -Scope /
+New-AzRoleAssignment -ObjectId $objectId -RoleDefinitionName Owner -Scope /
 
 
 #Get the values for clientId, subscriptionId, and tenantId to use later in your GitHub Actions workflow.
