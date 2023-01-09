@@ -34,7 +34,7 @@
                 "resource_group": "Management"
             },
             {
-                "name": "ufstlzcanary",
+                "name": "mgmtworkspace",
                 "tfconfig_name": "log_analytics",
                 "type": "azurerm_log_analytics_workspace", 
                 "resource_group": "Management"

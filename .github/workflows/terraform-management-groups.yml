@@ -4,9 +4,9 @@ name: terraform - Deploy Management Group Structure
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      #- main
-      #- onboarding
-      - none
+      - main
+      - onboarding
+      #- none
     paths:
       - .github/workflows/terraform-management-groups.yml
       - terraform/modules/management_groups/canary/**
