@@ -106,6 +106,10 @@ foreach($resource in $resourcesToImport.properties.resource){
             {
                 $resourceId = (Get-AzResource -ResourceGroupName $resource.resource_group  -Name $resource.name | Where-Object -Property ResourceType -eq -Value "Microsoft.OperationsManagement/solutions").ResourceId
             }
+            "azurerm_log_analytics_linked_service"
+            {
+                $resourceId = (Get-AzOperationalInsightsLinkedService -ResourceGroupName $resource.resource_group -WorkspaceName $resource.name).ResourceId
+            }
         }
 
         if(!$resourceId -or $null -eq $resourceId)

@@ -4,9 +4,9 @@ name: terraform - Deploy Management Group Structure
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - main
-      - onboarding
-      #- none
+      #- main
+      #- onboarding
+      - none
     paths:
       - .github/workflows/terraform-management-groups.yml
       - terraform/modules/management_groups/canary/**
@@ -88,12 +88,12 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
-      
+
       # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
         id: tf_workspace_export
         run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
-      
+
       # select the terraform workspace
       - name: Terraform Workspace select
         id: tf_workspace_select
@@ -182,12 +182,12 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
-      
+
       # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
         id: tf_workspace_export
         run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
-      
+
       # select the terraform workspace
       - name: Terraform Workspace select
         id: tf_workspace_select
@@ -231,7 +231,7 @@ jobs:
     needs:
       - plan_canary
       - plan_prod
-    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch')
+    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
     env:
       ENVIRONMENT_SHORT_NAME: canary
       tf_actions_working_dir: ./terraform/modules/management_groups/canary
@@ -270,12 +270,12 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
-      
+
       # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
         id: tf_workspace_export
         run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
-      
+
       # select the terraform workspace
       - name: Terraform Workspace select
         id: tf_workspace_select
@@ -302,6 +302,7 @@ jobs:
           ARM_USE_OIDC: true
 
   apply_prod:
+    name: Terraform apply Production
     environment:
       name: Production
     runs-on: ubuntu-latest
@@ -309,7 +310,7 @@ jobs:
       - plan_canary
       - plan_prod
       - apply_canary
-    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch')
+    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
     env:
       ENVIRONMENT_SHORT_NAME: prod
       tf_actions_working_dir: ./terraform/modules/management_groups/prod
@@ -348,12 +349,12 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
-      
+
       # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
         id: tf_workspace_export
         run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
-      
+
       # select the terraform workspace
       - name: Terraform Workspace select
         id: tf_workspace_select

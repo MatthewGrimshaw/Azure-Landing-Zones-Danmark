@@ -116,6 +116,12 @@
                 "tfconfig_name": "uai",
                 "type": "azurerm_user_assigned_identity", 
                 "resource_group": "Management"
+            },
+            {
+                "name": "ufstlzcanary",
+                "tfconfig_name": "autoacc_linked_log_workspace",
+                "type": "azurerm_log_analytics_linked_service", 
+                "resource_group": "Management"
             }       
         ]          
     }

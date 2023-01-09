@@ -1,5 +1,5 @@
 ---
-name: terraform - Import Platform Management Resources.
+name: terraform - Import Platform Management Resources
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -22,7 +22,6 @@ on:  # yamllint disable-line rule:truthy
 # Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow
 concurrency:
   group: ${{ github.head_ref || github.ref_name }}
-
 
 permissions:
   id-token: write
@@ -87,7 +86,7 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
-      
+
       # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
         id: tf_workspace_export
@@ -190,7 +189,7 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           ARM_USE_OIDC: true
-      
+
       # workspace variable needs to be set after the workspace is created
       - name: Terraform Workspace export
         id: tf_workspace_export
