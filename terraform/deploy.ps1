@@ -53,3 +53,6 @@ Get-AzAutomationAccount -Name "ufstlzcanary" -ResourceGroupName "Management"
 
 $resourceID = (Get-AzOperationalInsightsLinkedService -ResourceGroupName "Management" -WorkspaceName "ufstlzcanary").id
 $resourceID = $resourceID.Replace("linkedservices","linkedServices")
+
+$resourceId = (Get-AzResource -ResourceGroupName "Management"  -Name "ufstlzcanary" | Where-Object -Property ResourceType -eq -Value "Microsoft.Automation/automationAccounts").ResourceId
+Set-AzOperationalInsightsLinkedService -ResourceGroupName "Management" -WorkspaceName "mgmtworkspace" -LinkedServiceName "automation" -WriteAccessResourceId $resourceId

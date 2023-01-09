@@ -56,7 +56,7 @@ variable "uai_role_assignment_scope" {
 variable "workspaceName" {
   description = ""
   type = string
-  default = "ufstlzcanary"
+  default = "mgmtworkspace"
 }
 
 variable "log_analytics_solutions" {
