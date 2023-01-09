@@ -51,4 +51,5 @@ $wkspace.WorkspaceFeatures
 
 Get-AzAutomationAccount -Name "ufstlzcanary" -ResourceGroupName "Management"
 
-Get-AzOperationalInsightsLinkedService -ResourceGroupName "Management" -WorkspaceName "ufstlzcanary"
+$resourceID = (Get-AzOperationalInsightsLinkedService -ResourceGroupName "Management" -WorkspaceName "ufstlzcanary").id
+$resourceID = $resourceID.Replace("linkedservices","linkedServices")
