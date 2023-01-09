@@ -56,3 +56,23 @@ $resourceID = $resourceID.Replace("linkedservices","linkedServices")
 
 $resourceId = (Get-AzResource -ResourceGroupName "Management"  -Name "ufstlzcanary" | Where-Object -Property ResourceType -eq -Value "Microsoft.Automation/automationAccounts").ResourceId
 Set-AzOperationalInsightsLinkedService -ResourceGroupName "Management" -WorkspaceName "mgmtworkspace" -LinkedServiceName "automation" -WriteAccessResourceId $resourceId
+
+$resourceId = (Get-AzResource -ResourceGroupName "Management"  -Name "VMInsights(mgmtworkspace)" | Where-Object -Property ResourceType -eq -Value "Microsoft.OperationsManagement/solutions").ResourceId
+
+
+terraform import azurerm_log_analytics_solution.log_analytics_solution "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourceGroups/Management/providers/Microsoft.OperationsManagement/solutions/VMInsights(mgmtworkspace)"
+
+terraform import azurerm_log_analytics_solution.log_analytics_solution "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourceGroups/Management/providers/Microsoft.OperationsManagement/solutions/AgentHealthAssessment(mgmtworkspace)"
+
+
+terraform import module.iam.aws_iam_user.user[\"bill\"] bill
+
+terraform import aws_iam_user.                  user[\"bill\"]         bill
+
+terraform --% import azurerm_log_analytics_solution.log_analytics_solution[\"VMInsights(mgmtworkspace)\"] "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourceGroups/Management/providers/Microsoft.OperationsManagement/solutions/VMInsights(mgmtworkspace)"
+
+terraform --% import azurerm_log_analytics_solution.log_analytics_solution[\"AgentHealthAssessment(mgmtworkspace)\"] "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourceGroups/Management/providers/Microsoft.OperationsManagement/solutions/AgentHealthAssessment(mgmtworkspace)"
+
+
+azurerm_log_analytics_solution
+azurerm_log_analytics_solution

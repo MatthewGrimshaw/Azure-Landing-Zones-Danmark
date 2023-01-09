@@ -4,9 +4,9 @@ name: terraform - Deploy Management Resources.
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - main
-      - onboarding
-      #- none
+      #- main
+      #- onboarding
+      - none
     paths:
       - .github/workflows/terraform-management.yml
       - terraform/modules/management_resources/**

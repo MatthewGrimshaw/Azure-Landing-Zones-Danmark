@@ -121,8 +121,17 @@ foreach($resource in $resourcesToImport.properties.resource){
             }
 
         write-output "Resources to be imported are:"
-        write-output "$($resource.type).$($resource.tfconfig_name) $resourceId"
-        $arguments="import `"$($resource.type).$($resource.tfconfig_name)`" $resourceId"
+        if($resource.type -eq "azurerm_log_analytics_solution"){
+            # log analytics solutions are an array and need an index
+            write-output "$($resource.type).$($resource.tfconfig_name)[\`"$($resource.name)\`"] $resourceId"
+            $arguments="--% import `"$($resource.type).$($resource.tfconfig_name)[\`"$($resource.name)\`"]`" $resourceId"
+            write-output $arguments            
+        }
+        else{
+            write-output "$($resource.type).$($resource.tfconfig_name) $resourceId"
+            $arguments="import `"$($resource.type).$($resource.tfconfig_name)`" $resourceId"
+        }
+        
 
         # Check return code status
         $FileName = "terraform"

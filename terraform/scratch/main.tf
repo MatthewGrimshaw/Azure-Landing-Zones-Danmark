@@ -41,4 +41,30 @@ resource "azurerm_storage_container" "container_prod" {
   container_access_type = "private"
 }
 
+resource "azurerm_log_analytics_workspace" "log_analytics" {
+  name                = var.workspaceName
+  location            = var.location
+  resource_group_name = "Management"
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+  allow_resource_only_permissions  = true
+}
+
+
+resource "azurerm_log_analytics_solution" "log_analytics_solution" {
+
+  for_each = var.log_analytics_solutions
+
+  solution_name       = each.value.name
+  location            = var.location
+  resource_group_name = "Management"
+  #   workspace_id        = azurerm_log_analytics_workspace.ops.id
+  workspace_resource_id = azurerm_log_analytics_workspace.log_analytics.id
+  workspace_name        = azurerm_log_analytics_workspace.log_analytics.name
+  plan {
+    publisher = "Microsoft"
+    product   = "OMSGallery/${each.value.name}"
+  }
+}
+
 
