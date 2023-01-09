@@ -109,6 +109,8 @@ foreach($resource in $resourcesToImport.properties.resource){
             "azurerm_log_analytics_linked_service"
             {
                 $resourceId = (Get-AzOperationalInsightsLinkedService -ResourceGroupName $resource.resource_group -WorkspaceName $resource.name).Id
+                # terraform expect 'linkedservices' to be linkedServices' (capitalisation)
+                $resourceID = $resourceID.Replace("linkedservices","linkedServices")
             }
         }
 
