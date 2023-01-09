@@ -1,5 +1,5 @@
 ---
-name: terraform - Import Platform Management Resources
+name: terraform - Import Platform Management Resources.
 
 on:  # yamllint disable-line rule:truthy
   push:
