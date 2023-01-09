@@ -1,5 +1,5 @@
 ---
-name: terraform - Deploy Management Resources
+name: terraform - Deploy Management Resources.
 
 on:  # yamllint disable-line rule:truthy
   push:
