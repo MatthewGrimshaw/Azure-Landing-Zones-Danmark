@@ -44,4 +44,11 @@ Get-Member -MemberType NoteProperty | ForEach-Object {
 }
 
 
+$wkspace = Get-AzOperationalInsightsWorkspace -Name "ufstlzcanary" -ResourceGroupName "Management"
 
+$wkspace.WorkspaceFeatures
+
+
+Get-AzAutomationAccount -Name "ufstlzcanary" -ResourceGroupName "Management"
+
+Get-AzOperationalInsightsLinkedService -ResourceGroupName "Management" -WorkspaceName "ufstlzcanary"

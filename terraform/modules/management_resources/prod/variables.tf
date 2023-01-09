@@ -41,7 +41,6 @@ variable "storageContainerName_prod" {
   default = "tfstateprod"
 }
 
-
 variable "userAssignedIdentityName" {
   description = ""
   type = string
