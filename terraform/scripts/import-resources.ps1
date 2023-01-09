@@ -92,7 +92,7 @@ foreach($resource in $resourcesToImport.properties.resource){
             "azurerm_storage_container"
             {
                 $ctx=(Get-AzStorageAccount -ResourceGroupName $resource.resource_group -Name $resource.storage_account_name).Context
-                $resourceId = $($ctx.blobEndpoint)+$((Get-AzStorageContainer -Name "tfstatecanary" -Context $ctx).Name)
+                $resourceId = $($ctx.blobEndpoint)+$((Get-AzStorageContainer -Name $resource.name -Context $ctx).Name)
             }
             "azurerm_user_assigned_identity"
             {
