@@ -118,7 +118,7 @@
                 "resource_group": "Management"
             },
             {
-                "name": "ufstlzcanary",
+                "name": "mgmtworkspace",
                 "tfconfig_name": "autoacc_linked_log_workspace",
                 "type": "azurerm_log_analytics_linked_service", 
                 "resource_group": "Management"
