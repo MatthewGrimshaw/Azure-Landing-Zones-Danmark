@@ -86,6 +86,7 @@ Get
 
 
 $resourceId = (Get-AzRoleAssignment -Scope '/providers/Microsoft.Management/managementGroups/matthew-lz-canary' | Where-Object {($_.RoleDefinitionId -eq "8e3af657-a8ff-443c-a75c-2fe8c4bcb635") -and ($_.DisplayName -eq 'uai')}).RoleAssignmentId
+$resourceId = (Get-AzRoleAssignment -Scope '/providers/Microsoft.Management/managementGroups/matthew-lz' | Where-Object {($_.RoleDefinitionId -eq "8e3af657-a8ff-443c-a75c-2fe8c4bcb635") -and ($_.DisplayName -eq 'uai')}).RoleAssignmentId
 
 
 
