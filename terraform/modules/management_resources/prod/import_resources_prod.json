@@ -135,16 +135,9 @@
                 "resource_group": "Management"
             },
             {
-                "name": "uai",
+                "name": "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/roleAssignments/0abecaed-d2fb-56ce-139c-7b40676b3644",
                 "tfconfig_name": "uai_role_assignment",
-                "type": "azurerm_role_assignment",
-                "scope": "/providers/Microsoft.Management/managementGroups/matthew-lz-canary"
-            },
-            {
-                "name": "uai",
-                "tfconfig_name": "uai_role_assignment",
-                "type": "azurerm_role_assignment",
-                "scope": "/providers/Microsoft.Management/managementGroups/matthew-lz"
+                "type": "azurerm_role_assignment"
             }      
         ]          
     }
