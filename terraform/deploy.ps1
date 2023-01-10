@@ -74,5 +74,19 @@ terraform --% import azurerm_log_analytics_solution.log_analytics_solution[\"VMI
 terraform --% import azurerm_log_analytics_solution.log_analytics_solution[\"AgentHealthAssessment(mgmtworkspace)\"] "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourceGroups/Management/providers/Microsoft.OperationsManagement/solutions/AgentHealthAssessment(mgmtworkspace)"
 
 
-azurerm_log_analytics_solution
-azurerm_log_analytics_solution
+/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/00000000-0000-0000-0000-000000000000
+"/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+
+
+$objectId = (Get-AzADServicePrincipal -DisplayName 'uai').Appid
+Get-AzRoleAssignment -ObjectId 'b479e543-4eaf-48a0-8fa4-293d2c0a5c0b'
+Get-AzRoleAssignment -ServicePrincipalName 'uai'
+Get-AzRoleAssignment -SignInName 'uai'
+Get
+
+
+$resourceId = (Get-AzRoleAssignment -Scope '/providers/Microsoft.Management/managementGroups/matthew-lz-canary' | Where-Object {($_.RoleDefinitionId -eq "8e3af657-a8ff-443c-a75c-2fe8c4bcb635") -and ($_.DisplayName -eq 'uai')}).RoleAssignmentId
+
+
+
+-Property RoleDefinitionId -eq -Value "8e3af657-a8ff-443c-a75c-2fe8c4bcb635" -and -Property -DisplayName -eq -Value 'uai'
