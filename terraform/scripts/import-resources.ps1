@@ -109,12 +109,12 @@ foreach($resource in $resourcesToImport.properties.resource){
             "azurerm_log_analytics_linked_service"
             {
                 $resourceId = (Get-AzOperationalInsightsLinkedService -ResourceGroupName $resource.resource_group -WorkspaceName $resource.name).Id
-                # terraform expect 'linkedservices' to be linkedServices' (capitalisation)
-                $resourceID = $resourceID.Replace("linkedservices","linkedServices")
+                # terraform expects 'linkedservices' to be linkedServices' (capitalisation)
+                $resourceId = $resourceID.Replace("linkedservices","linkedServices")
             }
             "azurerm_role_assignment"
             {
-                $resourceId = $resource.name
+                $resourceId = (Get-AzRoleAssignment -Scope $resource.scope | Where-Object {($_.RoleDefinitionId -eq "8e3af657-a8ff-443c-a75c-2fe8c4bcb635") -and ($_.DisplayName -eq $resource.name)}).RoleAssignmentId
             }
         }
 
