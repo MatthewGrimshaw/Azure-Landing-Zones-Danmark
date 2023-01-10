@@ -117,9 +117,12 @@ foreach($resource in $resourcesToImport.properties.resource){
                 write-output $resource.scope
                 write-output $resource.name
                 $resourceId = (Get-AzRoleAssignment -Scope $resource.scope | Where-Object {($_.RoleDefinitionId -eq "8e3af657-a8ff-443c-a75c-2fe8c4bcb635") -and ($_.DisplayName -eq $resource.name)}).RoleAssignmentId
-                Get-AzRoleAssignment -Scope $resource.scope | Where-Object {($_.RoleDefinitionId -eq "8e3af657-a8ff-443c-a75c-2fe8c4bcb635") -and ($_.DisplayName -eq $resource.name)}
                 write-output "ResourceId"
                 write-output $resourceId
+                write-output "round one:"
+                Get-AzRoleAssignment -Scope $resource.scope | Where-Object {($_.RoleDefinitionId -eq "8e3af657-a8ff-443c-a75c-2fe8c4bcb635")} 
+                write-output "round two:"
+                Get-AzRoleAssignment -Scope $resource.scope                 
             }
         }
 
