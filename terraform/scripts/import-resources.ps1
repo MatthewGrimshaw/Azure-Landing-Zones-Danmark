@@ -112,6 +112,10 @@ foreach($resource in $resourcesToImport.properties.resource){
                 # terraform expect 'linkedservices' to be linkedServices' (capitalisation)
                 $resourceID = $resourceID.Replace("linkedservices","linkedServices")
             }
+            "azurerm_role_assignment"
+            {
+                $resourceId = $resource.name
+            }
         }
 
         if(!$resourceId -or $null -eq $resourceId)

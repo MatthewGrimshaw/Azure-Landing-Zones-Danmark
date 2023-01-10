@@ -41,7 +41,7 @@
             },
             {
                 "name": "AgentHealthAssessment(mgmtworkspace)",
-                "solution_name" : "AgentHealthAssessment",
+                "solution_name" : "AgentHealthAssessment(mgmtworkspace)",
                 "tfconfig_name": "log_analytics_solution",
                 "type": "azurerm_log_analytics_solution", 
                 "resource_group": "Management"
@@ -133,7 +133,12 @@
                 "tfconfig_name": "autoacc_linked_log_workspace",
                 "type": "azurerm_log_analytics_linked_service", 
                 "resource_group": "Management"
-            }       
+            },
+            {
+                "name": "/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+                "tfconfig_name": "uai_role_assignment",
+                "type": "azurerm_role_assignment"
+            }     
         ]          
     }
 }
