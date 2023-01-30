@@ -81,7 +81,7 @@ terraform --% import azurerm_log_analytics_solution.log_analytics_solution[\"Age
 "/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
 
 
-$objectId = (Get-AzADServicePrincipal -DisplayName 'uai').Appid
+#$objectId = (Get-AzADServicePrincipal -DisplayName 'uai').Appid
 Get-AzRoleAssignment -ObjectId 'b479e543-4eaf-48a0-8fa4-293d2c0a5c0b'
 Get-AzRoleAssignment -ServicePrincipalName 'uai'
 Get-AzRoleAssignment -SignInName 'uai'
