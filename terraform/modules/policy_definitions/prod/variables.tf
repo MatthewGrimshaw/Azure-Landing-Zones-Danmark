@@ -6,7 +6,7 @@ variable management_group_id {
 
 locals {
 
-  json_files = fileset("../../../modules/policies/definitions", "*.json")
-  json_data  = [ for f in local.json_files : jsondecode(file("../../../modules/policies/definitions/${f}")) ]
+  json_files = fileset("../../../../modules/policies/definitions", "*.json")
+  json_data  = [ for f in local.json_files : jsondecode(file("../../../../modules/policies/definitions/${f}")) ]
   
 }
