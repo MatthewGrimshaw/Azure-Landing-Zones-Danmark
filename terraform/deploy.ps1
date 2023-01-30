@@ -13,6 +13,9 @@ Set-Location .\terraform\scratch
 # terrafrom init
 terraform init
 
+$env:TF_LOG="DEBUG"
+$env:TF_LOG_PATH="C:\tmp\terraform.log"
+
 # terraform plan
 terraform plan -out assignmnet.tfplan
 
