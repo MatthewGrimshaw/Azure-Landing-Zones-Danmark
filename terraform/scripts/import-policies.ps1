@@ -59,12 +59,10 @@ $env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
 $env:ARM_TENANT_ID= $ARM_TENANT_ID
 $env:ARM_USE_OIDC="true"
 
-$PolicyDir = "C:\Users\matgri\repos\mattthew-alz-danmark\Azure-Landing-Zones-Danmark\modules\policies\definitions"
-$importDir = "C:\Users\matgri\repos\mattthew-alz-danmark\Azure-Landing-Zones-Danmark\terraform\modules\policy_definitions\canary"
-Write-Output $importDir
 
-# get json file with resources to be imported
-#Set-Location $importDir
+Write-Output $importDir
+Write-Output $policyDir
+
 
 # inititalise terraform
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
