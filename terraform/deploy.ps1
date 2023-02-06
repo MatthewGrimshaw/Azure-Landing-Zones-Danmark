@@ -1,4 +1,8 @@
+Connect-AzAccount -Tenant '4f8875af-ac0b-46ee-8a73-3634138f5818'
 az login --tenant '4f8875af-ac0b-46ee-8a73-3634138f5818'
+az account -set subscription "ME-MngEnv077352-matgri-1"
+
+az account list
 
 # create storage account and containers for the state file
 $storageAccountName = 'mgmtstorageqwerty'
