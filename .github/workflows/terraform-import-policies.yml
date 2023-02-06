@@ -9,6 +9,7 @@ on:  # yamllint disable-line rule:truthy
     paths:
       - .github/workflows/terraform-import-policies.yml
       - terraform/modules/policy_definitions/**
+      - terraform/scripts/import-policies.ps1
   pull_request:
     types:
       - opened
@@ -17,6 +18,7 @@ on:  # yamllint disable-line rule:truthy
     paths:
       - .github/workflows/terraform-import-policies.yml
       - terraform/modules/policy_definitions/**
+      - terraform/scripts/import-policies.ps1
   workflow_dispatch:
 
 # Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow
