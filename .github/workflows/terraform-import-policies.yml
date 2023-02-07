@@ -35,7 +35,7 @@ env:
 
 jobs:
   import_canary:
-    name: Terraform import Canary Management
+    name: Terraform import Canary Policies
     environment:
       name: Canary
     runs-on: ubuntu-latest
@@ -120,7 +120,7 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            ${{ github.workspace }}/terraform/scripts/import-policies.ps1  -importDir "terraform/modules/policy_definitions/canary" -policyDir "../../../../modules/policies/definitions"  -mgmtGroupName ${{ env.PREFIX }} -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
+            ${{ github.workspace }}/terraform/scripts/import-policies.ps1 -importDir "terraform/modules/policy_definitions/canary" -policyDir "../../../../modules/policies/definitions"  -mgmtGroupName ${{ env.PREFIX }} -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
           azPSVersion: latest
 
       - name: Terraform Plan
@@ -139,7 +139,7 @@ jobs:
           path: ${{ env.tf_actions_working_dir }}/out_canary.tfplan
 
   import_prod:
-    name: Terraform import Production Management
+    name: Terraform import Production Policies
     environment:
       name: Production
     runs-on: ubuntu-latest
@@ -224,13 +224,12 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            ${{ github.workspace }}/terraform/scripts/import-policies.ps1  -importDir "terraform/modules/policy_definitions/canary" -policyDir "../../../../modules/policies/definitions"  -mgmtGroupName ${{ env.PREFIX }} -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
-
+            ${{ github.workspace }}/terraform/scripts/import-policies.ps1 -importDir "terraform/modules/policy_definitions/prod" -policyDir "../../../../modules/policies/definitions"  -mgmtGroupName ${{ env.PREFIX }} -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
           azPSVersion: latest
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan --out=out_canary.tfplan
+        run: terraform plan --out=out_prod.tfplan
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
@@ -240,5 +239,5 @@ jobs:
       - name: Upload the plan
         uses: actions/upload-artifact@v3
         with:
-          name: tf-plan-canary
-          path: ${{ env.tf_actions_working_dir }}/out_canary.tfplan
+          name: tf-plan-prod
+          path: ${{ env.tf_actions_working_dir }}/out_prod.tfplan
