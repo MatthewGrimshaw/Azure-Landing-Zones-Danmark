@@ -1,7 +1,7 @@
 variable management_group_id {
   type        = string
   description = "The management group scope at which the policy initative will be defined. Defaults to current Subscription if omitted. Changing this forces a new resource to be created."
-  default     = "Matthew - Azure Landing Zones - Canary"
+  default     = "Matthew - Azure Landing Zones"
 }
 
 variable prefix {
