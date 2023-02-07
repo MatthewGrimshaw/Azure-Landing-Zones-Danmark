@@ -7,7 +7,7 @@ variable management_group_id {
 variable prefix {
   type  = string
   description = ""
-  default = "matthew-lz-canary"
+  default = "matthew-lz"
 }
 
 locals {
