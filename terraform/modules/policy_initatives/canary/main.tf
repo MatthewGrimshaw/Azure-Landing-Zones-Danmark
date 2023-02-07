@@ -22,7 +22,16 @@ for_each = {for f in local.json_data : f.name => f}
   policy_type = each.value.properties.policyType
   display_name = each.value.properties.displayName
   description  = each.value.properties.description
-  metadata = each.value.properties.metadata
+  metadata = jsonencode(each.value.properties.metadata)
   parameters   = jsonencode(each.value.properties.parameters)
-  policy_definition_reference = jsonencode(each.value.properties.policyDefinitions)
+
+  dynamic policy_definition_reference {
+    for_each = each.value.properties.policyDefinitions
+
+    content {
+      policy_definition_id = policy_definition_reference.value.policyDefinitionId
+      parameter_values = jsonencode(policy_definition_reference.value.parameters)
+      reference_id = policy_definition_reference.value.policyDefinitionReferenceId
+    }
+  } 
 }

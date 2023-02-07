@@ -1,5 +1,5 @@
 ---
-name: terraform - Import Policies.
+name: terraform - Import Policies
 
 on:  # yamllint disable-line rule:truthy
   push:

@@ -23,6 +23,9 @@ $env:TF_LOG_PATH="C:\tmp\terraform.log"
 # terraform plan
 terraform plan -out assignmnet.tfplan
 
+
+
+
 #terraform apply
 terraform apply assignmnet.tfplan
 
