@@ -1,5 +1,5 @@
 ---
-name: terraform - Import Policies.
+name: terraform - Import Policies
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -224,7 +224,7 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            ${{ github.workspace }}/terraform/scripts/import-policies.ps1  -importDir "terraform/modules/policy_definitions/canary" -policyDir "../../../../modules/policies/definitions"  -mgmtGroupName "${{ env.PREFIX }} -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
+            ${{ github.workspace }}/terraform/scripts/import-policies.ps1  -importDir "terraform/modules/policy_definitions/canary" -policyDir "../../../../modules/policies/definitions"  -mgmtGroupName ${{ env.PREFIX }} -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
 
           azPSVersion: latest
 
