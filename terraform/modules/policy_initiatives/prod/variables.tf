@@ -4,6 +4,12 @@ variable management_group_id {
   default     = "Matthew - Azure Landing Zones - Canary"
 }
 
+variable prefix {
+  type  = string
+  description = ""
+  default = "matthew-lz-canary"
+}
+
 locals {
 
   json_files = fileset("../../../../modules/policies/initiatives", "*.json")

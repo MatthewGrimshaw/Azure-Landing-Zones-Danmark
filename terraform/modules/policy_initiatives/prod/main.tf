@@ -30,7 +30,7 @@ for_each = {for f in local.json_data : f.name => f}
     for_each = each.value.properties.policyDefinitions
 
     content {
-      policy_definition_id = policy_definition_reference.value.policyDefinitionId
+      policy_definition_id = replace(policy_definition_reference.value.policyDefinitionId, "<prefix>", var.prefix)
       parameter_values = jsonencode(policy_definition_reference.value.parameters)
       reference_id = policy_definition_reference.value.policyDefinitionReferenceId
     }
