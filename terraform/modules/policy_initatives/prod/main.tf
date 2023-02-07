@@ -22,6 +22,7 @@ for_each = {for f in local.json_data : f.name => f}
   policy_type = each.value.properties.policyType
   display_name = each.value.properties.displayName
   description  = each.value.properties.description
+  management_group_id = data.azurerm_management_group.root_management_group.id
   metadata = jsonencode(each.value.properties.metadata)
   parameters   = jsonencode(each.value.properties.parameters)
 
