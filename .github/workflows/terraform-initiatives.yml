@@ -1,5 +1,5 @@
 ---
-name: terraform - Deploy Initiatives
+name: terraform - Deploy Initiatives.
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -10,6 +10,7 @@ on:  # yamllint disable-line rule:truthy
     paths:
       - .github/workflows/terraform-initiatives.yml
       - terraform/modules/policy_initiatives/**
+      - modules/policies/initiatives/**
   pull_request:
     types:
       - opened
@@ -18,6 +19,7 @@ on:  # yamllint disable-line rule:truthy
     paths:
       - .github/workflows/terraform-initiatives.yml
       - terraform/modules/policy_initiatives/**
+      - modules/policies/initiatives/**
   workflow_dispatch:
 
 # Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow

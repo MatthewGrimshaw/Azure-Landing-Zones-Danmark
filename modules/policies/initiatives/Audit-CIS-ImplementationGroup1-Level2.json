@@ -1,0 +1,101 @@
+{
+  "properties": {
+    "displayName": "Audit CIS Implementation Group 1 Level 2 controls",
+    "policyType": "Custom",
+    "description": "This policy initiative is a group of policies that Audit CIS Implementation Group 1 Level 2 controls.",
+    "metadata": {
+      "version": "1.0",
+      "category": "App Service"
+    },
+    "parameters": {},
+    "policyDefinitions":[
+        {
+            "policyDefinitionReferenceId":  "e3576e28-8b17-4677-84c3-db2990658d64",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/e3576e28-8b17-4677-84c3-db2990658d64",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "4da35fc9-c9e7-4960-aec9-797fe7d9051d",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/4da35fc9-c9e7-4960-aec9-797fe7d9051d",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "2913021d-f2fd-4f3d-b958-22354e2bdbcb",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/2913021d-f2fd-4f3d-b958-22354e2bdbcb",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "7fe3b40f-802b-4cdd-8bd4-fd799c948cc2",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/7fe3b40f-802b-4cdd-8bd4-fd799c948cc2",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "6581d072-105e-4418-827f-bd446d56421b",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/6581d072-105e-4418-827f-bd446d56421b",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "308fbb08-4ab8-4e67-9b29-592e93fb94fa",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/308fbb08-4ab8-4e67-9b29-592e93fb94fa",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "1c988dd6-ade4-430f-a608-2a3e5b0a6d38",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/1c988dd6-ade4-430f-a608-2a3e5b0a6d38",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "0e6763cc-5078-4e64-889d-ff4d9a839047",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/0e6763cc-5078-4e64-889d-ff4d9a839047",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "c9d007d0-c057-4772-b18c-01e546713bcd",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/c9d007d0-c057-4772-b18c-01e546713bcd",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "fbb99e8e-e444-4da0-9ff1-75c92f5a85b2",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/fbb99e8e-e444-4da0-9ff1-75c92f5a85b2",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "c75248c1-ea1d-4a9c-8fc9-29a6aabd5da8",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/c75248c1-ea1d-4a9c-8fc9-29a6aabd5da8",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "95bccee9-a7f8-4bec-9ee9-62c3473701fc",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/95bccee9-a7f8-4bec-9ee9-62c3473701fc",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "eaebaea7-8013-4ceb-9d14-7eb32271373c",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/eaebaea7-8013-4ceb-9d14-7eb32271373c",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        },
+        {
+            "policyDefinitionReferenceId":  "5bb220d9-2698-4ee4-8404-b9c30c9df609",
+            "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/5bb220d9-2698-4ee4-8404-b9c30c9df609",
+            "parameters":  "{}",
+            "groupNames":  "[]"
+        }
+    ],
+    "policyDefinitionGroups": []
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "name": "Audit CIS Implementation Group 1 Level 2 controls"
+}
