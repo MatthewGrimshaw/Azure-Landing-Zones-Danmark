@@ -37,5 +37,15 @@ for_each = {for f in local.json_data : f.name => f}
     }
   } 
 
-  policy_definition_group = try(jsonencode(each.value.policyDefinitionGroups), [])
+  dynamic "policy_definition_group" {
+    for_each = each.value.policyDefinitionGroups
+
+    content {
+      name = try(policy_definition_group.value.name, "")
+      display_name = try(policy_definition_group.value.display_name, "")
+      category = try(policy_definition_group.value.category, "")
+      description = try(policy_definition_group.value.description, "")
+      additional_metadata_resource_id = try(policy_definition_group.value.additional_metadata_resource_id, "")
+    }
+  }
 }
