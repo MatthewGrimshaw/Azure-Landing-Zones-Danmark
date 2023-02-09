@@ -7,172 +7,824 @@
       "version": "1.0",
       "category": "App Service"
     },
-    "parameters": {},
-    "policyDefinitions":[
-      {
-          "policyDefinitionReferenceId":  "aa633080-8b72-40c4-a2d7-d00c03e80bed",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/aa633080-8b72-40c4-a2d7-d00c03e80bed",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "9297c21d-2ed6-4474-b48f-163f75654ce3",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/9297c21d-2ed6-4474-b48f-163f75654ce3",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "5f76cf89-fbf2-47fd-a3f4-b891fa780b60",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/5f76cf89-fbf2-47fd-a3f4-b891fa780b60",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "5c607a2e-c700-4744-8254-d77e7c9eb5e4",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/5c607a2e-c700-4744-8254-d77e7c9eb5e4",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "f8456c1c-aa66-4dfb-861a-25d127b775c9",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/f8456c1c-aa66-4dfb-861a-25d127b775c9",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "6e2593d9-add6-4083-9c9b-4b7d2188c899",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/6e2593d9-add6-4083-9c9b-4b7d2188c899",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "4fa4b6c0-31ca-4c0d-b10d-24b96f62a751",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/4fa4b6c0-31ca-4c0d-b10d-24b96f62a751",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "eb6f77b9-bd53-4e35-a23d-7f65d5f0e43d",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/eb6f77b9-bd53-4e35-a23d-7f65d5f0e43d",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "eb6f77b9-bd53-4e35-a23d-7f65d5f0e442",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/eb6f77b9-bd53-4e35-a23d-7f65d5f0e442",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "eb6f77b9-bd53-4e35-a23d-7f65d5f0e446",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/eb6f77b9-bd53-4e35-a23d-7f65d5f0e446",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "5345bb39-67dc-4960-a1bf-427e16b9a0bd",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/5345bb39-67dc-4960-a1bf-427e16b9a0bd",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "b6e2945c-0b7b-40f5-9233-7a5323b5cdc6",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/b6e2945c-0b7b-40f5-9233-7a5323b5cdc6",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "c0e996f8-39cf-4af9-9f45-83fbde810432",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/c0e996f8-39cf-4af9-9f45-83fbde810432",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "86b3d65f-7626-441e-b690-81a8b71cff60",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/86b3d65f-7626-441e-b690-81a8b71cff60",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "af6cd1bd-1635-48cb-bde7-5b15693900b9",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/af6cd1bd-1635-48cb-bde7-5b15693900b9",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "98728c90-32c7-4049-8429-847dc0f4fe37",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/98728c90-32c7-4049-8429-847dc0f4fe37",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "0b60c0b2-2dc2-4e1c-b5c9-abbed971de53",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "7261b898-8a84-4db8-9e04-18527132abb3",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/7261b898-8a84-4db8-9e04-18527132abb3",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "7238174a-fd10-4ef0-817e-fc820a951d73",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/7238174a-fd10-4ef0-817e-fc820a951d73",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "7008174a-fd10-4ef0-817e-fc820a951d73",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/7008174a-fd10-4ef0-817e-fc820a951d73",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "496223c3-ad65-4ecd-878a-bae78737e9ed",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/496223c3-ad65-4ecd-878a-bae78737e9ed",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "e2c1c086-2d84-4019-bff3-c44ccd95113c",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/e2c1c086-2d84-4019-bff3-c44ccd95113c",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "8c122334-9d20-4eb8-89ea-ac9a705b74ae",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/8c122334-9d20-4eb8-89ea-ac9a705b74ae",
-          "parameters":  {},
-          "groupNames":  []
-      },
-      {
-          "policyDefinitionReferenceId":  "0b15565f-aa9e-48ba-8619-45960f2c314d",
-          "policyDefinitionId":  "/providers/Microsoft.Authorization/policyDefinitions/0b15565f-aa9e-48ba-8619-45960f2c314d",
-          "parameters":  {},
-          "groupNames":  []
-      }
-  ],
-    "policyDefinitionGroups": []
+    "parameters": {
+        "approvedExtensions-c0e996f8-39cf-4af9-9f45-83fbde810432": {
+            "type": "Array",
+            "defaultValue": [
+                "AzureDiskEncryption",
+                "AzureDiskEncryptionForLinux",
+                "DependencyAgentWindows",
+                "DependencyAgentLinux",
+                "IaaSAntimalware",
+                "IaaSDiagnostics",
+                "LinuxDiagnostic",
+                "MicrosoftMonitoringAgent",
+                "NetworkWatcherAgentLinux",
+                "NetworkWatcherAgentWindows",
+                "OmsAgentForLinux",
+                "VMSnapshot",
+                "VMSnapshotLinux"
+            ],
+            "metadata": {
+                "displayName": "List of virtual machine extensions that are approved for use",
+                "description": "A semicolon-separated list of virtual machine extensions; to see a complete list of extensions, use the Azure PowerShell command Get-AzVMExtensionImage"
+            }
+        },
+        "effect-0b15565f-aa9e-48ba-8619-45960f2c314d": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Ensure your subscription owners are notified when there is a potential security breach in their subscription",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-0b60c0b2-2dc2-4e1c-b5c9-abbed971de53": {
+            "type": "String",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Key vault should have purge protection enabled",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0": {
+            "type": "String",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Keys should have expiration dates set",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-496223c3-ad65-4ecd-878a-bae78737e9ed": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Ensure that 'Java version' is the latest, if used as a part of the Web app",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Subscriptions should have a contact email address for security issues",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-4fa4b6c0-31ca-4c0d-b10d-24b96f62a751": {
+            "type": "String",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Storage account public access should be disallowed",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-5345bb39-67dc-4960-a1bf-427e16b9a0bd": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Connection throttling should be enabled for PostgreSQL database servers",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-5c607a2e-c700-4744-8254-d77e7c9eb5e4": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: External accounts with write permissions should be removed from your subscription",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-5f76cf89-fbf2-47fd-a3f4-b891fa780b60": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: External accounts with read permissions should be removed from your subscription",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-6e2593d9-add6-4083-9c9b-4b7d2188c899": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Email notification for high severity alerts should be enabled",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-7008174a-fd10-4ef0-817e-fc820a951d73": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Ensure that 'Python version' is the latest, if used as a part of the Web app",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-7238174a-fd10-4ef0-817e-fc820a951d73": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Ensure that 'Python version' is the latest, if used as a part of the Function app",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-7261b898-8a84-4db8-9e04-18527132abb3": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Ensure that 'PHP version' is the latest, if used as a part of the WEB app",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-86b3d65f-7626-441e-b690-81a8b71cff60": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: System updates should be installed on your machines",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-8c122334-9d20-4eb8-89ea-ac9a705b74ae": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Ensure that 'HTTP Version' is the latest, if used to run the Web app",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-9297c21d-2ed6-4474-b48f-163f75654ce3": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: MFA should be enabled accounts with write permissions on your subscription",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-98728c90-32c7-4049-8429-847dc0f4fe37": {
+            "type": "String",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Secrets should have expiration dates set",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Ensure that 'Java version' is the latest, if used as a part of the Function app",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-aa633080-8b72-40c4-a2d7-d00c03e80bed": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: MFA should be enabled on accounts with owner permissions on your subscription",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-af6cd1bd-1635-48cb-bde7-5b15693900b9": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Monitor missing Endpoint Protection in Azure Security Center",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-c0e996f8-39cf-4af9-9f45-83fbde810432": {
+            "type": "String",
+            "defaultValue": "Audit",
+            "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Only approved VM extensions should be installed",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-e2c1c086-2d84-4019-bff3-c44ccd95113c": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Ensure that 'HTTP Version' is the latest, if used to run the Function app",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-eb6f77b9-bd53-4e35-a23d-7f65d5f0e43d": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Log checkpoints should be enabled for PostgreSQL database servers",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-eb6f77b9-bd53-4e35-a23d-7f65d5f0e442": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Log connections should be enabled for PostgreSQL database servers",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-eb6f77b9-bd53-4e35-a23d-7f65d5f0e446": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: Disconnections should be logged for PostgreSQL database servers.",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "effect-f8456c1c-aa66-4dfb-861a-25d127b775c9": {
+            "type": "String",
+            "defaultValue": "AuditIfNotExists",
+            "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+            ],
+            "metadata": {
+                "displayName": "Effect for policy: External accounts with owner permissions should be removed from your subscription",
+                "description": "For more information about effects, visit https://aka.ms/policyeffects"
+            }
+        },
+        "javaLatestVersion": {
+            "type": "String",
+            "defaultValue": "11",
+            "metadata": {
+                "displayName": "Latest Java version for App Services",
+                "description": "Latest supported Java version for App Services"
+            }
+        },
+        "linuxPythonLatestVersion": {
+            "type": "String",
+            "defaultValue": "3.8",
+            "metadata": {
+                "displayName": "Latest Python version for Linux for App Services",
+                "description": "Latest supported Python version for App Services"
+            }
+        },
+        "phpLatestVersion": {
+            "type": "String",
+            "defaultValue": "7.3",
+            "metadata": {
+                "displayName": "Latest PHP version for App Services",
+                "description": "Latest supported PHP version for App Services"
+            }
+        },
+        "resourceGroupName-b6e2945c-0b7b-40f5-9233-7a5323b5cdc6": {
+            "type": "String",
+            "defaultValue": "NetworkWatcherRG",
+            "metadata": {
+                "displayName": "Name of the resource group for Network Watcher",
+                "description": "Name of the resource group where Network Watchers are located"
+            }
+        }
+    },
+    "policyDefinitions":  [
+        {
+          "policyDefinitionReferenceId": "aa633080-8b72-40c4-a2d7-d00c03e80bed",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/aa633080-8b72-40c4-a2d7-d00c03e80bed",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-aa633080-8b72-40c4-a2d7-d00c03e80bed')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_1.1"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "9297c21d-2ed6-4474-b48f-163f75654ce3",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9297c21d-2ed6-4474-b48f-163f75654ce3",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-9297c21d-2ed6-4474-b48f-163f75654ce3')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_1.1"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "5f76cf89-fbf2-47fd-a3f4-b891fa780b60",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5f76cf89-fbf2-47fd-a3f4-b891fa780b60",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-5f76cf89-fbf2-47fd-a3f4-b891fa780b60')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_1.3"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "5c607a2e-c700-4744-8254-d77e7c9eb5e4",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5c607a2e-c700-4744-8254-d77e7c9eb5e4",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-5c607a2e-c700-4744-8254-d77e7c9eb5e4')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_1.3"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "f8456c1c-aa66-4dfb-861a-25d127b775c9",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f8456c1c-aa66-4dfb-861a-25d127b775c9",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-f8456c1c-aa66-4dfb-861a-25d127b775c9')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_1.3"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_2.13"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "6e2593d9-add6-4083-9c9b-4b7d2188c899",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6e2593d9-add6-4083-9c9b-4b7d2188c899",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-6e2593d9-add6-4083-9c9b-4b7d2188c899')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_2.14"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "4fa4b6c0-31ca-4c0d-b10d-24b96f62a751",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4fa4b6c0-31ca-4c0d-b10d-24b96f62a751",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-4fa4b6c0-31ca-4c0d-b10d-24b96f62a751')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_3.5",
+            "CIS_Azure_1.4.0_5.1.3"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "eb6f77b9-bd53-4e35-a23d-7f65d5f0e43d",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/eb6f77b9-bd53-4e35-a23d-7f65d5f0e43d",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-eb6f77b9-bd53-4e35-a23d-7f65d5f0e43d')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_4.3.2"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "eb6f77b9-bd53-4e35-a23d-7f65d5f0e442",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/eb6f77b9-bd53-4e35-a23d-7f65d5f0e442",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-eb6f77b9-bd53-4e35-a23d-7f65d5f0e442')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_4.3.3"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "eb6f77b9-bd53-4e35-a23d-7f65d5f0e446",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/eb6f77b9-bd53-4e35-a23d-7f65d5f0e446",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-eb6f77b9-bd53-4e35-a23d-7f65d5f0e446')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_4.3.4"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "5345bb39-67dc-4960-a1bf-427e16b9a0bd",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5345bb39-67dc-4960-a1bf-427e16b9a0bd",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-5345bb39-67dc-4960-a1bf-427e16b9a0bd')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_4.3.5"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "b6e2945c-0b7b-40f5-9233-7a5323b5cdc6",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b6e2945c-0b7b-40f5-9233-7a5323b5cdc6",
+          "parameters": {
+            "resourceGroupName": {
+              "value": "[parameters('resourceGroupName-b6e2945c-0b7b-40f5-9233-7a5323b5cdc6')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_6.5"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "c0e996f8-39cf-4af9-9f45-83fbde810432",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c0e996f8-39cf-4af9-9f45-83fbde810432",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-c0e996f8-39cf-4af9-9f45-83fbde810432')]"
+            },
+            "approvedExtensions": {
+              "value": "[parameters('approvedExtensions-c0e996f8-39cf-4af9-9f45-83fbde810432')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_7.4"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "86b3d65f-7626-441e-b690-81a8b71cff60",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/86b3d65f-7626-441e-b690-81a8b71cff60",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-86b3d65f-7626-441e-b690-81a8b71cff60')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_7.5"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "af6cd1bd-1635-48cb-bde7-5b15693900b9",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/af6cd1bd-1635-48cb-bde7-5b15693900b9",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-af6cd1bd-1635-48cb-bde7-5b15693900b9')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_7.6"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_8.1",
+            "CIS_Azure_1.4.0_8.2"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "98728c90-32c7-4049-8429-847dc0f4fe37",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/98728c90-32c7-4049-8429-847dc0f4fe37",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-98728c90-32c7-4049-8429-847dc0f4fe37')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_8.3",
+            "CIS_Azure_1.4.0_8.4"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "0b60c0b2-2dc2-4e1c-b5c9-abbed971de53",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-0b60c0b2-2dc2-4e1c-b5c9-abbed971de53')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_8.6"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "7261b898-8a84-4db8-9e04-18527132abb3",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7261b898-8a84-4db8-9e04-18527132abb3",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-7261b898-8a84-4db8-9e04-18527132abb3')]"
+            },
+            "PHPLatestVersion": {
+              "value": "[parameters('PHPLatestVersion')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_9.6"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "7238174a-fd10-4ef0-817e-fc820a951d73",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7238174a-fd10-4ef0-817e-fc820a951d73",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-7238174a-fd10-4ef0-817e-fc820a951d73')]"
+            },
+            "LinuxPythonLatestVersion": {
+              "value": "[parameters('LinuxPythonLatestVersion')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_9.7"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "7008174a-fd10-4ef0-817e-fc820a951d73",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7008174a-fd10-4ef0-817e-fc820a951d73",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-7008174a-fd10-4ef0-817e-fc820a951d73')]"
+            },
+            "LinuxPythonLatestVersion": {
+              "value": "[parameters('LinuxPythonLatestVersion')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_9.7"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc')]"
+            },
+            "JavaLatestVersion": {
+              "value": "[parameters('JavaLatestVersion')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_9.8"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "496223c3-ad65-4ecd-878a-bae78737e9ed",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/496223c3-ad65-4ecd-878a-bae78737e9ed",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-496223c3-ad65-4ecd-878a-bae78737e9ed')]"
+            },
+            "JavaLatestVersion": {
+              "value": "[parameters('JavaLatestVersion')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_9.8"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "e2c1c086-2d84-4019-bff3-c44ccd95113c",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e2c1c086-2d84-4019-bff3-c44ccd95113c",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-e2c1c086-2d84-4019-bff3-c44ccd95113c')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_9.9"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "8c122334-9d20-4eb8-89ea-ac9a705b74ae",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8c122334-9d20-4eb8-89ea-ac9a705b74ae",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-8c122334-9d20-4eb8-89ea-ac9a705b74ae')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_9.9"
+          ]
+        },
+        {
+          "policyDefinitionReferenceId": "0b15565f-aa9e-48ba-8619-45960f2c314d",
+          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0b15565f-aa9e-48ba-8619-45960f2c314d",
+          "parameters": {
+            "effect": {
+              "value": "[parameters('effect-0b15565f-aa9e-48ba-8619-45960f2c314d')]"
+            }
+          },
+          "groupNames": [
+            "CIS_Azure_1.4.0_2.15"
+          ]
+        }
+      ],
+    "policyDefinitionGroups": [
+        {
+            "name": "CIS_Azure_1.4.0_1.1",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_1.1"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_1.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_1.3"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_2.13",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_2.13"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_2.14",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_2.14"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_2.15",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_2.15"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_3.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_3.5"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_4.3.2",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.2"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_4.3.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.3"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_4.3.4",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.4"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_4.3.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.5"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_5.1.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.1.3"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_6.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_6.5"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_7.4",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_7.4"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_7.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_7.5"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_7.6",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_7.6"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_8.1",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.1"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_8.2",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.2"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_8.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.3"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_8.4",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.4"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_8.6",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.6"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_9.6",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.6"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_9.7",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.7"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_9.8",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.8"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_9.9",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.9"
+        }
+    ]
   },
   "type": "Microsoft.Authorization/policySetDefinitions",
   "name": "Audit CIS Implementation Group 1 Level 1 controls"
