@@ -37,5 +37,5 @@ for_each = {for f in local.json_data : f.name => f}
     }
   } 
 
-  policy_group_names = try(jsonencode(each.value.policyDefinitionGroups), [])
+  policy_definition_group = try(jsonencode(each.value.policyDefinitionGroups), [])
 }
