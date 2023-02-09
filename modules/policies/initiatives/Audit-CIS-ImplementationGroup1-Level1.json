@@ -5,7 +5,7 @@
     "description": "This policy initiative is a group of policies that Audit CIS Implementation Group 1 Level 1 controls.",
     "metadata": {
       "version": "1.0",
-      "category": "App Service"
+      "category": "Regulatory Compliance"
     },
     "parameters": {
         "approvedExtensions-c0e996f8-39cf-4af9-9f45-83fbde810432": {
