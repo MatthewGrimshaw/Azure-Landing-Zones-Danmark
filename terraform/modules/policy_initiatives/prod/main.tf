@@ -22,7 +22,7 @@ for_each = {for f in local.json_data : f.name => f}
   policy_type = each.value.properties.policyType
   display_name = each.value.properties.displayName
   description  = each.value.properties.description
-  management_group_id = data.azurerm_management_group.root_management_group.id
+  management_group_id = data.azurerm_management_group.root_management_group.id 
   metadata = jsonencode(each.value.properties.metadata)
   parameters   = jsonencode(each.value.properties.parameters)
 
@@ -33,7 +33,9 @@ for_each = {for f in local.json_data : f.name => f}
       policy_definition_id = replace(policy_definition_reference.value.policyDefinitionId, "<prefix>", var.prefix)
       parameter_values = jsonencode(policy_definition_reference.value.parameters)
       reference_id = policy_definition_reference.value.policyDefinitionReferenceId
-      policy_group_names = try(policy_definition_reference.value.policyDefinitionGroups, [])
+      policy_group_names = try(jsonencode(policy_definition_reference.value.groupNames), [])
     }
   } 
+
+  policy_group_names = try(jsonencode(each.value.policyDefinitionGroups), [])
 }
