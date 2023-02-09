@@ -38,7 +38,7 @@ for_each = {for f in local.json_data : f.name => f}
   } 
 
   dynamic "policy_definition_group" {
-    for_each = each.value.properties.policyDefinitionGroups
+    for_each = each.value.properties.policyDefinitionGroups == null ? [] : [1]
 
     content {
       name = try(policy_definition_group.value.name, "")
