@@ -43,7 +43,7 @@ for_each = {for f in local.json_data : f.name => f}
 
     content {
       name = policy_definition_group.policyDefinitionGroups.value.name
-      additional_metadata_resource_id = policy_definition_group.policyDefinitionGroupsvalue.additionalMetadataId
+      additional_metadata_resource_id = policy_definition_group.policyDefinitionGroups.value.additionalMetadataId
     }
   }
 }
