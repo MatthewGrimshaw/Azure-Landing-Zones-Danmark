@@ -40,7 +40,7 @@ for_each = {for f in local.json_data : f.name => f}
   dynamic "policy_definition_group" {
     #for_each = each.value.properties.policyDefinitionGroups == null ? [] : [0]
     #for_each = each.value.properties == "policyDefinitionGroups" ? [] : [1]
-    for_each = each.value.properties == "policyDefinitionGroups" ? [] : each.value.properties.policyDefinitionGroups
+    for_each = each.value.properties == "policyDefinitionGroups" ? each.value.properties.policyDefinitionGroups : [1]
 
     content {
       name = policy_definition_group.value.name
