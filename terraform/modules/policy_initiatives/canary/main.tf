@@ -33,7 +33,7 @@ for_each = {for f in local.json_data : f.name => f}
       policy_definition_id = replace(policy_definition_reference.value.policyDefinitionId, "<prefix>", var.prefix)
       parameter_values = jsonencode(policy_definition_reference.value.parameters)
       reference_id = policy_definition_reference.value.policyDefinitionReferenceId
-      policy_group_names = try(policy_definition_reference.value.policy_group_names, [])
+      policy_group_names = try(policy_definition_reference.value.policyDefinitionGroups, [])
     }
   } 
 }
