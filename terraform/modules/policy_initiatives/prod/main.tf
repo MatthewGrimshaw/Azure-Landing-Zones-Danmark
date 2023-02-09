@@ -42,8 +42,8 @@ for_each = {for f in local.json_data : f.name => f}
     for_each = each.value.properties == "policyDefinitionGroups" ? [] : [1]
 
     content {
-      name = policy_definition_group.policyDefinitionGroups.value.name
-      additional_metadata_resource_id = policy_definition_group.policyDefinitionGroups.value.additionalMetadataId
+      name = policy_definition_group.value.policyDefinitionGroups.name
+      additional_metadata_resource_id = policy_definition_group.value.policyDefinitionGroups.additionalMetadataId
     }
   }
 }
