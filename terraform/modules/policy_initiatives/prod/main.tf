@@ -33,19 +33,17 @@ for_each = {for f in local.json_data : f.name => f}
       policy_definition_id = replace(policy_definition_reference.value.policyDefinitionId, "<prefix>", var.prefix)
       parameter_values = jsonencode(policy_definition_reference.value.parameters)
       reference_id = policy_definition_reference.value.policyDefinitionReferenceId
-      policy_group_names = try(jsonencode(policy_definition_reference.value.groupNames), "")
+      policy_group_names = policy_definition_reference.value.groupNames
     }
   } 
 
   dynamic "policy_definition_group" {
-    for_each = each.value.properties.policyDefinitionGroups == null ? [] : [0]
+    #for_each = each.value.properties.policyDefinitionGroups == null ? [] : [0]
+    for_each = each.value.properties == "policyDefinitionGroups" ? [] : [1]
 
     content {
-      name = try(policy_definition_group.value.name, "")
-      display_name = try(policy_definition_group.value.display_name, "")
-      category = try(policy_definition_group.value.category, "")
-      description = try(policy_definition_group.value.description, "")
-      additional_metadata_resource_id = try(policy_definition_group.value.additional_metadata_resource_id, "")
+      name = policy_definition_group.value.name
+      additional_metadata_resource_id = policy_definition_group.value.additional_metadata_resource_id
     }
   }
 }
