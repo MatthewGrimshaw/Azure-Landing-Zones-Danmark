@@ -1,5 +1,5 @@
 ---
-name: terraform - Deploy Initiatives.
+name: terraform - Deploy Initiatives
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -41,7 +41,7 @@ jobs:
       name: Canary
     runs-on: ubuntu-latest
     env:
-      ENVIRONMENT_SHORT_NAME: canary      
+      ENVIRONMENT_SHORT_NAME: canary
       tf_actions_working_dir: ./terraform/modules/policy_initiatives/canary
     defaults:
       run:
