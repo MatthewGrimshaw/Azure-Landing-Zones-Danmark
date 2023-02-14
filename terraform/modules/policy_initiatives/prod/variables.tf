@@ -11,8 +11,13 @@ variable prefix {
 }
 
 locals {
-
-  json_files = fileset("../../../../modules/policies/initiatives", "*.json")
-  json_data  = [ for f in local.json_files : jsondecode(file("../../../../modules/policies/initiatives/${f}")) ]
-  
+  json_files = fileset("../../../modules/policies/initiatives", "*.json")
+  json_data  = [ for f in local.json_files : jsondecode(file("../../../modules/policies/initiatives/${f}"))]
+  json_map = [
+    for items in local.json_data: {
+      category = items.properties.metadata.category
+      name = items.properties.displayName
+      element = items
+    }
+  ]
 }
