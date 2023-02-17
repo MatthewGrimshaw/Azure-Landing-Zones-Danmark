@@ -1,20 +1,20 @@
 <#
         .SYNOPSIS
-        Imports existing Azure Policies into the Terraform State file to get them under source control.
+        Imports existing Azure Initiatives into the Terraform State file to get them under source control.
 
         .DESCRIPTION
-        Imports existing Azure Policies into the Terraform State file to get them under source control.
+        Imports existing Azure Initiatives into the Terraform State file to get them under source control.
 
         .EXAMPLE
-        PS> import-policies.ps1  -importDir "terraform/modules/policy_definitions/canary" -policyDir "../../../../modules/policies/definitions"  -mgmtGroupName "lz-canary" -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
+        PS> import-initiatives.ps1  -importDir "terraform/modules/policy_definitions/canary" -policyDir "../../../../modules/policies/definitions"  -mgmtGroupName "lz-canary" -storageAccountName ${{ secrets.STORAGE_ACCOUNT_NAME }} -ResourceGroupName ${{ secrets.RESOURCE_GROUP_NAME }} -containerName ${{ secrets.CONTAINER_NAME }} -tfStateFile ${{ secrets.KEY }} -ARM_CLIENT_ID ${{ secrets.AZURE_CLIENT_ID }} -ARM_SUBSCRIPTION_ID ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }} -ARM_TENANT_ID ${{ secrets.AZURE_TENANT_ID }}
 
 #>
 
 param (
     [String]
-    $importDir,
-    $PolicyDir,
-    $mgmtGroupName,
+    $importDir = "C:\Users\matgri\repos\mattthew-alz-danmark\Azure-Landing-Zones-Danmark\terraform\modules\policy_initiatives\canary" ,
+    $PolicyDir = "C:\Users\matgri\repos\mattthew-alz-danmark\Azure-Landing-Zones-Danmark\modules\policies\initiatives",
+    $mgmtGroupName = "matthew-lz-canary",
     $storageAccountName,
     $ResourceGroupName,
     $containerName,
@@ -74,8 +74,8 @@ Set-Location $importDir
 
 # import policies from directory
 ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
-    $policy = Get-AzPolicyDefinition -ManagementGroupName $mgmtGroupName -Custom | Where-Object Name -eq (Get-Content $customPolicy.FullName | ConvertFrom-Json).Name
-    $resourceId = $policy.ResourceId
+    $initiative = Get-AzPolicySetDefinition -ManagementGroupName $mgmtGroupName -Custom | Where-Object Name -eq (Get-Content $customPolicy.FullName | ConvertFrom-Json).Name
+    $resourceId = $initiative.ResourceId
 
     if(!$resourceId -or $null -eq $resourceId)
     {
@@ -83,10 +83,18 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
         exit(1)
     }
 
-    # policies are an array and need an index
-    write-output "azurerm_policy_definition.def[\`"$($policy.name)\`"] $resourceId"
-    $arguments="import azurerm_policy_definition.def[\`"$($policy.name)\`"] $resourceId"
-    write-output $arguments
+    if($initiative.Properties.Metadata.category -eq "Regulatory Compliance"){
+        # initiatives are an array and need an index
+        write-output "azurerm_policy_set_definition setdef_regcomp[\`"$($initiative.name)\`"] $resourceId"
+        $arguments="import azurerm_policy_definition.def[\`"$($initiative.name)\`"] $resourceId"
+        write-output $arguments
+    }
+    else{
+        # initiatives are an array and need an index
+        write-output "azurerm_policy_set_definition setdef[\`"$($initiative.name)\`"] $resourceId"
+        $arguments="import azurerm_policy_definition.def[\`"$($initiative.name)\`"] $resourceId"
+        write-output $arguments
+    }
 
     # Check return code status
     $FileName = "terraform"
