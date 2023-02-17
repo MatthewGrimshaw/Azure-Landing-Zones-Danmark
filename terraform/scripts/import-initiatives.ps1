@@ -12,9 +12,9 @@
 
 param (
     [String]
-    $importDir = "C:\Users\matgri\repos\mattthew-alz-danmark\Azure-Landing-Zones-Danmark\terraform\modules\policy_initiatives\canary" ,
-    $PolicyDir = "C:\Users\matgri\repos\mattthew-alz-danmark\Azure-Landing-Zones-Danmark\modules\policies\initiatives",
-    $mgmtGroupName = "matthew-lz-canary",
+    $importDir,
+    $PolicyDir,
+    $mgmtGroupName,
     $storageAccountName,
     $ResourceGroupName,
     $containerName,
