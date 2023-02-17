@@ -63,14 +63,13 @@ $env:ARM_USE_OIDC="true"
 Write-Output $importDir
 Write-Output $policyDir
 
+# get json file with resources to be imported
+Push-Location
+Set-Location $importDi
 
 # initialise terraform
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
-
-# get json file with resources to be imported
-Push-Location
-Set-Location $importDir
 
 # import policies from directory
 ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
