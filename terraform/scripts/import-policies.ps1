@@ -65,7 +65,7 @@ Write-Output $policyDir
 
 # get json file with resources to be imported
 Push-Location
-Set-Location $importDi
+Set-Location $importDir
 
 # initialise terraform
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
