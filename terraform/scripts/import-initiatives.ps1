@@ -59,6 +59,9 @@ $env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
 $env:ARM_TENANT_ID= $ARM_TENANT_ID
 $env:ARM_USE_OIDC="true"
 
+# get json file with resources to be imported
+Push-Location
+Set-Location $importDir
 
 Write-Output $importDir
 Write-Output $policyDir
@@ -68,9 +71,6 @@ Write-Output $policyDir
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
 
-# get json file with resources to be imported
-Push-Location
-Set-Location $importDir
 
 # import policies from directory
 ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
@@ -85,14 +85,14 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
 
     if($initiative.Properties.Metadata.category -eq "Regulatory Compliance"){
         # initiatives are an array and need an index
-        write-output "azurerm_policy_set_definition setdef_regcomp[\`"$($initiative.name)\`"] $resourceId"
-        $arguments="import azurerm_policy_definition.def[\`"$($initiative.name)\`"] $resourceId"
+        write-output "azurerm_policy_set_definition.setdef_regcomp[\`"$($initiative.name)\`"] $resourceId"
+        $arguments="import azurerm_policy_definition.setdef_regcomp[\`"$($initiative.name)\`"] $resourceId"
         write-output $arguments
     }
     else{
         # initiatives are an array and need an index
-        write-output "azurerm_policy_set_definition setdef[\`"$($initiative.name)\`"] $resourceId"
-        $arguments="import azurerm_policy_definition.def[\`"$($initiative.name)\`"] $resourceId"
+        write-output "azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"] $resourceId"
+        $arguments="import azurerm_policy_definition.setdef[\`"$($initiative.name)\`"] $resourceId"
         write-output $arguments
     }
 
