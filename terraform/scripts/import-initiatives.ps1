@@ -91,7 +91,7 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
     }
     else{
         # initiatives are an array and need an index
-        write-output "azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"] `"$resourceId`"
+        write-output "azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"] `"$resourceId`""
         $arguments="import azurerm_policy_definition.setdef[\`"$($initiative.name)\`"] `"$resourceId`""
         write-output $arguments
     }
