@@ -86,13 +86,13 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
     if($initiative.Properties.Metadata.category -eq "Regulatory Compliance"){
         # initiatives are an array and need an index
         write-output "azurerm_policy_set_definition.setdef_regcomp[\`"$($initiative.name)\`"] `"$resourceId`""
-        $arguments="import `"azurerm_policy_definition.setdef_regcomp[\`"$($initiative.name)\`"]`" `"$resourceId`""
+        $arguments="import `"azurerm_policy_set_definition.setdef_regcomp[\`"$($initiative.name)\`"]`" `"$resourceId`""
         write-output $arguments
     }
     else{
         # initiatives are an array and need an index
         write-output "azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"] `"$resourceId`""
-        $arguments="import `"azurerm_policy_definition.setdef[\`"$($initiative.name)\`"]`" `"$resourceId`""
+        $arguments="import `"azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"]`" `"$resourceId`""
         write-output $arguments
     }
 
