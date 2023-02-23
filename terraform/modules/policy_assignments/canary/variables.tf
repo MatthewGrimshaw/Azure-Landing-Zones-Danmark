@@ -14,7 +14,7 @@ locals {
     automationAccountName = "mgmtautomationaccount"
     mgmtResourceGroupName = "Management"
     logAnalyticsWorkspaceName = "mgmtworkspace"
-    logAnalayticsDataRetion = 30
+    logAnalayticsDataRetion = "30"
     logAnalyticsSKU = "pergb2018"
 
   }
@@ -26,7 +26,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Authorization/policySetDefinitions/59e9c3eb-d8df-473b-8059-23fd38ddd0f0"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary"
           parameters = jsonencode(merge({
-              workspaceId = {value = local.resource_ids.log_analytics_workspace}
+              logAnalyticsWorkspace = {value = local.resource_ids.log_analytics_workspace}
           }))
           identity_type = ["UserAssigned"]
           identity_ids = [local.resource_ids.userAssignedIdentity]
