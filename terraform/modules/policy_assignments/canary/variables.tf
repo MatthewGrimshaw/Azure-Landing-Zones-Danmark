@@ -174,7 +174,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/Deny-PublicIP"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-corp"
           parameters = jsonencode(merge({
-            effect = {value = "Deny"
+            effect = {value = "Deny"}
           }))
           identity_type = []
       },
