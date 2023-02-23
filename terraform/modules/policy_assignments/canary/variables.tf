@@ -90,7 +90,8 @@ locals {
             automationRegion = {value = var.location}
             effect = {value = "DeployIfNotExists"}
           }))
-          identity_type = []
+          identity_type = ["UserAssigned"]
+          identity_ids = [local.resource_ids.userAssignedIdentity]
       },
       {
           name = "DenyRDPFromInternetIdnty"
