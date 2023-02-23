@@ -24,7 +24,7 @@ locals {
           name = "AMA-For-Hybrid-VMs"
           display_name = "AMA-For-Hybrid-VMs-Assignment"
           policy_definition_id = "/providers/Microsoft.Authorization/policySetDefinitions/59e9c3eb-d8df-473b-8059-23fd38ddd0f0"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({
               workspaceId = {value =local.resource_ids.log_analytics_workspace}
           }))
@@ -35,7 +35,7 @@ locals {
           name = "Defender-For-Cloud"
           display_name = "Defender-For-Cloud-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Configure-Defender-For-Cloud"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({
               emailSecurityContact = {value =local.resource_ids.email_security_contact}
               logAnalytics = {value =local.resource_ids.log_analytics_workspace}
@@ -49,7 +49,7 @@ locals {
           name = "Enable-DDoS-VNET"
           display_name = "Enable-DDoS-VNET-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({
               ddosPlan = {value =local.resource_ids.ddosPlan}
               effect = {value ="Modify"}
@@ -61,7 +61,7 @@ locals {
           name = "Guest-Attestation"
           display_name = "Guest-Attestation-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = ["UserAssigned"]
           identity_ids = [local.resource_ids.userAssignedIdentity]
@@ -70,7 +70,7 @@ locals {
           name = "Guest-Configuration"
           display_name = "Guest-Configuration-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/12794019-7a00-42cf-95c2-882eed337cc8"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = ["UserAssigned"]
           identity_ids = [local.resource_ids.userAssignedIdentity]
@@ -182,7 +182,7 @@ locals {
           name = "AuditCISGroup1Level1"
           display_name = "Audit-CIS-Implementation Group-1-Level-1-controls-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Audit CIS Implementation Group 1 Level 1 controls"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = []
       },
@@ -190,7 +190,7 @@ locals {
           name = "AuditCISGroup1Level2"
           display_name = "Audit-CIS-Implementation Group-1-Level-2-controls-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Audit CIS Implementation Group 1 Level 2 controls"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = []
       },
@@ -198,7 +198,7 @@ locals {
           name = "AuditCISGroup2Level1"
           display_name = "Audit-CIS-Implementation Group-2-Level-1-controls-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Audit CIS Implementation Group 2 Level 1 controls"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = []
       },
@@ -206,7 +206,7 @@ locals {
           name = "AuditCISGroup2Level2"
           display_name = "Audit-CIS-Implementation Group-2-Level-2-controls-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Audit CIS Implementation Group 2 Level 2 controls"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = []
       },
@@ -214,7 +214,7 @@ locals {
           name = "CIS_Benchmark_v1.4.0"
           display_name = "CIS Microsoft Azure Foundations Benchmark v1.4.0-Assignment"
           policy_definition_id = "/providers/Microsoft.Authorization/policySetDefinitions/c3f5c4d9-9a1d-4a99-85c0-7f93e384d5c5"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = []
       }
