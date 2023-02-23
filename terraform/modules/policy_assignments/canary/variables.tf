@@ -26,7 +26,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Authorization/policySetDefinitions/59e9c3eb-d8df-473b-8059-23fd38ddd0f0"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
           parameters = jsonencode(merge({
-              workspaceId = local.resource_ids.log_analytics_workspace
+              workspaceId = {value = local.resource_ids.log_analytics_workspace}
           }))
           identity_type = ["UserAssigned"]
           identity_ids = [local.resource_ids.userAssignedIdentity]
@@ -51,8 +51,8 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/4f8875af-ac0b-46ee-8a73-3634138f5818"
           parameters = jsonencode(merge({
-              ddosPlan = local.resource_ids.ddosPlan
-              effect = "Modify"
+              ddosPlan = {value = local.resource_ids.ddosPlan}
+              effect = {value = "Modify"}
           }))
           identity_type = ["UserAssigned"]
           identity_ids = [local.resource_ids.userAssignedIdentity]
@@ -81,14 +81,14 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/8e3e61b3-0b32-22d5-4edf-55f87fdb5955"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-management"
           parameters = jsonencode(merge({
-            effect = "DeployIfNotExists"
-            workspaceName = local.resource_ids.logAnalyticsWorkspaceName
-            automationAccountName = local.resource_ids.automationAccountName
-            workspaceRegion = var.location
-            automationRegion = var.location
-            dataRetention = local.resource_ids.logAnalayticsDataRetion
-            sku = local.resource_ids.logAnalyticsSKU
-            rgName = local.resource_ids.mgmtResourceGroupName
+            effect = {value = "DeployIfNotExists"}
+            workspaceName = {value = local.resource_ids.logAnalyticsWorkspaceName}
+            automationAccountName = {value = local.resource_ids.automationAccountName}
+            workspaceRegion = {value = var.location}
+            automationRegion = {value = var.location}
+            dataRetention = {value = local.resource_ids.logAnalayticsDataRetion}
+            sku = {value = local.resource_ids.logAnalyticsSKU}
+            rgName = {value = local.resource_ids.mgmtResourceGroupName}
           }))
           identity_type = []
       },
@@ -98,7 +98,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/Deny-RDP-From-Internet"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-identity"
           parameters = jsonencode(merge({
-            effect = "Deny"
+            effect = {value = "Deny"}
           }))
           identity_type = []
       },
@@ -108,7 +108,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/Deny-PublicIP"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-identity"
           parameters = jsonencode(merge({
-            effect = "Deny"
+            effect = {value = "Deny"}
           }))
           identity_type = []
       },
@@ -118,7 +118,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/Deny-RDP-From-Internet"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-landing-zones"
           parameters = jsonencode(merge({
-            effect = "Deny"
+            effect = {value = "Deny"}
           }))
           identity_type = []
       },
@@ -136,7 +136,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/Deny-Databricks-NoPublicIp"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-corp"
           parameters = jsonencode(merge({
-            effect = "Deny"
+            effect = {value = "Deny"}
           }))
           identity_type = []
       },
@@ -146,7 +146,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/Deny-Databricks-Sku"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-corp"
           parameters = jsonencode(merge({
-            effect = "Deny"
+            effect = {value = "Deny"}
           }))
           identity_type = []
       },
@@ -156,7 +156,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/Deny-Databricks-VirtualNetwork"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-corp"
           parameters = jsonencode(merge({
-            effect = "Deny"
+            effect = {value = "Deny"}
           }))
           identity_type = []
       },
@@ -174,7 +174,7 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policyDefinitions/Deny-PublicIP"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-corp"
           parameters = jsonencode(merge({
-            effect = "Deny"
+            effect = {value = "Deny"
           }))
           identity_type = []
       },
@@ -194,7 +194,7 @@ locals {
           parameters = jsonencode(merge({}))
           identity_type = []
       },
-            {
+      {
           name = "AuditCISGroup2Level1"
           display_name = "Audit-CIS-Implementation Group-2-Level-1-controls-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policySetDefinitions/Audit CIS Implementation Group 2 Level 1 controls"
