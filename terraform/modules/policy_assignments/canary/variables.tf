@@ -14,7 +14,7 @@ locals {
     automationAccountName = "mgmtautomationaccount"
     mgmtResourceGroupName = "Management"
     logAnalyticsWorkspaceName = "mgmtworkspace"
-    logAnalayticsDataRetion = "30"
+    logAnalayticsDataRetention = "30"
     logAnalyticsSKU = "pergb2018"
 
   }
@@ -37,10 +37,10 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policySetDefinitions/Configure-Defender-For-Cloud"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary"
           parameters = jsonencode(merge({
-              emailSecurityContact = local.resource_ids.email_security_contact
-              logAnalytics = local.resource_ids.log_analytics_workspace
-              exportResourceGroupName = local.resource_ids.export_resource_group_name
-              exportResourceGroupLocation = local.resource_ids.export_resource_group_name
+              emailSecurityContact = {value = local.resource_ids.email_security_contact}
+              logAnalytics = {value = local.resource_ids.log_analytics_workspace}
+              exportResourceGroupName = {value = local.resource_ids.export_resource_group_name}
+              exportResourceGroupLocation = {value = local.resource_ids.export_resource_group_name}
           }))
           identity_type = ["UserAssigned"]
           identity_ids = [local.resource_ids.userAssignedIdentity]
@@ -81,14 +81,14 @@ locals {
           policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/8e3e61b3-0b32-22d5-4edf-55f87fdb5955"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary-management"
           parameters = jsonencode(merge({
-            effect = {value = "DeployIfNotExists"}
-            workspaceName = {value = local.resource_ids.logAnalyticsWorkspaceName}
-            automationAccountName = {value = local.resource_ids.automationAccountName}
-            workspaceRegion = {value = var.location}
-            automationRegion = {value = var.location}
-            dataRetention = {value = local.resource_ids.logAnalayticsDataRetion}
-            sku = {value = local.resource_ids.logAnalyticsSKU}
             rgName = {value = local.resource_ids.mgmtResourceGroupName}
+            workspaceName = {value = local.resource_ids.logAnalyticsWorkspaceName}
+            workspaceRegion = {value = var.location}
+            sku = {value = local.resource_ids.logAnalyticsSKU}
+            dataRetention = {value = local.resource_ids.logAnalayticsDataRetention}
+            automationAccountName = {value = local.resource_ids.automationAccountName}
+            automationRegion = {value = var.location}
+            effect = {value = "DeployIfNotExists"}
           }))
           identity_type = []
       },
