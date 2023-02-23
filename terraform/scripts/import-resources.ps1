@@ -116,6 +116,10 @@ foreach($resource in $resourcesToImport.properties.resource){
             {
                 $resourceId = $resource.name
             }
+            "azurerm_management_group_policy_assignment"
+            {
+                $resourceId = (Get-AzPolicyAssignment -ResourceGroupName $resource.name).Id
+            }
         }
 
         if(!$resourceId -or $null -eq $resourceId)
@@ -129,13 +133,13 @@ foreach($resource in $resourcesToImport.properties.resource){
             # log analytics solutions are an array and need an index
             write-output "$($resource.type).$($resource.tfconfig_name)[\`"$($resource.solution_name)\`"] $resourceId"
             $arguments="import $($resource.type).$($resource.tfconfig_name)[\`"$($resource.solution_name)\`"] $resourceId"
-            write-output $arguments            
+            write-output $arguments
         }
         else{
             write-output "$($resource.type).$($resource.tfconfig_name) $resourceId"
             $arguments="import `"$($resource.type).$($resource.tfconfig_name)`" $resourceId"
         }
-        
+
 
         # Check return code status
         $FileName = "terraform"
@@ -151,6 +155,3 @@ foreach($resource in $resourcesToImport.properties.resource){
         $StandardOutput = $process.StandardOutput.ReadToEnd()
         lastExitCode $StandardError $StandardOutput
     }
-
-
-
