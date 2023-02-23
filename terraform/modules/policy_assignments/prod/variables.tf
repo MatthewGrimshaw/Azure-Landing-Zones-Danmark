@@ -48,7 +48,7 @@ locals {
       {
           name = "Enable-DDoS-VNET"
           display_name = "Enable-DDoS-VNET-Assignment"
-          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d"
+          policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({
               ddosPlan = {value =local.resource_ids.ddosPlan}
@@ -60,7 +60,7 @@ locals {
       {
           name = "Guest-Attestation"
           display_name = "Guest-Attestation-Assignment"
-          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d"
+          policy_definition_id = "/providers/Microsoft.Authorization/policySetDefinitions/281d9e47-d14d-4f05-b8eb-18f2c4a034ff"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = ["UserAssigned"]
@@ -69,7 +69,7 @@ locals {
       {
           name = "Guest-Configuration"
           display_name = "Guest-Configuration-Assignment"
-          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/12794019-7a00-42cf-95c2-882eed337cc8"
+          policy_definition_id = "/providers/Microsoft.Authorization/policySetDefinitions/12794019-7a00-42cf-95c2-882eed337cc8"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = ["UserAssigned"]
@@ -78,7 +78,7 @@ locals {
       {
           name = "Deploy-Log-Analytics"
           display_name = "Deploy-Log-Analytics-Assignment"
-          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policyDefinitions/8e3e61b3-0b32-22d5-4edf-55f87fdb5955"
+          policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/8e3e61b3-0b32-22d5-4edf-55f87fdb5955"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-management"
           parameters = jsonencode(merge({
             effect = {value ="DeployIfNotExists"}
@@ -125,7 +125,7 @@ locals {
       {
           name = "Deny-IP-Forwarding"
           display_name = "Deny-IP-Forwarding-Assignment"
-          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policyDefinitions/88c0b9da-ce96-4b03-9635-f29a937e2900"
+          policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/88c0b9da-ce96-4b03-9635-f29a937e2900"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-landing-zones"
           parameters = jsonencode(merge({}))
           identity_type = []
