@@ -1,5 +1,5 @@
 ---
-name: terraform - Deploy Policy Assignments.
+name: terraform - Deploy Policy Assignments
 
 on:  # yamllint disable-line rule:truthy
   push:
