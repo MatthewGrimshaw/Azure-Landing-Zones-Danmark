@@ -27,7 +27,7 @@
         ],
         "defaultValue": "AutomaticByPlatform"
       },
-    "osType": {
+      "osType": {
         "type": "String",
         "metadata": {
           "displayName": "OS type",
@@ -37,15 +37,13 @@
           "Windows",
           "Linux"
         ],
-        "defaultValue": [
-          "Windows"
-        ]
+        "defaultValue": "Windows"
       },
       "operatingSystemTypes": {
         "type": "Array",
         "metadata": {
-          "displayName": "OS type",
-          "description": "OS type for the machines."
+          "displayName": "Operating System types",
+          "description": "The list of Operating System types from which machines need to be targeted."
         },
         "allowedValues": [
           "Windows",
