@@ -28,6 +28,20 @@
         "defaultValue": "AutomaticByPlatform"
       },
     "osType": {
+        "type": "String",
+        "metadata": {
+          "displayName": "OS type",
+          "description": "OS type for the machines."
+        },
+        "allowedValues": [
+          "Windows",
+          "Linux"
+        ],
+        "defaultValue": [
+          "Windows"
+        ]
+      },
+      "operatingSystemTypes": {
         "type": "Array",
         "metadata": {
           "displayName": "OS type",
@@ -38,8 +52,7 @@
           "Linux"
         ],
         "defaultValue": [
-          "Windows",
-          "Linux"
+          "Windows"
         ]
       },
     "locations": {
@@ -162,7 +175,7 @@
             "value": "[parameters('resourceGroups')]"
           },
           "operatingSystemTypes": {
-            "value": "[parameters('osType')]"
+            "value": "[parameters('operatingSystemTypes')]"
           },
           "locations": {
             "value": "[parameters('locations')]"
