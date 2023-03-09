@@ -1,5 +1,5 @@
 ---
-name: terraform - Import Initiatives.
+name: terraform - Import Initiatives
 
 on:  # yamllint disable-line rule:truthy
   push:
