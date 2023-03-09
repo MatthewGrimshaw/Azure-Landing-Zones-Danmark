@@ -28,7 +28,7 @@
         "defaultValue": "AutomaticByPlatform"
       },
     "osType": {
-        "type": "String",
+        "type": "Array",
         "metadata": {
           "displayName": "OS type",
           "description": "OS type for the machines."
