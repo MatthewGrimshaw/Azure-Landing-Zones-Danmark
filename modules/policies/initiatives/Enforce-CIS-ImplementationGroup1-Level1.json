@@ -52,7 +52,8 @@
           "Linux"
         ],
         "defaultValue": [
-          "Windows"
+          "Windows",
+          "Linux"
         ]
       },
     "locations": {
