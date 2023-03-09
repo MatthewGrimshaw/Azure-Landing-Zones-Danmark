@@ -1,5 +1,5 @@
 ---
-name: terraform - Import Initiatives
+name: terraform - Import Initiatives.
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -10,6 +10,7 @@ on:  # yamllint disable-line rule:truthy
       - .github/workflows/terraform-import-initiatives.yml
       - terraform/modules/policy_initiatives/**
       - terraform/scripts/import-initiatives.ps1
+      - modules/policies/initiatives/**
   pull_request:
     types:
       - opened
@@ -19,6 +20,7 @@ on:  # yamllint disable-line rule:truthy
       - .github/workflows/terraform-import-initiatives.yml
       - terraform/modules/policy_initiatives/**
       - terraform/scripts/import-initiatives.ps1
+      - modules/policies/initiatives/**
   workflow_dispatch:
 
 # Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow
