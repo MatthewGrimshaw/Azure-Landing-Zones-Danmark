@@ -101,3 +101,70 @@ $resourceId = (Get-AzRoleAssignment -Scope '/providers/Microsoft.Management/mana
 
 
 -Property RoleDefinitionId -eq -Value "8e3af657-a8ff-443c-a75c-2fe8c4bcb635" -and -Property -DisplayName -eq -Value 'uai'
+
+#### Document - get in the right format ######
+$mgmtGrp = "matthew-lz"
+$defintion = Get-AzPolicySetDefinition -Name 'Audit CIS Implementation Group 2 Level 2 controls' -ManagementGroupName $mgmtGrp
+$assignmnetName = "AuditCISGroup2Level2"
+$CISLevel = "2"
+$CISGroup = "1"
+
+$masterArray = @()
+
+foreach ($PolicyDefintion in $defintion.Properties.PolicyDefinitions){
+    $object1 = New-Object PSObject
+    # CIS Control Family
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "CIS Control Family" -Value ""
+    #write-host "CIS Control Family"
+    # CIS Control Title
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "CIS Control Title" -Value ""
+    #write-host "CIS Control Title"
+    # CIS Control ID
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "CIS Control ID" -Value ""
+    #write-host "CIS Control ID"
+    # Description
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Description" -Value ""
+    #write-host "Description"
+    # Control Domain
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Control Domain" -Value ""
+    #write-host "Control Domain"
+    # Control Name
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Control Name" -Value ""
+    #write-host "Control Name"
+    # Level
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Control Level" -Value $CISLevel
+    #Write-host "CIS Level" $CISLevel
+    # Group
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Control Group" -Value $CISGroup
+    #Write-host "CIS Group" $CISGroup
+    # CIS Revision
+    $string = $PolicyDefintion.groupNames | Out-String
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Azure CIS Revision" -Value  $string
+    #write-host "Azure CIS Revision:" $PolicyDefintion.groupNames
+    # Audit Name
+    $Policy = Get-AzPolicyDefinition -Id $PolicyDefintion.policyDefinitionId
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Azure Audit Policy Name:" -Value $Policy.Properties.DisplayName
+    #write-host "Azure Policy Name:" $Policy.Properties.DisplayName
+    # Audit Description
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Azure Audit Policy Description:" -Value $Policy.Properties.Description
+    #write-host "Azure Policy Description:" $Policy.Properties.Description
+    # Audit Guid
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Azure Audit Policy Id" -Value $PolicyDefintion.policyDefinitionReferenceId
+    #write-host "Azure Policy Id: " $PolicyDefintion.policyDefinitionReferenceId
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Azure Enforce Policy Name:" -Value ""
+    #write-host "Azure Policy Name:" $Policy.Properties.DisplayName
+    # Audit Description
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Azure Enforce Policy Description:" -Value ""
+    #write-host "Azure Policy Description:" $Policy.Properties.Description
+    # Audit Guid
+    Add-Member -InputObject $object1 -MemberType NoteProperty -Name "Azure Enforce Policy Id" -Value ""
+
+    $masterArray += $object1
+}
+
+$masterArray | convertTo-csv | Out-File "AuditCISGroup2Level2.csv"
+
+
+###
+
+Get-AzPolicyDefinition -Name "a06d0189-92e8-4dba-b0c4-08d7669fce7d"

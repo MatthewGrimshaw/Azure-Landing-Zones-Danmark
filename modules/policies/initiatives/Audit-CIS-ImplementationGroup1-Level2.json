@@ -2,7 +2,7 @@
   "properties": {
     "displayName": "Audit CIS Implementation Group 1 Level 2 controls",
     "policyType": "Custom",
-    "description": "This policy initiative is a group of policies that Audit CIS Implementation Group 1 Level 2 controls.",
+    "description": "This policy initiative is a group of policies that Audits CIS Implementation Group 1 Level 2 controls.",
     "metadata": {
       "version": "1.0",
       "category": "Regulatory Compliance"
