@@ -208,7 +208,7 @@
       },
       {
         "policyDefinitionReferenceId": "enable-soft-delete-and-purge-protection-on-Key-Vaults",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/enable-soft-delete-and-purge-protection-on-Key-Vaults",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/enable-soft-delete-and-purge-protection-on-Key-Vaults",
         "parameters": {},
         "groupNames": [
           "CIS_Azure_1.4.0_8.6"
