@@ -4,14 +4,16 @@ name: Deploy Policies
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - main
+      #- main
+      - none
     paths:
       - .github/workflows/policies.yml
       - modules/policies/**
       - environments/*/policies*
   pull_request:
     branches:
-      - main
+      # - main
+      - none
     paths:
       - .github/workflows/policies.yml
       - modules/policies/**
