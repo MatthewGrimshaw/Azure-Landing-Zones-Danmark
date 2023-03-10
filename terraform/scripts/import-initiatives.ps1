@@ -58,6 +58,7 @@ $env:ARM_CLIENT_ID=$ARM_CLIENT_ID
 $env:ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
 $env:ARM_TENANT_ID= $ARM_TENANT_ID
 $env:ARM_USE_OIDC="true"
+$env:TF_LOG="DEBUG"
 
 # get json file with resources to be imported
 Push-Location
