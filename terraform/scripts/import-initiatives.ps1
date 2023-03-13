@@ -37,7 +37,7 @@ function lastExitCode {
         Write-Error $StandardError
         #exit(1)
     }
-
+    write-output "Past Standard Error"
     If($StandardOutput -match "Resource already managed by Terraform"){
       write-output "Terraform already manages this resource. Import Script will continue"
     }
@@ -49,7 +49,9 @@ function lastExitCode {
     Else{
         Write-Output "Standard Output : "
         Write-Output $StandardOutput
+        Write-Output "In Standard Output "
     }
+    Write-Output "Past Everything"
 }
 
 
@@ -106,7 +108,7 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
     $process.StartInfo.FileName = $FileName
     $process.StartInfo.Arguments = $arguments
     $process.StartInfo.WorkingDirectory = $importDir
-    $process.Start() | Out-Null
+    $process.Start() #| Out-Null
     $StandardError = $process.StandardError.ReadToEnd()
     $StandardOutput = $process.StandardOutput.ReadToEnd()
     lastExitCode $StandardError $StandardOutput
