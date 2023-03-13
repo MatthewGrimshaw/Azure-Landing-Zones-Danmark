@@ -110,95 +110,6 @@
     },
     "policyDefinitions":  [
       {
-        "policyDefinitionReferenceId": "DeploySecurityContacts",
-        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Defender-Configure-Security-Contacts",
-        "parameters": {
-          "emailSecurityContact": {
-            "value": "[parameters('emailSecurityContact')]"
-          }
-        },
-        "groupNames": [
-          "CIS_Azure_1.4.0_2.13"
-        ]
-      },
-      {
-        "policyDefinitionReferenceId": "ConfigureStorageAccountsToDisablePublicNetworkAccess",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a06d0189-92e8-4dba-b0c4-08d7669fce7d",
-        "parameters": {},
-        "groupNames": [
-          "CIS_Azure_1.4.0_5.1.3",
-          "CIS_Azure_1.4.0_3.5"
-        ]
-      },
-      {
-        "policyDefinitionReferenceId": "ConfigureYourStorageAccountPublicAccessToBeDisallowed",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/13502221-8df0-4414-9937-de9c5c4e396b",
-        "parameters": {},
-        "groupNames": [
-          "CIS_Azure_1.4.0_5.1.3",
-          "CIS_Azure_1.4.0_3.5"
-        ]
-      },
-      {
-        "policyDefinitionReferenceId": "DeployNetworkWatcherWhenVirtualNetworksAreCreated",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a9b99dd8-06c5-4317-8629-9d86a3c6e7d9",
-        "parameters": {},
-        "groupNames": [
-          "CIS_Azure_1.4.0_6.5"
-        ]
-      },
-      {
-        "policyDefinitionReferenceId": "[Preview]:ConfigurePeriodicCheckingForMissingSystemUpdatesOnAzureVirtualMachines",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/59efceea-0c96-497e-a4a1-4eb2290dac15",
-        "parameters": {
-          "assessmentMode": {
-            "value": "[parameters('assessmentMode')]"
-          },
-          "osType": {
-            "value": "[parameters('osType')]"
-          },
-          "locations": {
-            "value": "[parameters('locations')]"
-          },
-          "tagValues": {
-            "value": "[parameters('tagValues')]"
-          },
-          "tagOperator": {
-            "value": "[parameters('tagOperator')]"
-          }
-        },
-        "groupNames": [
-          "CIS_Azure_1.4.0_7.5"
-        ]
-      },
-      {
-        "policyDefinitionReferenceId": "[Preview]:ScheduleRecurringUpdatesUsingUpdateManagementCenter",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
-        "parameters": {
-          "maintenanceConfigurationResourceId": {
-            "value": "[parameters('maintenanceConfigurationResourceId')]"
-          },
-          "resourceGroups": {
-            "value": "[parameters('resourceGroups')]"
-          },
-          "operatingSystemTypes": {
-            "value": "[parameters('operatingSystemTypes')]"
-          },
-          "locations": {
-            "value": "[parameters('locations')]"
-          },
-          "tagValues": {
-            "value": "[parameters('arrtagValues')]"
-          },
-          "tagOperator": {
-            "value": "[parameters('tagOperator')]"
-          }
-        },
-        "groupNames": [
-          "CIS_Azure_1.4.0_7.5"
-        ]
-      },
-      {
         "policyDefinitionReferenceId": "ConfigureAzureDefenderForServersToBeEnabled",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8e86a5b6-b9bd-49d1-8e21-4bb8a0862222",
         "parameters": {},
@@ -207,36 +118,76 @@
         ]
       },
       {
-        "policyDefinitionReferenceId": "enable-soft-delete-and-purge-protection-on-Key-Vaults",
-        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/enable-soft-delete-and-purge-protection-on-Key-Vaults",
+        "policyDefinitionReferenceId": "ConfigureAzureDefenderForAppServiceToBeEnabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b40e7bcd-a1e5-47fe-b9cf-2f534d0bfb7d",
         "parameters": {},
         "groupNames": [
-          "CIS_Azure_1.4.0_8.6"
+          "CIS_Azure_1.4.0_2.2"
         ]
       },
       {
-        "policyDefinitionReferenceId": "Configure-App-Service-apps-to-use-the latest-TLS-version",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ae44c1d1-0df2-4ca9-98fa-a3d3ae5b409d",
+        "policyDefinitionReferenceId": "ConfigureAzureDefenderForOpenSourceRelationalDatabasesToBeEnabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/44433aa3-7ec2-4002-93ea-65c65ff0310a",
         "parameters": {},
         "groupNames": [
-          "CIS_Azure_1.4.0_9.9"
+          "CIS_Azure_1.4.0_2.3"
         ]
       },
       {
-        "policyDefinitionReferenceId": "Configure-Function-apps-to-use-the latest-TLS-version",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f01f1c7-539c-49b5-9ef4-d4ffa37d22e0",
+        "policyDefinitionReferenceId": "ConfigureAzureDefenderForAzureSqlDatabaseToBeEnabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b99b73e7-074b-4089-9395-b7236f094491",
         "parameters": {},
         "groupNames": [
-          "CIS_Azure_1.4.0_9.9"
+          "CIS_Azure_1.4.0_2.3"
         ]
       },
       {
-        "policyDefinitionReferenceId": "Configure-Your-Storage-Account-Public-Access-to-be-disallowed",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/13502221-8df0-4414-9937-de9c5c4e396b",
+        "policyDefinitionReferenceId": "ConfigureAzureDefenderForSqlServersOnMachinesToBeEnabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/50ea7265-7d8c-429e-9a7d-ca1f410191c3",
         "parameters": {},
         "groupNames": [
-          "CIS_Azure_1.4.0_5.1.3",
-          "CIS_Azure_1.4.0_3.5"
+          "CIS_Azure_1.4.0_2.4"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAzureDefenderForStorageToBeEnabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/74c30959-af11-47b3-9ed2-a26e03f427a3",
+        "parameters": {},
+        "groupNames": [
+          "CIS_Azure_1.4.0_2.5"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureMicrosoftDefenderForContainersToBeEnabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c9ddb292-b203-4738-aead-18e2716e858f",
+        "parameters": {},
+        "groupNames": [
+          "CIS_Azure_1.4.0_2.6",
+          "CIS_Azure_1.4.0_2.7"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAzureDefenderForKeyVaultsToBeEnabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f725891-01c0-420a-9059-4fa46cb770b7",
+        "parameters": {},
+        "groupNames": [
+          "CIS_Azure_1.4.0_2.8"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureFunctionAppsToOnlyBeAccessibleOverHTTPS",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a096cbd0-4693-432f-9374-682f485f23f3",
+        "parameters": {},
+        "groupNames": [
+          "CIS_Azure_1.4.0_9.1"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "app-service_functionapp-enforce-client-certs-dine",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/app-service_functionapp-enforce-client-certs-dine",
+        "parameters": {},
+        "groupNames": [
+          "CIS_Azure_1.4.0_9.1"
         ]
       }
       ],

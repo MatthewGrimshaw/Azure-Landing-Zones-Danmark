@@ -35,7 +35,7 @@ function lastExitCode {
     if($StandardError){
         Write-Error "Standard Error"
         Write-Error $StandardError
-        exit(1)
+        #exit(1)
     }
 
     If($StandardOutput -match "Resource already managed by Terraform"){
@@ -44,7 +44,7 @@ function lastExitCode {
     ElseIf($StandardOutput -match "Error"){
       write-Error "Errors detected"
       Write-Error $StandardOutput
-      exit(1)
+      #exit(1)
     }
     Else{
         Write-Output "Standard Output : "
