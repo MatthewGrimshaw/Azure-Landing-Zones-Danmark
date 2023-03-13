@@ -27,7 +27,7 @@
         ],
         "defaultValue": "AutomaticByPlatform"
       },
-      "osType": {
+    "osType": {
         "type": "String",
         "metadata": {
           "displayName": "OS type",
@@ -39,7 +39,7 @@
         ],
         "defaultValue": "Windows"
       },
-      "operatingSystemTypes": {
+    "operatingSystemTypes": {
         "type": "Array",
         "metadata": {
           "displayName": "Operating System types",
@@ -71,7 +71,7 @@
         },
         "defaultValue": {}
       },
-        "arrtagValues": {
+    "arrtagValues": {
         "type": "Array",
         "metadata": {
           "displayName": "Tags on machines",

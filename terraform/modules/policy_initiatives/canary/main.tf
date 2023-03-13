@@ -47,7 +47,7 @@ for_each = {for f in local.json_map : f.name => f if f.category == "Regulatory C
   }
 }
 
-resource azurerm_policy_set_definition setdef {
+resource azurerm_policy_set_definition setdef_policy {
 for_each = {for f in local.json_map : f.name => f if f.category != "Regulatory Compliance"}
   name = each.value.element.name
   policy_type = each.value.element.properties.policyType

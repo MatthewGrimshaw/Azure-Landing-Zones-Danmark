@@ -94,7 +94,7 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
     else{
         # initiatives are an array and need an index
         #write-output "azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"] `"$resourceId`""
-        $arguments="import `"azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"]`" `"$resourceId`""
+        $arguments="import `"azurerm_policy_set_definition.setdef_policy[\`"$($initiative.name)\`"]`" `"$resourceId`""
         #write-output $arguments
         $importArray += $arguments
     }
@@ -102,11 +102,13 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
 
 #debug
 foreach($import in $importArray){
-    write-output $import in $importArray
+    write-output $import
 }
 
 foreach($import in $importArray){
     # Check return code status
+    write-output " Starting import for:"
+    write-output $import
     $FileName = "terraform"
     $process = New-Object System.Diagnostics.Process
     $process.StartInfo.UseShellExecute = $false
