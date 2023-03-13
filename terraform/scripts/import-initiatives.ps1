@@ -35,23 +35,21 @@ function lastExitCode {
     if($StandardError){
         Write-Error "Standard Error"
         Write-Error $StandardError
-        #exit(1)
+        exit(1)
     }
-    write-output "Past Standard Error"
+
     If($StandardOutput -match "Resource already managed by Terraform"){
       write-output "Terraform already manages this resource. Import Script will continue"
     }
     ElseIf($StandardOutput -match "Error"){
       write-Error "Errors detected"
       Write-Error $StandardOutput
-      #exit(1)
+      exit(1)
     }
     Else{
         Write-Output "Standard Output : "
-        Write-Output $StandardOutput
-        Write-Output "In Standard Output "
+        Write-Output $StandardOutput       
     }
-    Write-Output "Past Everything"
 }
 
 
@@ -73,7 +71,7 @@ Write-Output $policyDir
 # initialise terraform
 terraform init -backend-config storage_account_name=$storageAccountName -backend-config container_name=$containerName -backend-config resource_group_name=$ResourceGroupName -backend-config key=$tfStateFile
 
-
+$importArray = @()
 
 # import policies from directory
 ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
@@ -88,17 +86,26 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
 
     if($initiative.Properties.Metadata.category -eq "Regulatory Compliance"){
         # initiatives are an array and need an index
-        write-output "azurerm_policy_set_definition.setdef_regcomp[\`"$($initiative.name)\`"] `"$resourceId`""
+        #write-output "azurerm_policy_set_definition.setdef_regcomp[\`"$($initiative.name)\`"] `"$resourceId`""
         $arguments="import `"azurerm_policy_set_definition.setdef_regcomp[\`"$($initiative.name)\`"]`" `"$resourceId`""
-        write-output $arguments
+        #write-output $arguments
+        $importArray += $arguments
     }
     else{
         # initiatives are an array and need an index
-        write-output "azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"] `"$resourceId`""
+        #write-output "azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"] `"$resourceId`""
         $arguments="import `"azurerm_policy_set_definition.setdef[\`"$($initiative.name)\`"]`" `"$resourceId`""
-        write-output $arguments
+        #write-output $arguments
+        $importArray += $arguments
     }
+}
 
+#debug
+foreach($import in $importArray){
+    write-output $import in $importArray
+}
+
+foreach($import in $importArray){
     # Check return code status
     $FileName = "terraform"
     $process = New-Object System.Diagnostics.Process
@@ -106,13 +113,14 @@ ForEach($customPolicy in (Get-ChildItem -Path $policyDir)){
     $process.StartInfo.RedirectStandardOutput = $true
     $process.StartInfo.RedirectStandardError = $true
     $process.StartInfo.FileName = $FileName
-    $process.StartInfo.Arguments = $arguments
+    $process.StartInfo.Arguments = $import #$arguments
     $process.StartInfo.WorkingDirectory = $importDir
     $process.Start() #| Out-Null
     $StandardError = $process.StandardError.ReadToEnd()
     $StandardOutput = $process.StandardOutput.ReadToEnd()
     lastExitCode $StandardError $StandardOutput
-
 }
+
+
 
 Pop-Location
