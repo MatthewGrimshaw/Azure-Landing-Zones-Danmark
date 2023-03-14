@@ -1,5 +1,5 @@
 ---
-name: terraform - Deploy Policies
+name: terraform - Deploy Policies.
 
 on:  # yamllint disable-line rule:truthy
   push:
