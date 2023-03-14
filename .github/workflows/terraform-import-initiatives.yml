@@ -4,8 +4,9 @@ name: terraform - Import Initiatives
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - main
-      - onboarding
+     # - main
+     # - onboarding
+      - none
     paths:
       - .github/workflows/terraform-import-initiatives.yml
       - terraform/modules/policy_initiatives/**
@@ -15,7 +16,8 @@ on:  # yamllint disable-line rule:truthy
     types:
       - opened
     branches:
-      - main
+      # - main
+      - none
     paths:
       - .github/workflows/terraform-import-initiatives.yml
       - terraform/modules/policy_initiatives/**

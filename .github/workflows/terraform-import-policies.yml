@@ -4,8 +4,9 @@ name: terraform - Import Policies.
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - main
-      - onboarding
+      #- main
+      #- onboarding
+      - none
     paths:
       - .github/workflows/terraform-import-policies.yml
       - terraform/modules/policy_definitions/**
@@ -14,7 +15,8 @@ on:  # yamllint disable-line rule:truthy
     types:
       - opened
     branches:
-      - main
+     # - main
+     - none
     paths:
       - .github/workflows/terraform-import-policies.yml
       - terraform/modules/policy_definitions/**
