@@ -191,5 +191,5 @@
     ]
   },
   "type": "Microsoft.Authorization/policySetDefinitions",
-  "name": "Enforce CIS Implementation Group 1 Level 1 controls"
+  "name": "Enforce CIS Implementation Group 1 Level 2 controls"
 }
