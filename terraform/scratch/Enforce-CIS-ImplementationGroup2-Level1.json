@@ -39,6 +39,234 @@
           "description": "Auditing writes database events to an audit log in your Azure Storage account (a storage account will be created in each region where a SQL Server is created that will be shared by all servers in that region). Important - for proper operation of Auditing do not delete or rename the resource group or the storage accounts.",
           "strongType": "existingResourceGroups"
         }
+      },
+      "diagnosticsSettingNameToUse": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Setting name",
+          "description": "Name of the diagnostic settings."
+        },
+        "defaultValue": "AzureKeyVaultDiagnosticsLogsToWorkspace"
+      },
+      "logAnalytics": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Log Analytics workspace",
+          "description": "Specify the Log Analytics workspace the Key Vault should be connected to.",
+          "strongType": "omsWorkspace",
+          "assignPermissions": true
+        }
+      },
+      "AuditEventEnabled": {
+        "type": "String",
+        "metadata": {
+          "displayName": "AuditEvent - Enabled",
+          "description": "Whether to stream AuditEvent logs to the Log Analytics workspace - True or False"
+        },
+        "allowedValues": [
+          "True",
+          "False"
+        ],
+        "defaultValue": "True"
+      },
+      "AllMetricsEnabled": {
+        "type": "String",
+        "metadata": {
+          "displayName": "AllMetrics - Enabled",
+          "description": "Whether to stream AllMetrics logs to the Log Analytics workspace - True or False"
+        },
+        "allowedValues": [
+          "True",
+          "False"
+        ],
+        "defaultValue": "True"
+      },
+      "storageId": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Storage id",
+          "description": "A string with the storage id for the flowlogs to be sent to. The format must be: '/subscriptions/{subscription id}/resourceGroups/{resourceGroup name}/providers/Microsoft.Storage/storageAccounts/{storage account name}"
+        }
+      },
+      "targetRegion": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Target Region",
+          "description": "This needs to use the name format for the region found by running 'az account list-locations' or 'Get-AzLocation'"
+        }
+      },
+      "logsEnabled": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Enable logs",
+          "description": "Whether to enable logs stream to the Log Analytics workspace - True or False"
+        },
+        "allowedValues": [
+          "True",
+          "False"
+        ],
+        "defaultValue": "True"
+      },
+      "retention": {
+        "type": "Integer",
+        "metadata": {
+          "displayName": "Retention"
+        },
+        "defaultValue": 5
+      },
+      "trafficAnalyticsInterval": {
+        "type": "Integer",
+        "metadata": {
+          "displayName": "Traffic Analytics processing interval mins (10/60)"
+        },
+        "defaultValue": 60
+      },
+      "flowAnalyticsEnabled": {
+        "type": "Boolean",
+        "metadata": {
+          "displayName": "Enable Traffic Analytics"
+        },
+        "defaultValue": false
+      },
+      "profileName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Profile name",
+          "description": "The diagnostic settings profile name"
+        },
+        "defaultValue": "setbypolicy"
+      },
+      "KeyVaultLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for Key Vault to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for Key Vault to stream to a Log Analytics workspace when any Key Vault which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "ActivityLogsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "AppServiceLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for App Service Plan to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for App Service Plan to stream to a Log Analytics workspace when any App Service Plan which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "MySQLLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for Database for MySQL to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for Database for MySQL to stream to a Log Analytics workspace when any Database for MySQL which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+     "PostgreSQLLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for Database for PostgreSQL to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for Database for PostgreSQL to stream to a Log Analytics workspace when any Database for PostgreSQL which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "SQLDBsLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for SQL Databases  to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for SQL Databases to stream to a Log Analytics workspace when any SQL Databases  which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "SQLElasticPoolsLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for SQL Elastic Pools to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for SQL Elastic Pools to stream to a Log Analytics workspace when any SQL Elastic Pools which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "SQLMLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for SQL Managed Instances to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for SQL Managed Instances to stream to a Log Analytics workspace when any SQL Managed Instances which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "BatchLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for Batch to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for Batch to stream to a Log Analytics workspace when any Batch which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "DataLakeStoreLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for Azure Data Lake Store to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for Azure Data Lake Store to stream to a Log Analytics workspace when anyAzure Data Lake Store which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "DataLakeAnalyticsLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for Data Lake Analytics to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for Data Lake Analytics to stream to a Log Analytics workspace when any Data Lake Analytics which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
       }
     },
     "policyDefinitions":  [
@@ -69,101 +297,468 @@
       {
         "policyDefinitionReferenceId": "ConfigureSQLServersToHaveAuditingEnabled",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f4c68484-132f-41f9-9b6d-3e4b1cb55036",
-        "parameters": {
-          "retentionDays": {
-            "value": "[parameters('retentionDays')]"
-          },
-          "storageAccountsResourceGroup": {
-            "value": "[parameters('storageAccountsResourceGroup')]"
-          }
-        },
+        "parameters": {},
         "groupNames": [
           "CIS_Azure_1.4.0_4.1.1"
         ]
       },
       {
-        "policyDefinitionReferenceId": "ConfigureYourStorageAccountPublicAccessToBeDisallowed",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/13502221-8df0-4414-9937-de9c5c4e396b",
+        "policyDefinitionReferenceId": "DeploySQLDBTransparentDataEncryption",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f",
         "parameters": {},
         "groupNames": [
-          "CIS_Azure_1.4.0_5.1.3",
-          "CIS_Azure_1.4.0_3.5"
+          "CIS_Azure_1.4.0_4.1.2"
         ]
       },
       {
-        "policyDefinitionReferenceId": "DeployNetworkWatcherWhenVirtualNetworksAreCreated",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a9b99dd8-06c5-4317-8629-9d86a3c6e7d9",
-        "parameters": {},
-        "groupNames": [
-          "CIS_Azure_1.4.0_6.5"
-        ]
-      },
-      {
-        "policyDefinitionReferenceId": "[Preview]:ConfigurePeriodicCheckingForMissingSystemUpdatesOnAzureVirtualMachines",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/59efceea-0c96-497e-a4a1-4eb2290dac15",
+        "policyDefinitionReferenceId": "KeyVaultDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/bef3f64c-5290-43b7-85b0-9b254eef4c47",
         "parameters": {
-          "assessmentMode": {
-            "value": "[parameters('assessmentMode')]"
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
           },
-          "osType": {
-            "value": "[parameters('osType')]"
+          "effect": {
+            "value": "[parameters('KeyVaultLogAnalyticsEffect')]"
           },
-          "locations": {
-            "value": "[parameters('locations')]"
+          "profileName": {
+            "value": "[parameters('profileName')]"
           },
-          "tagValues": {
-            "value": "[parameters('tagValues')]"
-          },
-          "tagOperator": {
-            "value": "[parameters('tagOperator')]"
+          "KeyVaultLogAnalyticsEffect": {
+            "value": "[parameters('KeyVaultLogAnalyticsEffect')]"
           }
         },
         "groupNames": [
-          "CIS_Azure_1.4.0_7.5"
+          "CIS_Azure_1.4.0_5.1.5",
+          "CIS_Azure_1.4.0_5.3"
         ]
       },
       {
-        "policyDefinitionReferenceId": "[Preview]:ScheduleRecurringUpdatesUsingUpdateManagementCenter",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ba0df93e-e4ac-479a-aac2-134bbae39a1a",
+        "policyDefinitionReferenceId": "Deploy-ConfigureDiagnosticSettingsForAzureKeyVaultToLogAnalyticsWorkspace",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/951af2fa-529b-416e-ab6e-066fd85ac459",
+        "parameters": {          
+          "logAnalytics": {
+          "value": "[parameters('logAnalytics')]"
+        },
+          "AuditEventEnabled": {
+          "value": "[parameters('AuditEventEnabled')]"
+        },
+          "AllMetricsEnabled": {
+          "value": "[parameters('AllMetricsEnabled')]"
+        },
+        "diagnosticsSettingNameToUse": {
+          "value": "[parameters('diagnosticsSettingNameToUse')]"
+        },
+        "KeyVaultLogAnalyticsEffect": {
+          "value": "[parameters('KeyVaultLogAnalyticsEffect')]"
+        }
+      },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.1.5",
+          "CIS_Azure_1.4.0_5.1.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "deploy-nsg-flow-logs-to-target-region",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/deploy-nsg-flow-logs-to-target-region",
         "parameters": {
-          "maintenanceConfigurationResourceId": {
-            "value": "[parameters('maintenanceConfigurationResourceId')]"
+          "storageId": {
+            "value": "[parameters('storageId')]"
           },
-          "resourceGroups": {
-            "value": "[parameters('resourceGroups')]"
-          },
-          "operatingSystemTypes": {
-            "value": "[parameters('operatingSystemTypes')]"
-          },
-          "locations": {
-            "value": "[parameters('locations')]"
-          },
-          "tagValues": {
-            "value": "[parameters('arrtagValues')]"
-          },
-          "tagOperator": {
-            "value": "[parameters('tagOperator')]"
+          "targetRegion": {
+            "value": "[parameters('targetRegion')]"
           }
         },
         "groupNames": [
-          "CIS_Azure_1.4.0_7.5"
+          "CIS_Azure_1.4.0_5.2.4",
+          "CIS_Azure_1.4.0_5.2.5"
         ]
       },
       {
-        "policyDefinitionReferenceId": "ConfigureAzureDefenderForServersToBeEnabled",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8e86a5b6-b9bd-49d1-8e21-4bb8a0862222",
-        "parameters": {},
+        "policyDefinitionReferenceId": "MySQLDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-MySQL",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('MySQLLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
         "groupNames": [
-          "CIS_Azure_1.4.0_7.6"
+          "CIS_Azure_1.4.0_5.2.6"
         ]
       },
       {
-        "policyDefinitionReferenceId": "enable-soft-delete-and-purge-protection-on-Key-Vaults",
-        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/enable-soft-delete-and-purge-protection-on-Key-Vaults",
-        "parameters": {},
+        "policyDefinitionReferenceId": "PostgreSQLDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-PostgreSQL",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('PostgreSQLLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
         "groupNames": [
-          "CIS_Azure_1.4.0_8.6"
+          "CIS_Azure_1.4.0_5.2.6"
         ]
+      },
+      {
+        "policyDefinitionReferenceId": "SQLDatabaseDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b79fa14e-238a-4c2d-b376-442ce508fc84",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('SQLDBsLogAnalyticsEffect')]"
+          },
+          "diagnosticsSettingNameToUse": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.2.6"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "SQLElasticPoolsDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-SQLElasticPools",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('SQLElasticPoolsLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.2.6"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "SQLMDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-SQLMI",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('SQLMLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.2.6"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAzureActivitylogsToStreamToSpecifiedLogAnalyticsWorkspace",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2465583e-4e78-4c15-b6be-a36cbc7c8b0f",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "logsEnabled": {
+            "value": "[parameters('logsEnabled')]"
+          },
+          "effect": {
+            "value": "[parameters('ActivityLogsEffect')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.2.9"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "Deploy-Nsg-FlowLogs",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Nsg-FlowLog",
+        "parameters": {
+          "retention": {
+            "value": "[parameters('retention')]"
+          },
+          "storageAccountResourceId": {
+            "value": "[parameters('storageId')]"
+          },
+          "trafficAnalyticsInterval": {
+            "value": "[parameters('trafficAnalyticsInterval')]"
+          },
+          "flowAnalyticsEnabled": {
+            "value": "[parameters('flowAnalyticsEnabled')]"
+          },
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.2.9"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "AppServiceDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-WebServerFarm",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          },
+          "metricsEnabled": {
+            "value": "[parameters('AllMetricsEnabled')]"
+          },
+          "effect": {
+            "value": "[parameters('AppServiceLogAnalyticsEffect')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "DeployDiagnosticSettingsForBatchAccountToLogAnalyticsWorkspace",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c84e5349-db6d-4769-805e-e14037dab9b5",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          },
+          "metricsEnabled": {
+            "value": "[parameters('AllMetricsEnabled')]"
+          },
+          "logsEnabled": {
+            "value": "[parameters('logsEnabled')]"
+          },
+          "effect": {
+            "value": "[parameters('BatchLogAnalyticsEffect')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureLinuxVirtualMachineScaleSetsToRunAzureMonitorAgentWithSystem-assignedManagedIdentity-basedAuthentication",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/56a3e4f8-649b-4fac-887e-5564d11e8d3a",
+        "parameters": {
+          "listOfLinuxImageIdToInclude": {
+            "value": "[parameters('listOfLinuxImageIdToInclude')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureWindowsVirtualMachineScaleSetsToRunAzureMonitorAgentWithSystem-assignedManagedIdentity-basedAuthentication",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4efbd9d8-6bc6-45f6-9be2-7fe9dd5d89ff",
+        "parameters": {
+          "listOfWindowsImageIdToInclude": {
+            "value": "[parameters('listOfWindowsImageIdToInclude')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "DataLakeStoreDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d56a5a7c-72d7-42bc-8ceb-3baf4c0eae03",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('DataLakeStoreLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "DataLakeAnalyticsDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-DLAnalytics",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('DataLakeAnalyticsLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "IotHubDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-iotHub",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('IotHubLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "LogicAppsISEDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Diagnostics-LogicAppsISE",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('LogicAppsISELogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "LogicAppsWFDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b889a06c-ec72-4b03-910a-cb169ee18721",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('LogicAppsWFLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "ServiceBusDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/04d53d87-841c-4f23-8a5b-21564380b55e",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('ServiceBusLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_5.3"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "StreamAnalyticsDeployDiagnosticLogDeployLogAnalytics",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/237e0f7e-b0e8-4ec4-ad46-8c12cb66d673",
+        "parameters": {
+          "logAnalytics": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "effect": {
+            "value": "[parameters('StreamAnalyticsLogAnalyticsEffect')]"
+          },
+          "profileName": {
+            "value": "[parameters('profileName')]"
+          }
+        },
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAppServiceAppsToOnlyBeAccessibleOverHTTPS",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0f98368e-36bc-4716-8ac2-8f8067203b63",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('AppServicesHTTPSEffect')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_9.2"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureFunctionAppsToUseTheLatestTLSVersion",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f01f1c7-539c-49b5-9ef4-d4ffa37d22e0",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('FunctionAppTLSEffect')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_9.2"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAppsServiceAppsToUseTheLatestTLSVersion",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f01f1c7-539c-49b5-9ef4-d4ffa37d22e0",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('AppServiceAppTLSEffect')]"
+          }
+        },
+        "groupNames": [
+          "CIS_Azure_1.4.0_9.2"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureFunctionAppSlotsToDisableFtpAndFtps",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Function-App-Slots-Configure-Disable-FTPS",
+        "parameters": {},
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureFunctionAppsToDisableFtpAndFtps",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Function-Apps-Configure-Disable-FTPS",
+        "parameters": {},
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAppServiceAppsToDisableLocalAuthenticationForFtpDeployments",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/572e342c-c920-4ef5-be2e-1ed3c6a51dc5",
+        "parameters": {},
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAppServiceAppSlotsToDisableLocalAuthenticationForFtpDeployments",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f493116f-3b7f-4ab3-bf80-0c2af35e46c2",
+        "parameters": {},
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAppServiceAppSlotsToDisableFtpAndFtps",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/App-Service-App-Slots-Configure-Disable-FTPS",
+        "parameters": {},
+        "groupNames": []
       },
       {
         "policyDefinitionReferenceId": "Configure-App-Service-apps-to-use-the latest-TLS-version",
@@ -174,20 +769,17 @@
         ]
       },
       {
+        "policyDefinitionReferenceId": "ConfigureStorageAccountsToUseTheLatestTlsVersion",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Storage-Configure-Minimum-TLS",
+        "parameters": {},
+        "groupNames": []
+      },
+      {
         "policyDefinitionReferenceId": "Configure-Function-apps-to-use-the latest-TLS-version",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f01f1c7-539c-49b5-9ef4-d4ffa37d22e0",
         "parameters": {},
         "groupNames": [
           "CIS_Azure_1.4.0_9.9"
-        ]
-      },
-      {
-        "policyDefinitionReferenceId": "Configure-Your-Storage-Account-Public-Access-to-be-disallowed",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/13502221-8df0-4414-9937-de9c5c4e396b",
-        "parameters": {},
-        "groupNames": [
-          "CIS_Azure_1.4.0_5.1.3",
-          "CIS_Azure_1.4.0_3.5"
         ]
       }
       ],
