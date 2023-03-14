@@ -1,6 +1,11 @@
 {
   "properties": {
       "displayName": "Deploy NSG Flow Logs to Target Region",
+      "policyType": "Custom",
+      "metadata": {
+        "version": "1.0.0",
+        "category": "Monitoring"
+      },
       "parameters": {
         "storageId": {
           "type": "String",
