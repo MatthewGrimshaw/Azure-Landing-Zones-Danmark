@@ -14,7 +14,7 @@
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8e86a5b6-b9bd-49d1-8e21-4bb8a0862222",
         "parameters": {},
         "groupNames": [
-          "CIS_Azure_1.4.0_7.6"
+          "CIS_Azure_1.4.0_2.1"
         ]
       },
       {
