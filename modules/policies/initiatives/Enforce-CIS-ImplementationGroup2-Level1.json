@@ -340,6 +340,18 @@
         ],
         "defaultValue": "DeployIfNotExists"
       },
+     "AppServicesHTTPSEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "App Service TLS configuration",
+          "description": "App Service TLS configuration"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },      
      "FunctionAppTLSEffect": {
         "type": "String",
         "metadata": {
