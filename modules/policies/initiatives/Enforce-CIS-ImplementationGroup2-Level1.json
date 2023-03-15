@@ -295,7 +295,19 @@
      "IotHubLogAnalyticsEffect": {
         "type": "String",
         "metadata": {
-          "displayName": "Deploy Diagnostic Settings for Stream Analytics to Log Analytics workspace",
+          "displayName": "Deploy Diagnostic Settings for IoT Hub to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for Stream Analytics to stream to a Log Analytics workspace when any Stream Analytics which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+     "LogicAppsISELogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for Logic Apps ISE to Log Analytics workspace",
           "description": "Deploys the diagnostic settings for Stream Analytics to stream to a Log Analytics workspace when any Stream Analytics which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
         },
         "allowedValues": [
@@ -304,6 +316,7 @@
         ],
         "defaultValue": "DeployIfNotExists"
       }
+      
     },
     "policyDefinitions":  [
       {
