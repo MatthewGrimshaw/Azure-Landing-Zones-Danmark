@@ -218,6 +218,51 @@ locals {
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
           identity_type = []
-      }
+      },
+            {
+          name = "EnforceCISGroup1Level1"
+          display_name = "Enforce-CIS-Implementation Group-1-Level-1-controls-Assignment"
+          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 1 Level 1 controls"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary"
+          parameters = jsonencode(merge({
+            emailSecurityContact = {value = local.resource_ids.email_security_contact}
+            locations = {value = local.resource_ids.locations}
+            maintenanceConfigurationResourceId = {value = "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourcegroups/management/providers/microsoft.maintenance/maintenanceconfigurations/defautmaintenanceconfig"}
+          }))
+          identity_type = ["UserAssigned"]
+          identity_ids = [local.resource_ids.userAssignedIdentity]
+      },
+      {
+          name = "EnforceCISGroup1Level2"
+          display_name = "Enforce-CIS-Implementation Group-1-Level-2-controls-Assignment"
+          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 1 Level 2 controls"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
+          parameters = jsonencode(merge({}))
+          identity_type = []
+      },
+      {
+          name = "EnforceCISGroup2Level1"
+          display_name = "Enforce-CIS-Implementation Group-2-Level-1-controls-Assignment"
+          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 2 Level 1 controls"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
+          parameters = jsonencode(merge({
+            storageAccountsResourceGroup = {value = local.resource_ids.email_security_contact}
+            logAnalytics = {value = local.resource_ids.logAnalyticsWorkspaceName}
+            storageId = {value = local.resource_ids.storageId}
+            targetRegion = {value = local.resource_ids.locations}
+            flowAnalyticsEnabled = {value = true}
+
+          }))
+          identity_type = ["UserAssigned"]
+          identity_ids = [local.resource_ids.storageAccountsResourceGroup]
+      },
+      {
+          name = "EnforceCISGroup2Level2"
+          display_name = "Enforce-CIS-Implementation Group-2-Level-2-controls-Assignment"
+          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 2 Level 2 controls"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
+          parameters = jsonencode(merge({}))
+          identity_type = []
+      },
   ]
 }
