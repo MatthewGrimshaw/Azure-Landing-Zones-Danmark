@@ -595,7 +595,7 @@
       },
       {
         "policyDefinitionReferenceId": "Deploy-Nsg-FlowLogs",
-        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Nsg-FlowLog",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/<prefix>/providers/Microsoft.Authorization/policyDefinitions/Deploy-Nsg-FlowLogs",
         "parameters": {
           "retention": {
             "value": "[parameters('retention')]"
