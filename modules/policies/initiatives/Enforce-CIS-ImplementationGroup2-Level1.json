@@ -351,7 +351,7 @@
           "Disabled"
         ],
         "defaultValue": "DeployIfNotExists"
-      }           
+      }        
     },
     "policyDefinitions":  [
       {
@@ -432,7 +432,7 @@
         "diagnosticsSettingNameToUse": {
           "value": "[parameters('diagnosticsSettingNameToUse')]"
         },
-        "KeyVaultLogAnalyticsEffect": {
+        "effect": {
           "value": "[parameters('KeyVaultLogAnalyticsEffect')]"
         }
       },
