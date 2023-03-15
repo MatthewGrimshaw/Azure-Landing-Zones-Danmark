@@ -17,7 +17,6 @@ locals {
     logAnalayticsDataRetention = "30"
     logAnalyticsSKU = "pergb2018"
     locations = ["westeurope"]
-
   }
 
   azurerm_management_group_assignments = [
@@ -230,7 +229,8 @@ locals {
             locations= {value = local.resource_ids.locations}
             maintenanceConfigurationResourceId = {value = "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourcegroups/management/providers/microsoft.maintenance/maintenanceconfigurations/defautmaintenanceconfig"}
           }))
-          identity_type = []
+          identity_type = ["UserAssigned"]
+        identity_ids = [local.resource_ids.userAssignedIdentity]
       }
   ]
 }
