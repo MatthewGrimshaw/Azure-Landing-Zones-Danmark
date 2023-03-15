@@ -16,7 +16,9 @@ locals {
     logAnalyticsWorkspaceName = "mgmtworkspace"
     logAnalayticsDataRetention = "30"
     logAnalyticsSKU = "pergb2018"
-
+    locations = ["westeurope"]
+    storageAccountsResourceGroup = "Management"
+    storageId = "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourceGroups/Management/providers/Microsoft.Storage/storageAccounts/mgmtstorageqwerty"
   }
 
   azurerm_management_group_assignments = [
@@ -253,7 +255,7 @@ locals {
             flowAnalyticsEnabled = {value = true}
           }))
           identity_type = ["UserAssigned"]
-          identity_ids = [local.resource_ids.storageAccountsResourceGroup]
+          identity_ids = [local.resource_ids.userAssignedIdentity]
       },
       {
           name = "EnforceCISGroup2Level2"

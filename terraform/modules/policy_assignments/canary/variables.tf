@@ -256,7 +256,7 @@ locals {
 
           }))
           identity_type = ["UserAssigned"]
-          identity_ids = [local.resource_ids.storageAccountsResourceGroup]
+          identity_ids = [local.resource_ids.userAssignedIdentity]
       },
       {
           name = "EnforceCISGroup2Level2"
