@@ -347,10 +347,10 @@
           "description": "App Service TLS configuration"
         },
         "allowedValues": [
-          "DeployIfNotExists",
+          "Modify",
           "Disabled"
         ],
-        "defaultValue": "DeployIfNotExists"
+        "defaultValue": "Modify"
       },      
      "FunctionAppTLSEffect": {
         "type": "String",
