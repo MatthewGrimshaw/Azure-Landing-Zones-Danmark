@@ -249,7 +249,7 @@ locals {
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary"
           parameters = jsonencode(merge({
             storageAccountsResourceGroup = {value = local.resource_ids.email_security_contact}
-            logAnalytics = {value = local.resource_ids.logAnalyticsWorkspaceName}
+            logAnalytics = {value = local.resource_ids.log_analytics_workspace}
             storageId = {value = local.resource_ids.storageId}
             targetRegion = {value = local.resource_ids.locations}
             flowAnalyticsEnabled = {value = true}
