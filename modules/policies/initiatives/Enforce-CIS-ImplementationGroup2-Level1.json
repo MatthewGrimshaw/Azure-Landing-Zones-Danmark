@@ -296,7 +296,7 @@
         "type": "String",
         "metadata": {
           "displayName": "Deploy Diagnostic Settings for IoT Hub to Log Analytics workspace",
-          "description": "Deploys the diagnostic settings for Stream Analytics to stream to a Log Analytics workspace when any Stream Analytics which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+          "description": "Deploys the diagnostic settings for IoT Hub to stream to a Log Analytics workspace when any Stream Analytics which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
         },
         "allowedValues": [
           "DeployIfNotExists",
@@ -308,15 +308,38 @@
         "type": "String",
         "metadata": {
           "displayName": "Deploy Diagnostic Settings for Logic Apps ISE to Log Analytics workspace",
-          "description": "Deploys the diagnostic settings for Stream Analytics to stream to a Log Analytics workspace when any Stream Analytics which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+          "description": "Deploys the diagnostic settings for Logic Apps ISE to stream to a Log Analytics workspace when any Stream Analytics which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
         },
         "allowedValues": [
           "DeployIfNotExists",
           "Disabled"
         ],
         "defaultValue": "DeployIfNotExists"
-      }
-      
+      },
+     "ServiceBusLogAnalyticsEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Deploy Diagnostic Settings for Service Bus to Log Analytics workspace",
+          "description": "Deploys the diagnostic settings for Servive Bus to stream to a Log Analytics workspace when any Stream Analytics which is missing this diagnostic settings is created or updated. The Policy will set the diagnostic with all metrics and category enabled"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+     "FunctionAppTLSEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Function Apps TLS configuration",
+          "description": "Function Apps TLS configuration"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      }           
     },
     "policyDefinitions":  [
       {
