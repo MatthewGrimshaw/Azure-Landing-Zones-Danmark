@@ -363,7 +363,19 @@
           "Disabled"
         ],
         "defaultValue": "DeployIfNotExists"
-      }        
+      },
+     "AppServiceAppTLSEffect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Function Apps TLS configuration",
+          "description": "Function Apps TLS configuration"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      }
     },
     "policyDefinitions":  [
       {
@@ -843,7 +855,7 @@
       },
       {
         "policyDefinitionReferenceId": "ConfigureAppsServiceAppsToUseTheLatestTLSVersion",
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f01f1c7-539c-49b5-9ef4-d4ffa37d22e0",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ae44c1d1-0df2-4ca9-98fa-a3d3ae5b409d",
         "parameters": {
           "effect": {
             "value": "[parameters('AppServiceAppTLSEffect')]"
