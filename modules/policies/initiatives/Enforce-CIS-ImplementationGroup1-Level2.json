@@ -91,7 +91,7 @@
         ]
       }
       ],
-      "policyDefinitionGroups": [
+    "policyDefinitionGroups": [
         {
             "name": "CIS_Azure_1.4.0_1.2",
             "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_1.2"
