@@ -225,8 +225,8 @@ locals {
       {
           name = "EnforceCISGroup1Level1"
           display_name = "Enforce-CIS-Implementation Group-1-Level-1-controls-Assignment"
-          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 1 Level 1 controls"
-          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary"
+          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 1 Level 1 controls"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({
             emailSecurityContact = {value = local.resource_ids.email_security_contact}
             locations = {value = local.resource_ids.locations}
