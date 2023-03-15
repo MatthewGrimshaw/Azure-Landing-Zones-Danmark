@@ -437,9 +437,6 @@
           },
           "profileName": {
             "value": "[parameters('profileName')]"
-          },
-          "KeyVaultLogAnalyticsEffect": {
-            "value": "[parameters('KeyVaultLogAnalyticsEffect')]"
           }
         },
         "groupNames": [
