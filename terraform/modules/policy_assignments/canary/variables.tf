@@ -16,7 +16,7 @@ locals {
     logAnalyticsWorkspaceName = "mgmtworkspace"
     logAnalayticsDataRetention = "30"
     logAnalyticsSKU = "pergb2018"
-    locations = "westeurope"
+    locations = ["westeurope"]
 
   }
 
