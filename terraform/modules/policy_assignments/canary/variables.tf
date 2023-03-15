@@ -16,6 +16,7 @@ locals {
     logAnalyticsWorkspaceName = "mgmtworkspace"
     logAnalayticsDataRetention = "30"
     logAnalyticsSKU = "pergb2018"
+    locations = "westeurope"
 
   }
 
@@ -217,6 +218,18 @@ locals {
           policy_definition_id = "/providers/Microsoft.Authorization/policySetDefinitions/c3f5c4d9-9a1d-4a99-85c0-7f93e384d5c5"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary"
           parameters = jsonencode(merge({}))
+          identity_type = []
+      },
+      {
+          name = "EnforceCISGroup1Level1"
+          display_name = "Enforce-CIS-Implementation Group-1-Level-1-controls-Assignment"
+          policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 1 Level 1 controls"
+          management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary"
+          parameters = jsonencode(merge({
+            emailSecurityContact= {value = local.resource_ids.email_security_contact}
+            locations= {value = local.resource_ids.locations}
+            maintenanceConfigurationResourceId = {value = "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourcegroups/management/providers/microsoft.maintenance/maintenanceconfigurations/defautmaintenanceconfig"}
+          }))
           identity_type = []
       }
   ]
