@@ -17,6 +17,7 @@ locals {
     logAnalayticsDataRetention = "30"
     logAnalyticsSKU = "pergb2018"
     locations = ["westeurope"]
+    targetRegion  = "westeurope"
     storageAccountsResourceGroup = "Management"
     storageId = "/subscriptions/6a509a0a-f0b6-4e8c-88d3-7108d0f37309/resourceGroups/Management/providers/Microsoft.Storage/storageAccounts/mgmtstorageqwerty"
   }
@@ -221,7 +222,7 @@ locals {
           parameters = jsonencode(merge({}))
           identity_type = []
       },
-            {
+      {
           name = "EnforceCISGroup1Level1"
           display_name = "Enforce-CIS-Implementation Group-1-Level-1-controls-Assignment"
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 1 Level 1 controls"
@@ -240,7 +241,8 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 1 Level 2 controls"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
-          identity_type = []
+          identity_type = ["UserAssigned"]
+          identity_ids = [local.resource_ids.userAssignedIdentity]
       },
       {
           name = "EnforceCISGroup2Level1"
@@ -251,7 +253,7 @@ locals {
             storageAccountsResourceGroup = {value = local.resource_ids.email_security_contact}
             logAnalytics = {value = local.resource_ids.log_analytics_workspace}
             storageId = {value = local.resource_ids.storageId}
-            targetRegion = {value = local.resource_ids.locations}
+            targetRegion = {value = local.resource_ids.targetRegion}
             flowAnalyticsEnabled = {value = true}
           }))
           identity_type = ["UserAssigned"]
@@ -263,7 +265,8 @@ locals {
           policy_definition_id = "/providers/Microsoft.Management/managementGroups/matthew-lz/providers/Microsoft.Authorization/policySetDefinitions/Enforce CIS Implementation Group 2 Level 2 controls"
           management_group_id  = "/providers/Microsoft.Management/managementGroups/matthew-lz"
           parameters = jsonencode(merge({}))
-          identity_type = []
+          identity_type = ["UserAssigned"]
+          identity_ids = [local.resource_ids.userAssignedIdentity]
       },
   ]
 }
