@@ -783,102 +783,90 @@
         ]
       }
       ],
-    "policyDefinitionGroups": [
+      "policyDefinitionGroups": [
         {
-            "name": "CIS_Azure_1.4.0_1.1",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_1.1"
+            "name": "CIS_Azure_1.4.0_2.11",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_2.11"
         },
         {
-            "name": "CIS_Azure_1.4.0_1.3",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_1.3"
+            "name": "CIS_Azure_1.4.0_3.12",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_3.12"
         },
         {
-            "name": "CIS_Azure_1.4.0_2.13",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_2.13"
+            "name": "CIS_Azure_1.4.0_4.1.1",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.1.1"
         },
         {
-            "name": "CIS_Azure_1.4.0_2.14",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_2.14"
+            "name": "CIS_Azure_1.4.0_4.1.2",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.1.2"
         },
         {
-            "name": "CIS_Azure_1.4.0_2.15",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_2.15"
+            "name": "CIS_Azure_1.4.0_4.1.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.1.3"
         },
         {
-            "name": "CIS_Azure_1.4.0_3.5",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_3.5"
+            "name": "CIS_Azure_1.4.0_4.3.8",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.8"
         },
         {
-            "name": "CIS_Azure_1.4.0_4.3.2",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.2"
+            "name": "CIS_Azure_1.4.0_4.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.5"
         },
         {
-            "name": "CIS_Azure_1.4.0_4.3.3",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.3"
+            "name": "CIS_Azure_1.4.0_5.2.2",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.2"
         },
         {
-            "name": "CIS_Azure_1.4.0_4.3.4",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.4"
+            "name": "CIS_Azure_1.4.0_5.2.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.3"
         },
         {
-            "name": "CIS_Azure_1.4.0_4.3.5",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.3.5"
+            "name": "CIS_Azure_1.4.0_5.2.4",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.4"
         },
         {
-            "name": "CIS_Azure_1.4.0_5.1.3",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.1.3"
+            "name": "CIS_Azure_1.4.0_5.2.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.5"
         },
         {
-            "name": "CIS_Azure_1.4.0_6.5",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_6.5"
+            "name": "CIS_Azure_1.4.0_5.2.6",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.6"
         },
         {
-            "name": "CIS_Azure_1.4.0_7.4",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_7.4"
+            "name": "CIS_Azure_1.4.0_5.2.7",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.7"
         },
         {
-            "name": "CIS_Azure_1.4.0_7.5",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_7.5"
+            "name": "CIS_Azure_1.4.0_5.2.8",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.8"
         },
         {
-            "name": "CIS_Azure_1.4.0_7.6",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_7.6"
+            "name": "CIS_Azure_1.4.0_5.2.9",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.9"
         },
         {
-            "name": "CIS_Azure_1.4.0_8.1",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.1"
+            "name": "CIS_Azure_1.4.0_5.1.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.1.5"
         },
         {
-            "name": "CIS_Azure_1.4.0_8.2",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.2"
+            "name": "CIS_Azure_1.4.0_5.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.3"
         },
         {
-            "name": "CIS_Azure_1.4.0_8.3",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.3"
+            "name": "CIS_Azure_1.4.0_9.2",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.2"
         },
         {
-            "name": "CIS_Azure_1.4.0_8.4",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.4"
+            "name": "CIS_Azure_1.4.0_9.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.3"
         },
         {
-            "name": "CIS_Azure_1.4.0_8.6",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_8.6"
+            "name": "CIS_Azure_1.4.0_9.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.5"
         },
         {
-            "name": "CIS_Azure_1.4.0_9.6",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.6"
-        },
-        {
-            "name": "CIS_Azure_1.4.0_9.7",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.7"
-        },
-        {
-            "name": "CIS_Azure_1.4.0_9.8",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.8"
-        },
-        {
-            "name": "CIS_Azure_1.4.0_9.9",
-            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.9"
+            "name": "CIS_Azure_1.4.0_9.10",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_9.10"
         }
     ]
   },
