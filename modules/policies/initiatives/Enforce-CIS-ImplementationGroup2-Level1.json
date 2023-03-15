@@ -381,7 +381,14 @@
       {
         "policyDefinitionReferenceId": "ConfigureSQLServersToHaveAuditingEnabled",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f4c68484-132f-41f9-9b6d-3e4b1cb55036",
-        "parameters": {},
+        "parameters": {
+          "retentionDays": {
+            "value": "[parameters('retentionDays')]"
+          },
+          "storageAccountsResourceGroup": {
+            "value": "[parameters('storageAccountsResourceGroup')]"
+          }
+        },
         "groupNames": [
           "CIS_Azure_1.4.0_4.1.1"
         ]
