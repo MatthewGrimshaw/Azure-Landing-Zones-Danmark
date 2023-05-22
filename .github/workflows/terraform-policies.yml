@@ -1,0 +1,381 @@
+---
+name: terraform - Deploy Policies.
+
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+      - onboarding
+      #- none
+    paths:
+      - .github/workflows/terraform-policies.yml
+      - terraform/modules/policy_definitions/**
+      - modules/policies/definitions/**
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main
+    paths:
+      - .github/workflows/terraform-policies.yml
+      - terraform/modules/policy_definitions/**
+      - modules/policies/definitions/**
+  workflow_dispatch:
+
+# Checks if any concurrent jobs under the same pull request or branch are being executed - prevents the terraform state file being locked by another running workflow
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }}
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  MODULE_NAME: policy-definitions
+  LOCATION: westeurope
+
+jobs:
+  plan_canary:
+    name: Terraform plan Canary
+    environment:
+      name: Canary
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT_SHORT_NAME: canary
+      tf_actions_working_dir: ./terraform/modules/policy_definitions/canary
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v2
+        with:
+          tflint_version: v0.38.1
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend-config=storage_account_name=${{ secrets.STORAGE_ACCOUNT_NAME }} -backend-config=container_name=${{ secrets.CONTAINER_NAME }} -backend-config=key=${{ secrets.KEY }} -backend-config=resource_group_name=${{ secrets.RESOURCE_GROUP_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      # create a terraform workspace to manage state for this module if it does not exist. Workspaces separate state within the same state file for different modules
+      - name: Terraform Workspace create
+        id: tf_workspace_create
+        run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      # workspace variable needs to be set after the workspace is created
+      - name: Terraform Workspace export
+        id: tf_workspace_export
+        run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
+
+      # select the terraform workspace
+      - name: Terraform Workspace select
+        id: tf_workspace_select
+        run: terraform workspace select ${{ env.MODULE_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Init TFLint
+        run: tflint --init
+
+      - name: Run TFLint
+        run: tflint -f compact
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan --out=out_policy_definitions_canary.tfplan
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      - name: Upload the plan
+        uses: actions/upload-artifact@v3
+        with:
+          name: tf-plan-canary
+          path: ${{ env.tf_actions_working_dir }}/out_policy_definitions_canary.tfplan
+
+  plan_prod:
+    name: Terraform plan Production
+    environment:
+      name: Production
+    runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT_SHORT_NAME: prod
+      tf_actions_working_dir: ./terraform/modules/policy_definitions/prod
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v2
+        with:
+          tflint_version: v0.38.1
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend-config=storage_account_name=${{ secrets.STORAGE_ACCOUNT_NAME }} -backend-config=container_name=${{ secrets.CONTAINER_NAME }} -backend-config=key=${{ secrets.KEY }} -backend-config=resource_group_name=${{ secrets.RESOURCE_GROUP_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      # create a terraform workspace to manage state for this module if it does not exist. Workspaces separate state within the same state file for different modules
+      - name: Terraform Workspace create
+        id: tf_workspace_create
+        run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      # workspace variable needs to be set after the workspace is created
+      - name: Terraform Workspace export
+        id: tf_workspace_export
+        run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
+
+      # select the terraform workspace
+      - name: Terraform Workspace select
+        id: tf_workspace_select
+        run: terraform workspace select ${{ env.MODULE_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Init TFLint
+        run: tflint --init
+
+      - name: Run TFLint
+        run: tflint -f compact
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan --out=out_policy_definitions_prod.tfplan
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      - name: Upload the plan
+        uses: actions/upload-artifact@v3
+        with:
+          name: tf-plan-prod
+          path: ${{ env.tf_actions_working_dir }}/out_policy_definitions_prod.tfplan
+
+  apply_canary:
+    name: Terraform apply Canary
+    environment:
+      name: Canary
+    runs-on: ubuntu-latest
+    needs:
+      - plan_canary
+      - plan_prod
+    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+    env:
+      ENVIRONMENT_SHORT_NAME: canary
+      tf_actions_working_dir: ./terraform/modules/policy_definitions/canary
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend-config=storage_account_name=${{ secrets.STORAGE_ACCOUNT_NAME }} -backend-config=container_name=${{ secrets.CONTAINER_NAME }} -backend-config=key=${{ secrets.KEY }} -backend-config=resource_group_name=${{ secrets.RESOURCE_GROUP_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      # create a terraform workspace to manage state for this module if it does not exist. Workspaces separate state within the same state file for different modules
+      - name: Terraform Workspace create
+        id: tf_workspace_create
+        run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      # workspace variable needs to be set after the workspace is created
+      - name: Terraform Workspace export
+        id: tf_workspace_export
+        run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
+
+      # select the terraform workspace
+      - name: Terraform Workspace select
+        id: tf_workspace_select
+        run: terraform workspace select ${{ env.MODULE_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      - name: Download terraform plan
+        uses: actions/download-artifact@v3
+        with:
+          name: tf-plan-canary
+          path: ${{ env.tf_actions_working_dir }}
+
+      - name: Apply terraform plan
+        id: apply
+        run: terraform apply -no-color -auto-approve out_policy_definitions_canary.tfplan
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+  apply_prod:
+    name: Terraform apply Production
+    environment:
+      name: Production
+    runs-on: ubuntu-latest
+    needs:
+      - plan_canary
+      - plan_prod
+      - apply_canary
+    if: success() && (github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+    env:
+      ENVIRONMENT_SHORT_NAME: prod
+      tf_actions_working_dir: ./terraform/modules/policy_definitions/prod
+    defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -backend-config=storage_account_name=${{ secrets.STORAGE_ACCOUNT_NAME }} -backend-config=container_name=${{ secrets.CONTAINER_NAME }} -backend-config=key=${{ secrets.KEY }} -backend-config=resource_group_name=${{ secrets.RESOURCE_GROUP_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      # create a terraform workspace to manage state for this module if it does not exist. Workspaces separate state within the same state file for different modules
+      - name: Terraform Workspace create
+        id: tf_workspace_create
+        run: terraform workspace new ${{ env.MODULE_NAME }} || echo "Workspace ${{ env.MODULE_NAME }}  already exists or cannot be created"
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      # workspace variable needs to be set after the workspace is created
+      - name: Terraform Workspace export
+        id: tf_workspace_export
+        run: export TF_WORKSPACE=${{ env.MODULE_NAME }}
+
+      # select the terraform workspace
+      - name: Terraform Workspace select
+        id: tf_workspace_select
+        run: terraform workspace select ${{ env.MODULE_NAME }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true
+
+      - name: Download terraform plan
+        uses: actions/download-artifact@v3
+        with:
+          name: tf-plan-prod
+          path: ${{ env.tf_actions_working_dir }}
+
+      - name: Apply terraform plan
+        id: apply
+        run: terraform apply -no-color -auto-approve out_policy_definitions_prod.tfplan
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_MANAGEMENT_SUBSCRIPTION_ID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_USE_OIDC: true

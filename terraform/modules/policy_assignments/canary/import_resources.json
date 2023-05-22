@@ -1,0 +1,101 @@
+{
+    "properties": {
+        "resource": [
+            {
+                "name": "AMA-For-Hybrid-VMs",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Defender-For-Cloud",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Enable-DDoS-VNET",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Guest-Attestation",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Guest-Configuration",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Deploy-Log-Analytics",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "DenyRDPFromInternetIdnty",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Deny-Public-IP-Identity",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "DenyRDPFromInternetLZ",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Deny-DataBricks-Pip",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Deny-DataBricks-Sku",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Deny-DataBricks-Vnet",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Deny-Public-Endpoints",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "Deny-Public-IP-Corp",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "AuditCISGroup1Level1",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "AuditCISGroup1Level2",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "AuditCISGroup2Level1",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "AuditCISGroup2Level2",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            },
+            {
+                "name": "CIS_Benchmark_v1.4.0",
+                "tfconfig_name": "assignmnet",
+                "type": "azurerm_management_group_policy_assignment"
+            }
+        ]
+    }
+}

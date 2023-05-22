@@ -7,7 +7,9 @@
       "createdBy": "c5026805-6a3a-4029-8bf4-5322ca55b510",
       "createdOn": "2022-10-26T10:53:09.2888932Z",
       "updatedBy": "c5026805-6a3a-4029-8bf4-5322ca55b510",
-      "updatedOn": "2022-10-26T11:55:13.4489873Z"
+      "updatedOn": "2022-10-26T11:55:13.4489873Z",
+      "category" : "Network",
+      "version" :   "1.0"
     },
     "parameters": {
       "CosmosPublicIpDenyEffect": {

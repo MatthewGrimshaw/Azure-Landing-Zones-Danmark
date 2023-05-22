@@ -1,0 +1,72 @@
+{
+    "properties": {
+        "resource": [
+            {
+                "name": "matthew-lz",
+                "tfconfig_name": "matthew_lz",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-decommmisioned",
+                "tfconfig_name": "matthew_lz_decommmisioned",
+                "type": "azurerm_management_group"
+                
+            },
+            {
+                "name": "matthew-lz-sandbox",
+                "tfconfig_name": "matthew_lz_sandbox",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-platform",
+                "tfconfig_name": "matthew_lz_platform",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-landing-zones",
+                "tfconfig_name": "matthew_lz_landing_zones",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-connectivity",
+                "tfconfig_name": "matthew_lz_connectivity",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-identity",
+                "tfconfig_name": "matthew_lz_identity",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-management",
+                "tfconfig_name": "matthew_lz_management",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-security",
+                "tfconfig_name": "matthew_lz_security",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-corp",
+                "tfconfig_name": "matthew_lz_corp",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-corp-confidential",
+                "tfconfig_name": "matthew_lz_corp_confidential",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-online",
+                "tfconfig_name": "matthew_lz_online",
+                "type": "azurerm_management_group"
+            },
+            {
+                "name": "matthew-lz-online-confidential",
+                "tfconfig_name": "matthew_lz_online_confidential",
+                "type": "azurerm_management_group"
+            }
+        ]
+    }
+}

@@ -1,0 +1,74 @@
+{
+  "properties": {
+    "displayName": "Enforce CIS Implementation Group 2 Level 2 controls",
+    "policyType": "Custom",
+    "description": "This policy initiative is a group of policies that Enforces CIS Implementation Group 1 Level 1 controls.",
+    "metadata": {
+      "version": "1.0",
+      "category": "Regulatory Compliance"
+    },
+    "parameters": {},
+    "policyDefinitions":  [
+      {
+        "policyDefinitionReferenceId": "ConfigureStorageAccountsToDisablePublicNetworkAccess",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a06d0189-92e8-4dba-b0c4-08d7669fce7d",
+        "parameters": {},
+        "groupNames": [
+          "CIS_Azure_1.4.0_3.6"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "ConfigureAzureDefenderForAzureSQLDatabaseToBeEnabled",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b99b73e7-074b-4089-9395-b7236f094491",
+        "parameters": {},
+        "groupNames": [
+          "CIS_Azure_1.4.0_4.2.1"
+        ]
+      },
+      {
+        "policyDefinitionReferenceId": "DeployAdvancedDataSecurityOnSQLServers",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6134c3db-786f-471e-87bc-8f479dc890f6",
+        "parameters": {},
+        "groupNames": [
+          "CIS_Azure_1.4.0_4.2.2"
+        ]
+      }
+      ],
+      "policyDefinitionGroups": [
+        {
+            "name": "CIS_Azure_1.4.0_3.6",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_3.6"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_4.2.1",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.2.1"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_4.2.2",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.2.2"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_4.2.4",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_4.2.4"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_5.1.5",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.1.5"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_5.2.1",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.2.1"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_5.3",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_5.3"
+        },
+        {
+            "name": "CIS_Azure_1.4.0_7.2",
+            "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/CIS_Azure_1.4.0_7.2"
+        }
+    ]
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "name": "Enforce CIS Implementation Group 2 Level 2 controls"
+}

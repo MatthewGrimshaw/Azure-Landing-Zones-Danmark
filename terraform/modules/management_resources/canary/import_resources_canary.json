@@ -1,0 +1,144 @@
+{
+    "properties": {
+        "resource": [
+            {
+                "name": "Management",
+                "tfconfig_name": "Management",
+                "type": "azurerm_resource_group", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "ufstlzcanary",
+                "tfconfig_name": "automation_account",
+                "type": "azurerm_automation_account", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "mgmtstorageqwerty",
+                "tfconfig_name": "storage",
+                "type": "azurerm_storage_account", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "tfstatecanary",
+                "storage_account_name":"mgmtstorageqwerty",
+                "tfconfig_name": "container_canary",
+                "type": "azurerm_storage_container", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "tfstateprod",
+                "storage_account_name":"mgmtstorageqwerty",
+                "tfconfig_name": "container_prod",
+                "type": "azurerm_storage_container", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "mgmtworkspace",
+                "tfconfig_name": "log_analytics",
+                "type": "azurerm_log_analytics_workspace", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "AgentHealthAssessment(mgmtworkspace)",
+                "solution_name" : "AgentHealthAssessment",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "AzureActivity(mgmtworkspace)",
+                "solution_name" : "AzureActivity",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "ChangeTracking(mgmtworkspace)",
+                "solution_name" : "ChangeTracking",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "Security(mgmtworkspace)",
+                "solution_name" : "Security",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "SecurityInsights(mgmtworkspace)",
+                "solution_name" : "SecurityInsights",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "ServiceMap(mgmtworkspace)",
+                "solution_name" : "ServiceMap",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "SQLAdvancedThreatProtection(mgmtworkspace)",
+                "solution_name" : "SQLAdvancedThreatProtection",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "SQLAssessment(mgmtworkspace)",
+                "solution_name" : "SQLAssessment",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "SQLVulnerabilityAssessment(mgmtworkspace)",
+                "solution_name" : "SQLVulnerabilityAssessment",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "Updates(mgmtworkspace)",
+                "solution_name" : "Updates",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "VMInsights(mgmtworkspace)",
+                "solution_name" : "VMInsights",
+                "tfconfig_name": "log_analytics_solution",
+                "type": "azurerm_log_analytics_solution", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "ufstlzcanary",
+                "tfconfig_name": "ddos",
+                "type": "azurerm_network_ddos_protection_plan", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "uai",
+                "tfconfig_name": "uai",
+                "type": "azurerm_user_assigned_identity", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "mgmtworkspace",
+                "tfconfig_name": "autoacc_linked_log_workspace",
+                "type": "azurerm_log_analytics_linked_service", 
+                "resource_group": "Management"
+            },
+            {
+                "name": "/providers/Microsoft.Management/managementGroups/matthew-lz-canary/providers/Microsoft.Authorization/roleAssignments/1c1c693a-2ba1-3116-6311-2cc0e4764e55",
+                "tfconfig_name": "uai_role_assignment",
+                "type": "azurerm_role_assignment"
+            }      
+        ]          
+    }
+}
