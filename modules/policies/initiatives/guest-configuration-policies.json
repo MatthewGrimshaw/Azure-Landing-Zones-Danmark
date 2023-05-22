@@ -1,0 +1,47 @@
+{
+  "properties": {
+    "displayName": "Configure Guest Configuration Policies",
+    "policyType": "Custom",
+    "description": "This policy initiative is a group of policies that configures security settings App Services.",
+    "metadata": {
+      "version": "1.0",
+      "category": "Guest Configuration"
+    },
+    "parameters": {},
+    "policyDefinitions": [
+      {
+        "policyDefinitionReferenceId": "ConfigureSecureCommunicationProtocols(TLS1.1orTLS1.2)OnWindowsServers",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/828ba269-bf7f-4082-83dd-633417bc391d",
+        "parameters": {},
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "LinuxMachinesShouldHaveLogAnalyticsAgentInstalledOnAzureArc",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e7fed80-8321-4605-b42c-65fc300f23a3",
+        "parameters": {},
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "AuthenticationToLinuxMachinesShouldRequireSSHkeys",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/630c64f9-8b6b-4c64-b511-6544ceff6fd6",
+        "parameters": {},
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "WindowsDefenderExploitGuardShouldBeEnabledOnYourMachines",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/bed48b13-6647-468e-aa2f-1af1d3f4dd40",
+        "parameters": {},
+        "groupNames": []
+      },      
+      {
+        "policyDefinitionReferenceId": "WindowsMachinesShouldHaveLogAnalyticsAgentInstalledOnAzureArcs",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4078e558-bda6-41fb-9b3c-361e8875200d",
+        "parameters": {},
+        "groupNames": []
+      }     
+    ],
+    "policyDefinitionGroups": []
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "name": "Configure-Guest-Configuration-Policies"
+}
